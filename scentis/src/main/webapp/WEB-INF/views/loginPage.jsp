@@ -16,20 +16,12 @@
 <body>
 
 <div class="container">
-  <h2>Stacked form</h2>
-  <form action="login"	method="get">
+  <h2>id정보 ${account.id}</h2>
+  <form action="otpInput"	method="get">
     <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="text" class="form-control" id="id" placeholder="Enter email" name="id">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pw" placeholder="Enter password" name="pw">
-    </div>
-    <div class="form-group form-check">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember"> Remember me
-      </label>
+      <label for="email">OTP:</label>
+      <input type="text" placeholder="Enter otp" name="otpCode">
+      <input type="hidden" name="id" value=${account.id}>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

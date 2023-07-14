@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//
+EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="kr.smhrd.mapper.MemberMapper">
+
+	<select id="test" resultType="kr.smhrd.entity.Member">
+		SELECT * 
+		  FROM T_MEMBER
+	</select>
+
+	<select id="login"  parameterType="kr.smhrd.entity.Member" resultType="kr.smhrd.entity.Member">
+		SELECT * 
+		  FROM T_MEMBER 
+		 WHERE id=#{id} and pw=#{pw}
+	</select>
+
+	<!--
+	<select id="accountCheck"  parameterType="kr.smhrd.entity.accountTable" resultType="kr.smhrd.entity.accountTable">
+		SELECT blockTime 
+		FROM accountTable 
+		WHERE id=#{id}
+	</select>
+
+
+	<insert id="otpCreate" parameterType="kr.smhrd.entity.otpTable">
+		insert into COM.otpTable (id, otpCode, issueDate, expiredDate) 
+							value( #{id}, #{otpCode}, #{issueDate}, #{expiredDate} )
+	</insert>
+	
+	<select id="loginCntCheck" resultType="int">
+		SELECT loginCnt
+		FROM accountTable 
+		WHERE id=#{id}
+	</select>
+	
+	<update id="loginCntUpdate" parameterType="kr.smhrd.entity.accountTable">
+		UPDATE accountTable 
+		SET loginCnt=#{loginCnt} 
+		WHERE ID=#{id}
+	</update>
+	
+	<update id="blockTimeUpdate" parameterType="kr.smhrd.entity.accountTable">
+		UPDATE accountTable 
+		SET blockTime=#{blockTime}
+		WHERE ID=#{id}
+	</update>
+	
+	<select id="otpCheck"  parameterType="kr.smhrd.entity.otpTable" resultType="int">
+		SELECT * 
+		FROM otpTable 
+		WHERE id=#{id} and otpCode=#{otpCode}
+	</select>
+	
+	<delete id="otpDelete" parameterType="kr.smhrd.entity.otpTable">
+		DELETE
+		FROM otpTable
+		WHERE id=#{id}
+	</delete>
+	-->
+
+</mapper>
