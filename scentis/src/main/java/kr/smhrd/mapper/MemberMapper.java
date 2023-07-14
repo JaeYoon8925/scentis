@@ -20,13 +20,16 @@ public interface MemberMapper {
 	// 로그인
 	public Member login(Member member);
 	
+	// 오티피 생성문
+	public int register(Member member);
+	
+	// 아이디 중복 체크
+	public int dupCheck(String id);
 	
 //	// 아이디 존재 확인
 //	public accountTable accountCheck(accountTable account);
 //
 //	
-//	// 오티피 생성문
-//	public int otpCreate(otpTable otpCodeBind);
 //	
 //	// 오티피 체크문
 //	public int otpCheck(otpTable otp);

@@ -17,6 +17,17 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 		 WHERE id=#{id} and pw=#{pw}
 	</select>
 
+	<insert id="register" parameterType="kr.smhrd.entity.Member">
+		INSERT INTO T_MEMBER (ID, PW, NAME, NICKNAME, BIRTHDATE, GENDER) 
+			          VALUES (#{id}, #{pw}, #{name}, #{nickname}, #{birthdate}, #{gender});
+	</insert>
+	
+	<select id="dupCheck" parameterType="String" resultType="int">
+		SELECT count(*)
+		FROM T_MEMBER
+		WHERE id = #{id}		
+	</select>
+	
 	<!--
 	<select id="accountCheck"  parameterType="kr.smhrd.entity.accountTable" resultType="kr.smhrd.entity.accountTable">
 		SELECT blockTime 
@@ -25,10 +36,6 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 	</select>
 
 
-	<insert id="otpCreate" parameterType="kr.smhrd.entity.otpTable">
-		insert into COM.otpTable (id, otpCode, issueDate, expiredDate) 
-							value( #{id}, #{otpCode}, #{issueDate}, #{expiredDate} )
-	</insert>
 	
 	<select id="loginCntCheck" resultType="int">
 		SELECT loginCnt
