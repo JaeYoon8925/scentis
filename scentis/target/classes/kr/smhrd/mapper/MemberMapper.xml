@@ -4,7 +4,7 @@
 EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 
-<mapper namespace="kr.smhrd.mapper.memberMapper">
+<mapper namespace="kr.smhrd.mapper.MemberMapper">
 
 	<select id="test" resultType="kr.smhrd.entity.Member">
 		SELECT * 

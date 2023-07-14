@@ -12,20 +12,20 @@ import kr.smhrd.mapper.MemberMapper;
 public class MemberService {
 
 	@Autowired(required=false)
-	private MemberMapper mapper;
+	private MemberMapper memberMapper;
 
 	public ArrayList<Member> test() {
 		
 		ArrayList<Member> members = new ArrayList<>();
-		members = mapper.test();
+		members = memberMapper.test();
 		return members;
 	}
 
-	public Member login(Member account) {
+	public Member login(Member member) {
 		
+		Member info = memberMapper.login(member);
 		
-		
-		return null;
+		return info;
 	}
 	
 }

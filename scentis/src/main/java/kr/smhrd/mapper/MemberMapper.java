@@ -7,17 +7,18 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Repository;
 
 import kr.smhrd.entity.Member;
 
-@Mapper
+@Repository
 public interface MemberMapper {
 	
 	// 테스트
 	public ArrayList<Member> test();
 
 	// 로그인
-	public Member login(Member account);
+	public Member login(Member member);
 	
 	
 //	// 아이디 존재 확인

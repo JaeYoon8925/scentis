@@ -8,8 +8,8 @@
 	<name>SpringMVC01</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	<properties> 
-	
+	<properties>
+
 		<!-- 변수를 선언하는 공간 -->
 		<java-version>1.6</java-version>
 		<!-- 이름이 spring- 으로 시작한다면? = 무조건 spring의 version과 동일한 버전으로 메이븐에서 다운 받으면 
@@ -19,9 +19,9 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	
+
 	<dependencies>
-	
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -133,46 +133,46 @@
 			<scope>provided</scope>
 		</dependency>
 
-	<!-- DB연결을 위한 라이브러리 3가지 -->
-	<!-- 1) mysql JDBC driver -->
+		<!-- DB연결을 위한 라이브러리 3가지 -->
+		<!-- 1) mysql JDBC driver -->
 		<dependency>
-   			<groupId>mysql</groupId>
-   			<artifactId>mysql-connector-java</artifactId>
-  			<version>8.0.28</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.28</version>
 		</dependency>
-	<!-- 2) HikariCP: DBCP를 만들 때 사용하는 라이브 러리-->
+		<!-- 2) HikariCP: DBCP를 만들 때 사용하는 라이브 러리 -->
 		<dependency>
-  			<groupId>com.zaxxer</groupId>
-  			<artifactId>HikariCP</artifactId>
-  			<version>4.0.3</version>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>4.0.3</version>
 		</dependency>
-	<!-- 3) mybatis 라이브러리 -->
+		<!-- 3) mybatis 라이브러리 -->
 		<dependency>
-    		<groupId>org.mybatis</groupId>
-    		<artifactId>mybatis</artifactId>
-    		<version>3.5.6</version>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.6</version>
 		</dependency>
-	<!-- 4) mybatis-spring -->
+		<!-- 4) mybatis-spring -->
 		<dependency>
-  			<groupId>org.mybatis</groupId>
- 			<artifactId>mybatis-spring</artifactId>
- 			<version>2.0.6</version>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.6</version>
 		</dependency>
-	<!-- 5) spring-jdbc spring과 jdbc를 연결시켜주는 라이브러리 -->
-	<!-- version을 spring과 맞춰주는게 좋다. -->
+		<!-- 5) spring-jdbc spring과 jdbc를 연결시켜주는 라이브러리 -->
+		<!-- version을 spring과 맞춰주는게 좋다. -->
 		<dependency>
-  			<groupId>org.springframework</groupId>
-   			<artifactId>spring-jdbc</artifactId>
-  			<version>4.3.20.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.3.20.RELEASE</version>
 		</dependency>
-	<!-- 6) ajax 비동기 통신으로 요청이 들어왔을 때 결과값을 자동으로 json 구조로 변환시켜주는 라이브러리. -->
+		<!-- 6) ajax 비동기 통신으로 요청이 들어왔을 때 결과값을 자동으로 json 구조로 변환시켜주는 라이브러리. -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.14.2</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.14.2</version>
 		</dependency>
-	
-		
+
+
 
 
 
