@@ -16,7 +16,8 @@ public class Perfume {
 	private String P_MIDDLE; 
 	private String P_BASE; 
 	private String P_MOOD; 
-	private String P_PATH;
+	private String P_PICPATH;
 	private String P_INFO; 
+	private String P_PATH;
 	
 }

@@ -25,6 +25,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	// 처음 서버 부팅시
 	@RequestMapping(value = "/")
 	public String index() {
 		ArrayList<Member> members = new ArrayList<>();
@@ -33,6 +34,7 @@ public class MemberController {
 		return "mainPage";
 	}
 	
+	// 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String index(Member member, Model model) {
 		String goal = "loginPage"; // 로그인을 시도했던 페이지의 주소 정보를 가져와서 선언하는 것으로 변경
@@ -57,4 +59,14 @@ public class MemberController {
 		return goal; // 이동시켜줄 페이지 이름
 	}
 
+	// 회원가입
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String register(Member member, Model model) {
+		String goal = "loginPage";
+		
+		
+		
+		return goal; // 이동시켜줄 페이지 이름
+	}
+	
 }
