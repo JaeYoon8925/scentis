@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/Javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- 프로젝트 시작할때 제일 먼저 실행 > 뭐부터 할까 적혀있는 곳 / Spring 컨테이너에 대한 정의를 하는 곳. -->
+
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!-- Processes application requests 프론트 컨트롤러의 역할을 해줌. > 따로 프론트컨트롤러의 역할을 
+		할 서블릿을 만들지 않아도 된다. (Dispatcher Servlet = 프론트 컨트롤러) / POJO만 만들면 됌 -->
+
+	<!-- servlet-context.xml의 설정을 읽어서  FrontController를 생성하는 구간. -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- 생성하는 구간 끝 -->
+	
+	<!-- frontcontroller는 /요청 이 들어오면 받을거야. ( == *.do ) -->
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern> <!-- /로 시작하는 모든 url 을 뜻함 -->
+	</servlet-mapping>
+
+
+	<!-- 한글로 인코딩 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+</web-app>
