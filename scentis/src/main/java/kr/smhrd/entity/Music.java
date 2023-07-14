@@ -13,6 +13,8 @@ public class Music {
 	private String M_ARTIST;
 	private String M_TITLE;
 	private String M_GENRE;
-	private String M_FILENAME; 
+	private String M_FREQ;
+	private String M_BEAT;
+	private String M_MOOD;
 	
 }

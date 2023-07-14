@@ -12,6 +12,10 @@ public class Perfume {
 	private String P_NUM;
 	private String P_BRAND;
 	private String P_MODEL;
+	private String P_TOP; 
+	private String P_MIDDLE; 
+	private String P_BASE; 
+	private String P_MOOD; 
 	private String P_PATH;
 	private String P_INFO; 
 	
