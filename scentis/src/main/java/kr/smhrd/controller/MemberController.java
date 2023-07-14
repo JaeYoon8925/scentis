@@ -30,6 +30,8 @@ public class MemberController {
 		ArrayList<Member> members = new ArrayList<>();
 		members = mapper.test();
 		System.out.println(members);
+		
+		// 커밋 퍼미션 체크
 		return "mainPage";
 	}
 	
