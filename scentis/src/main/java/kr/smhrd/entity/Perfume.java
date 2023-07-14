@@ -9,15 +9,15 @@ import lombok.NoArgsConstructor;
 @Data
 public class Perfume {
 
-	private String P_NUM;
-	private String P_BRAND;
-	private String P_MODEL;
-	private String P_TOP; 
-	private String P_MIDDLE; 
-	private String P_BASE; 
-	private String P_MOOD; 
-	private String P_PICPATH;
-	private String P_INFO; 
-	private String P_PATH;
+	private String p_num;
+	private String p_brand;
+	private String p_model;
+	private String p_top; 
+	private String p_middle; 
+	private String p_base; 
+	private String p_mood; 
+	private String p_picpath;
+	private String p_info; 
+	private String p_path;
 	
 }

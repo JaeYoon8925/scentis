@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class Log {
 
-	private int LOG_NUM;
-	private String ID;
-	private int M_NUM;
-	private int P_NUM;
-	private int LOG_STF;
+	private int log_num;
+	private String id;
+	private int m_num;
+	private int p_num;
+	private int log_stf;
 	
 }
