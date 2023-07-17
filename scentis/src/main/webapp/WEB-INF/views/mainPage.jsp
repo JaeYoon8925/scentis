@@ -1,40 +1,88 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
-<head>
-  <title>Bootstrap Example</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="resources/css/main.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
 
 <body>
 
-<div class="container">
-  <h2>Stacked form</h2>
-  <form action="login"	method="get">
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="text" class="form-control" id="id" placeholder="Enter email" name="id">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pw" placeholder="Enter password" name="pw">
-    </div>
-    <div class="form-group form-check">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember"> Remember me
-      </label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  	<a href=${pageContext.request.contextPath}/registerPage>회원가입</a>
-</div>
+	<nav>
+		<div class="logo">Scentit</div>
+		<div class="menuBar">
+			<a href="">My Perfume</a>
+			<a href="">Music Chart</a>
+			<span>|</span>
+			<a href="">Sign up</a>
+			<a href="login">Login</a>
+			<a href="">My Log</a>
+		</div>
+	</nav>
+
+	<section>
+		<video autoplay loop muted>
+			<source src="resources/img/제목을-입력해주세요_.mp4"
+				type="video/mp4">
+
+		</video>
+	</section>
+
+	<footer>
+		<div class="container">
+			<div class="footer-menu">
+				<div class="first-box">
+					<div>
+						<img src="Spotify_Logo_RGB_White.png" alt="">
+					</div>
+					<div class="column">
+						<div class="sub-title">COMPANY</div>
+						<a href="">About</a> <a href="">Jobs</a> <a href="">For the
+							Record</a>
+					</div>
+					<div class="column">
+						<div class="sub-title">COMMUNITIES</div>
+						<a href="">For Artists</a> <a href="">Developers</a> <a href="">Advertising</a>
+						<a href="">Investors</a> <a href="">Vendors</a>
+					</div>
+					<div class="column">
+						<div class="sub-title">USEFUL LINKS</div>
+						<a href="">Support</a> <a href="">Web player</a> <a href="">Free
+							Mobile App</a>
+					</div>
+				</div>
+				<div class="second-box">
+					<div class="icon-box">
+						<i class="fab fa-instagram icon"></i>
+					</div>
+					<div class="icon-box">
+						<i class="fab fa-twitter icon"></i>
+					</div>
+					<div class="icon-box">
+						<i class="fab fa-facebook-f icon"></i>
+					</div>
+				</div>
+			</div>
+			<div class="USA">
+				<i class="fas fa-globe-africa"></i> USA
+			</div>
+			<div class="last-line">
+				<div>
+					<a href="">Legal</a> <a href="">Privacy Center</a> <a href="">Privacy
+						Policy</a> <a href="">Privacy Policy</a> <a href="">Cookies</a> <a
+						href="">About Ads</a> <a href="">Additional CA Privacy
+						Dosclosures</a>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
 
 </body>
 
