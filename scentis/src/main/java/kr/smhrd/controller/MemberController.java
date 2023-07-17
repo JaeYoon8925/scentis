@@ -12,9 +12,11 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.entity.Member;
 import kr.smhrd.mapper.MemberMapper;
@@ -59,11 +61,19 @@ public class MemberController {
 			
 		return goal; // 이동시켜줄 페이지 이름
 	}
-
+	
+	// 회원가입 페이지로
+	 @GetMapping("/registerPage")
+	    public String goRegisterPage() {
+	        return "registerPage";
+	    }
+	
 	// 회원가입
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(Member member, Model model) {
+	public String register(@RequestParam("pwCheck") String pwCheck, Member member, Model model) {
 		String goal = "";
+		
+		
 		
 		// 회원가입 시도
 		System.out.println("회원가입 컨트롤러");
@@ -81,20 +91,33 @@ public class MemberController {
 	}
 	
 	// 회원가입 시에 사용할 아이디 중복 체크
-	@RequestMapping(value = "/dupCheck", method = RequestMethod.GET)
-	public void dupCheck(@RequestParam("id") String id, Model model) {
+	@RequestMapping(value = "/dupCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String dupCheck(String id) throws Exception{
+		System.out.println("dupCheck() 진입");
+		String result = "";
+		int one = memberService.dupCheck(id);
 		
-		// dupCheck의 결과가 0이라면 중복 false가 모델에 저장
-		// >> ajax를 이용해 비동기로 true인 경우 회원가입 버튼을 비활성화 한다는 방식으로 구현
-		model.addAttribute("dupCheck", memberService.dupCheck(id) == 0 ? false : true);
+		if ( one == 1 ) {
+			// 중복
+			result = "fail";
+		} else {
+			// 중복 아님
+			result = "success";
+		}
+		
+		
+		return result;
+		
 		
 		
 	}
 	
+	// 회원가입 시 비밀번호 확인
 	
-	// 닉네임 변경
 	
-	// 비밀번호 변경
+
+	
 	
 	
 	

@@ -33,6 +33,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  	<a href=${pageContext.request.contextPath}/registerPage>회원가입</a>
 </div>
 
 </body>
