@@ -37,29 +37,11 @@ public class MemberController {
 		return "mainPage";
 	}
 	
-	// 로그인
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String index(Member member, Model model) {
-		String goal = ""; // 로그인을 시도했던 페이지의 주소 정보를 가져와서 선언하는 것으로 변경
+	// 로그인 페이지 이동
+	@RequestMapping(value = "/login")
+	public String goLogin() {
 		
-		// 로그인 시도
-		System.out.println("로그인 시도");
-		Member info = memberService.login(member);
-		
-			// 로그인 성공
-			if (info != null) {
-				// 모델에 로그인 정보 저장. (유지해야하니 안되는 경우 세션에 저장하는 것으로 변경)
-				System.out.println("로그인 성공");
-				model.addAttribute("account", info);
-				goal = "mainPage";
-			}
-			// 로그인 실패 info = null
-			else {
-				System.out.println("아이디 또는 비밀번호 오류 / 로그인 실패");
-				goal = "loginFailPage"; // 로그인 전용 창으로 이동시켜줄까? 아니면 그냥 시도했던 페이지에 그대로 놔둘거면 이거 필요없음.
-			}
-			
-		return goal; // 이동시켜줄 페이지 이름
+		return "loginPage"; // 이동시켜줄 페이지 이름
 	}
 	
 	// 회원가입 페이지로

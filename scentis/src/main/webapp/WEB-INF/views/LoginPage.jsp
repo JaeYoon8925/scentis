@@ -25,12 +25,12 @@
 			</div>
 
 
-			<form class=e1_688 action="otpInput" method="get">
+			<form class=e1_688 action="login" method="POST">
 
 				<div class=e4_295>
 
 					<div class=e4_295>
-						<span class="e4_296">아이디</span>
+						<span class="e4_296">ID</span>
 						<div class=e4_297>
 							<div class=e4_298>
 								<input type="text" name="id" class="e4_299"></div>
@@ -40,7 +40,7 @@
 					</div>
 
 					<div class=e1_698>
-						<span class="e1_699">비밀번호</span>
+						<span class="e1_699">PASSWORD</span>
 						<div class=e1_700>
 							<div class=e1_701>
 								<input type="password" name="pw" class="e1_702">
@@ -48,10 +48,10 @@
 						</div>
 					</div>
 
-					<div class=e1_690>
-						<div class=e1_691>
-							<button type="submit" class="ei1_691_304_38">Login</button>
-						</div>
+					<button type="submit" class="e1_690">
+							Login
+					</button>
+						
 					</div>
 			</form>
 
@@ -66,6 +66,7 @@
 		<div class=e1_730>
 
 			<div class="e1_731"></div>
+			<img alt="" src="resources/img/KakaoTalk_20230716_233001867.png">
 			<div class=e1_732>
 				<span class="e1_734">Scentit</span>
 			</div>
