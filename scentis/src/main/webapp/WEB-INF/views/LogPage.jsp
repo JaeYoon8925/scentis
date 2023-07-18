@@ -35,7 +35,7 @@
         <section class="section2">
             <div class="log">
                 <p class="title">MY LOG</p>
-                <img class="pro" src="./image/프사.png" alt="">
+                <img class="pro" src="resources/img/프사.png" alt="">
                 <div class="idnick">
                     <p>ID</p>
                     <p>Nickname</p>
