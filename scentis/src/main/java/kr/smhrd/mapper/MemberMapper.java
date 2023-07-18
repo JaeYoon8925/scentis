@@ -28,4 +28,7 @@ public interface MemberMapper {
 	
 	// trend perfume가져오기
 	public ArrayList<Perfume> TrendP();
+	
+	// test용
+	public Perfume test();
 }

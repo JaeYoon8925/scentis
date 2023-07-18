@@ -37,7 +37,9 @@ public class MemberController {
 	
 	// 음악으로 향수 추천받기 페이지 이동
 	@RequestMapping("/goMusicPerfume")
-	public String goMusicPerfume() {
+	public String goMusicPerfume(Model model) {
+		Perfume test1 = mapper.test();  // test용이에용
+		model.addAttribute("test",test1);
 		return "MusicPerfume";
 	}
 	// 향수결과 페이지 이동
@@ -53,7 +55,6 @@ public class MemberController {
 		model.addAttribute("Mylog",Mylog);
 		ArrayList<Perfume> TrendP =  mapper.TrendP();
 		model.addAttribute("TrendP",TrendP);
-		
 		return "LogPage";
 	}
 	

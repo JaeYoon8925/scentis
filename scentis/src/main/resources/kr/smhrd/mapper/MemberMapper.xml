@@ -20,4 +20,7 @@ WHERE A.ID=#{ID} AND A.P_NUM=B.P_NUM
 SELECT * FROM T_PERFUME ORDER BY P_CNT DESC LIMIT 3;
 </select>
 
+<select id="test" resultType="kr.smhrd.entity.Perfume">
+SELECT * FROM T_PERFUME WHERE P_NUM=6</select>
+
 </mapper>
