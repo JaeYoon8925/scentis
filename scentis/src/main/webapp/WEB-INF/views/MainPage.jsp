@@ -65,26 +65,12 @@
 					<div class="icon-box">
 						<i class="fab fa-instagram icon"></i>
 					</div>
-					<div class="icon-box">
-						<i class="fab fa-twitter icon"></i>
-					</div>
-					<div class="icon-box">
-						<i class="fab fa-facebook-f icon"></i>
-					</div>
 				</div>
 			</div>
-			<div class="USA">
-				<i class="fas fa-globe-africa"></i> USA
+			<div class="KOREA">
+				<i class="fas fa-globe-africa"></i> KOREA
 			</div>
-			<div class="last-line">
-				<div>
-					<a href="">Legal</a> <a href="">Privacy Center</a> <a href="">Privacy
-						Policy</a> <a href="">Privacy Policy</a> <a href="">Cookies</a> <a
-						href="">About Ads</a> <a href="">Additional CA Privacy
-						Dosclosures</a>
-				</div>
 
-			</div>
 		</div>
 	</footer>
 

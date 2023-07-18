@@ -153,8 +153,8 @@ div.column>a:hover {
     color: #fff87c;
 }
 
-/* USA 라인 */
-.USA {
+/* KOREA 라인 */
+.KOREA {
     display: flex;
     justify-content: flex-end;
     font-size: 12px;
