@@ -18,13 +18,13 @@ public class MemberController {
 	// 처음 서버 부팅시
 	@RequestMapping(value = "/")
 	public String goMain() {
-		return "mainPage";
+		return "MainPage";
 	}
 	
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "/login")
 	public String goLogin() {
-		return "loginPage"; // 이동시켜줄 페이지 이름
+		return "LoginPage"; // 이동시켜줄 페이지 이름
 	}
 	
 	// 로그인
