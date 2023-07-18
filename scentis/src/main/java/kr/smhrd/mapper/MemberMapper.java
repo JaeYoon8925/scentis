@@ -7,7 +7,7 @@ import kr.smhrd.entity.Member;
 
 @Repository
 public interface MemberMapper {
-	
+
 	// 로그인
 	public Member Login(Member member);
 	
