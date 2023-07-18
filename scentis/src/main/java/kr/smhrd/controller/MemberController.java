@@ -51,7 +51,7 @@ public class MemberController {
 	// 회원의 MyLog + 향수cnt 기준 best top3
 		ArrayList<MyLog> log = mapper.LogCheck(user);
 		model.addAttribute("Mylog",log);
-		ArrayList<Log> log =  mapper.
+//		ArrayList<Log> log =  mapper.
 		return "LogPage";
 	}
 	
