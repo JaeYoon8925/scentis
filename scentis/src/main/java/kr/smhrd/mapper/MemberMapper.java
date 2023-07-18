@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import kr.smhrd.entity.Log;
 import kr.smhrd.entity.Member;
 import kr.smhrd.entity.MyLog;
+import kr.smhrd.entity.Perfume;
 
 @Repository
 public interface MemberMapper {
@@ -26,4 +26,6 @@ public interface MemberMapper {
 	// 로그보기
 	public ArrayList<MyLog> LogCheck(Member user);
 	
+	// trend perfume가져오기
+	public ArrayList<Perfume> TrendP();
 }

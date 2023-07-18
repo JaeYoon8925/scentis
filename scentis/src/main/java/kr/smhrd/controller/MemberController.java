@@ -49,9 +49,11 @@ public class MemberController {
 	@RequestMapping("/goLogPage")
 	public String goLogPage(Member user, Model model) {
 	// 회원의 MyLog + 향수cnt 기준 best top3
-		ArrayList<MyLog> log = mapper.LogCheck(user);
-		model.addAttribute("Mylog",log);
-//		ArrayList<Log> log =  mapper.
+		ArrayList<MyLog> Mylog = mapper.LogCheck(user);
+		model.addAttribute("Mylog",Mylog);
+		ArrayList<Perfume> TrendP =  mapper.TrendP();
+		model.addAttribute("TrendP",TrendP);
+		
 		return "LogPage";
 	}
 	
