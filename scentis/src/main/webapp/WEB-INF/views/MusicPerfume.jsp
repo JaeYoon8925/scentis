@@ -10,10 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach items="${test}" var="t">
-	<img src="resources/img/${t.p_BRAND}/${t.p_MODEL}.jpg" alt="${t.p_num}">
+	<img src="resources/img/${test.p_BRAND}/${test.p_MODEL}.jpg" alt="${test.p_num}">
 	<h1>t.p_BRAND</h1>>
 	<h1>t.p_MODEL</h1>
-</c:forEach>
 </body>
 </html>
