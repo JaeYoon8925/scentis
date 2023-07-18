@@ -86,11 +86,18 @@
 		</div>
 
 		<div class=e4_332>
-			<span class="e4_333">성별</span> <label> <input class=gender
-				type="radio" name="male" value="gender" checked /> <span>남성</span>
-			</label> <label> <input class=gender type="radio" name="female"
-				value="gender" checked /> <span>여성</span>
-			</label>
+			<span class="e4_333">성별</span>
+			<div class="form_toggle">
+				<div class="form_radio_btn radio_male">
+					<input id="radio-1" type="radio" name="userSex" value="male"
+						checked> <label for="radio-1">남자</label>
+				</div>
+
+				<div class="form_radio_btn">
+					<input id="radio-2" type="radio" name="userSex" value="female">
+					<label for="radio-2">여자</label>
+				</div>
+			</div>
 
 		</div>
 
