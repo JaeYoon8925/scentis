@@ -20,7 +20,7 @@
 <body>
 
 	<nav>
-		<div class="logo">Scentit</div>
+		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
 			<a href="">Music Chart</a>
 			<span>|</span>
