@@ -20,7 +20,7 @@
 			<a href="">Music Chart</a>
 			<span>|</span>
 			<a href="Join">Sign up</a>
-			<a href="login">Login</a>
+			<a href="Login">Login</a>
 			<a href="">My Log</a>
 		</div>
 	</nav>

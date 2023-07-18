@@ -23,13 +23,13 @@ public class MemberController {
 	}
 	
 	// 로그인 페이지로 이동
-	@RequestMapping("/login")
+	@RequestMapping("/Login")
 	public String goLogin() {
 		return "LoginPage"; // 이동시켜줄 페이지 이름
 	}
 	
 	// 로그인
-	@PostMapping(value = "/login")
+	@PostMapping(value = "/Login")
 	public String Login(Member member, Model model) {
 		Member dto = mapper.Login(member);
 		model.addAttribute(dto);

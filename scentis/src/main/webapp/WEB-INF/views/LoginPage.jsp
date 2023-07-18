@@ -25,7 +25,7 @@
 			</div>
 
 
-			<form class=e1_688 action="login" method="POST">
+			<form class=e1_688 action="Login" method="POST">
 
 				<div class=e4_295>
 
