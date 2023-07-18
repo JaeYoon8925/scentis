@@ -112,6 +112,7 @@
 		<div class=e1_730>
 
 			<div class="e1_731"></div>
+			<img alt="" src="resources/img/KakaoTalk_20230716_233001867.png">
 			<div class=e1_732>
 				<span class="e1_734">Scentit</span>
 			</div>
