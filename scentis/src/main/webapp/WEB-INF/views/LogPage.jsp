@@ -20,10 +20,12 @@
 	<nav>
         <a href="${cpath}/" class="logo">Scentit</a>
         <div class="menuBar">
-            <a href="">My Perfume</a>
+            <a href="goMusicPerfume">My Perfume</a>
             <a href="">Music Chart</a>
             <span>|</span>
-            <a href="">My Log</a>
+            <c:if test="${user ne null}">
+            <a href="logout" class="logoutButton">Logout</a>
+            </c:if>
         </div>
     </nav>
 
@@ -61,8 +63,8 @@
         <section class="section3">
             <div class="log">
                 <p class="title1">Trend Perfume</p>
-                <img src="./image/블랙베리 앤 베이 코롱.webp" height="300px" width="250px">
-                <p class="perfume">조말론 <br> 블랙베리 앤 베이</p>
+				<img src="resources/img/${TrendP[0].p_BRAND}/${TrendP[0].p_MODEL}.jpg" height="300px" width="250px">
+				<p class="perfume"> ${TrendP[0].p_BRAND} <br> ${TrendP[0].p_MODEL} </p>
             </div>
         </section>
     </section>
