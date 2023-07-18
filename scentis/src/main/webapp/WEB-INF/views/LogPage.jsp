@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,8 +26,6 @@
             <a href="">My Perfume</a>
             <a href="">Music Chart</a>
             <span>|</span>
-            <a href="">Sign up</a>
-            <a href="">Login</a>
             <a href="">My Log</a>
         </div>
     </nav>
@@ -37,8 +36,8 @@
                 <p class="title">MY LOG</p>
                 <img class="pro" src="resources/img/프사.png" alt="">
                 <div class="idnick">
-                    <p>ID</p>
-                    <p>Nickname</p>
+                    <p>${user.ID}</p>
+                    <p>${user.NICKNAME}</p>
                 </div>
             </div>
         </section>
