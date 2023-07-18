@@ -50,13 +50,10 @@
 		</section>
 		<section class="section3">
 			<div class="log">
-				<p class="title1">Trend Perfume</p>
-				<img src="resources/img/${test.p_BRAND}/${test.p_MODEL}.jpg"
-					height="300px" width="250px">
-				<p class="perfume">
-					${test.p_BRAND} <br> ${test.p_MODEL}
-				</p>
-			</div>
+                <p class="title1">Trend Perfume</p>
+				<img src="resources/img/${TrendP[0].p_BRAND}/${TrendP[0].p_MODEL}.jpg" height="300px" width="250px">
+				<p class="perfume"> ${TrendP[0].p_BRAND} <br> ${TrendP[0].p_MODEL} </p>
+            </div>
 		</section>
 	</section>
 
