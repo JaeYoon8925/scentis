@@ -7,109 +7,111 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-
+<link rel="stylesheet" href="resources/css/Join.css">
+<link
+	href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Arimo+Hebrew Subset&display=swap"
+	rel="stylesheet">
 
 </head>
-
-
 <body>
 
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<div class="container">
-		<h2>Scentit 회원가입</h2>
-		<form action="login" method="get">
-			<div class="form-group">
-				<label for="id">아이디</label> <input type="text"
-					class="form-control id_input" id="id" placeholder="Enter id" name="id">
-			</div>
-				<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
-				<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
-			<div class="form-group">
-				<label for="pwd">비밀번호</label> <input type="password"
-					class="form-control" id="pw" placeholder="Enter password" name="pw"
-					required>
-			</div>
-			<div class="form-group">
-				<label for="pwCheck">비밀번호 확인</label> <input type="password"
-					class="form-control" id="pwCheck" placeholder="password Check"
-					name="pwCheck" required>
-			</div>
-			<div class="form-group">
-				<label for="name">이름</label> <input type="text" class="form-control"
-					id="name" placeholder="Enter name" name="name">
-			</div>
-			<div class="form-group">
-				<label for="nickname">닉네임</label> <input type="text" class="form-control"
-					id="nickname" placeholder="Enter nickname" name="nickname">
-			</div>
-			<div class="form-group">
-				<label for="birthdate">생년월일</label> <input type="date"
-					class="form-control" id="birthdate" name="birthdate">
-			</div>
-			<div class="form-group">
-				<label for="gender">성별</label> <input type="text" class="form-control"
-					id="gender" placeholder="Enter gender" name="gender">
-			</div>
-			<button type="submit" class="btn btn-primary">Sign In</button>
-		</form>
+	<div class=e1_726>
+		<span class="e1_727">Sign In</span>
 	</div>
 
+	<form action="join" method="POST" class=e1_688>
+		<div class="container">
+
+
+
+
+			<div class=e4_295>
+				<span class="e4_296">아이디</span>
+				<div class=e4_297>
+					<div class=e4_298>
+						<input type="text" name="id" class="e4_299">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class=e1_698>
+			<span class="e1_699">비밀번호</span>
+			<div class=e1_700>
+				<div class=e1_701>
+					<input type="password" name="pw" class="e1_702">
+				</div>
+			</div>
+		</div>
+
+
+		<div class=e4_302>
+			<span class="e4_303">비밀번호 확인</span>
+			<div class=e4_304>
+				<div class=e4_305>
+					<input type="password" name="pw-confirm" class="e4_306">
+				</div>
+			</div>
+		</div>
+
+		<div class=e4_312>
+			<span class="e4_313">이름</span>
+			<div class=e4_314>
+				<div class=e4_315>
+					<input type="text" name="name" class="e4_316">
+				</div>
+			</div>
+		</div>
+
+		<div class=e4_322>
+			<span class="e4_323">닉네임</span>
+			<div class=e4_324>
+				<div class=e4_325>
+					<input type="text" name="nick" class="e4_326">
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<div class=e4_337>
+			<span class="e4_338">생년월일</span>
+			<div class=e4_339>
+				<div class=e4_340>
+					<input type="date" name="birth">
+				</div>
+			</div>
+		</div>
+
+		<div class=e4_332>
+			<span class="e4_333">성별</span> <label> <input class=gender
+				type="radio" name="male" value="gender" checked /> <span>남성</span>
+			</label> <label> <input class=gender type="radio" name="female"
+				value="gender" checked /> <span>여성</span>
+			</label>
+
+		</div>
+
+		<button type="submit" class=e1_690>Sign In</button>
+		</div>
+	</form>
+
+	</div>
+
+	</div>
+	<div class=e1_729>
+		<div class=e1_730>
+
+			<div class="e1_731"></div>
+			<div class=e1_732>
+				<span class="e1_734">Scentit</span>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
 </body>
-<script type="text/javascript">
-//아이디 중복검사
-$('.id_input').on("propertychange change keyup paste input", function(){
-	var id = $('.id_input').val();
-	var data = {id : id}
-	
-	$.ajax({
-		type : "post",
-		url : "/scentis/dupCheck", // 경로 수정 필요
-		data : data,
-		success : function(result){
-			 console.log("성공 여부" + result);
-			 if(result != 'fail'){
-				$('.id_input_re_1').css("display","inline-block");
-				$('.id_input_re_2').css("display", "none");				
-			} else {
-				$('.id_input_re_2').css("display","inline-block");
-				$('.id_input_re_1').css("display", "none");				
-			}
-		}
-	});
-	
-	
-});
-</script>
-
-<script type="text/javascript">
-	// 비밀번호 재입력 확인
-	var password = document.getElementById("pw"), confirm_password = document
-			.getElementById("pwCheck");
-
-	function validatePassword() {
-		if (pw.value != pwCheck.value) {
-			confirm_password.setCustomValidity("비밀번호가 일치하지 않습니다.");
-		} else {
-			pwCheck.setCustomValidity('');
-		}
-	}
-
-	pw.onchange = validatePassword;
-	pwCheck.onkeyup = validatePassword;
-</script>
-
 </html>
