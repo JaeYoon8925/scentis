@@ -16,7 +16,7 @@ public class MemberController {
 	@Autowired
 	private MemberMapper mapper;
 
-	// 처음 서버 부팅시
+	// 메인화면 접속
 	@RequestMapping("/")
 	public String goMain() {
 		return "MainPage";
@@ -32,7 +32,7 @@ public class MemberController {
 	@PostMapping(value = "/Login")
 	public String Login(Member member, Model model) {
 		Member dto = mapper.Login(member);
-		model.addAttribute(dto);
+		model.addAttribute("dto",dto);
 		return "redirect://";
 	}
 	
@@ -53,6 +53,22 @@ public class MemberController {
 	return "redirect://Join";
 	}
 	}
+	// 음악으로 향수 추천받기 페이지 이동
+	@RequestMapping("/goMusicPerfume")
+	public String goMusicPerfume() {
+		return "MusicPerfume";
+	}
+	// 향수결과 페이지 이동
+	@PostMapping("/ResultPerfume")
+	public String ResultPerfume() {
+		return "MusicPerfume";
+	}
+	// 로그페이지 이동
+	@RequestMapping("/goLogPage")
+	public String goLogPage() {
+		return "LogPage";
+	}
+
 	
 	
 	

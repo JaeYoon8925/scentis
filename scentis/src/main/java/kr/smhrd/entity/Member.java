@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 public class Member {
 
-	private String id;
-	private String pw;
-	private String name;
-	private String nickname;
-	private Date birthdate;
-	private String gender; 
+	private String ID;
+	private String PW;
+	private String NAME;
+	private String NICKNAME;
+	private Date BIRTHDATE;
+	private String GENDER; 
 	// 자바의 date 타입은 mysql에서 db 생성시에는 DATETIME 타입으로 선언 필요.
 	
 }

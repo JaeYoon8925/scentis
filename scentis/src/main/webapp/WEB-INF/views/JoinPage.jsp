@@ -22,7 +22,7 @@
 		<span class="e1_727">Sign In</span>
 	</div>
 
-	<form action="join" method="POST" class=e1_688>
+	<form action="Join" method="POST" class=e1_688>
 		<div class="container">
 
 
