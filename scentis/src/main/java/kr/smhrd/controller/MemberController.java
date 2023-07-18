@@ -16,7 +16,7 @@ public class MemberController {
 	@Autowired
 	private MemberMapper mapper;
 
-	// 메인화면 접속
+	// 메인화면 이동
 	@RequestMapping("/")
 	public String goMain() {
 		return "MainPage";
@@ -25,7 +25,23 @@ public class MemberController {
 	// 로그인 페이지로 이동
 	@RequestMapping("/Login")
 	public String goLogin() {
-		return "LoginPage"; // 이동시켜줄 페이지 이름
+		return "LoginPage"; 
+	}
+	
+	// 음악으로 향수 추천받기 페이지 이동
+	@RequestMapping("/goMusicPerfume")
+	public String goMusicPerfume() {
+		return "MusicPerfume";
+	}
+	// 향수결과 페이지 이동
+	@PostMapping("/ResultPerfume")
+	public String ResultPerfume() {
+		return "MusicPerfume";
+	}
+	// 로그페이지 이동
+	@RequestMapping("/goLogPage")
+	public String goLogPage() {
+		return "LogPage";
 	}
 	
 	// 로그인
@@ -52,21 +68,6 @@ public class MemberController {
 	}else {System.out.println("회원가입실패");
 	return "redirect://Join";
 	}
-	}
-	// 음악으로 향수 추천받기 페이지 이동
-	@RequestMapping("/goMusicPerfume")
-	public String goMusicPerfume() {
-		return "MusicPerfume";
-	}
-	// 향수결과 페이지 이동
-	@PostMapping("/ResultPerfume")
-	public String ResultPerfume() {
-		return "MusicPerfume";
-	}
-	// 로그페이지 이동
-	@RequestMapping("/goLogPage")
-	public String goLogPage() {
-		return "LogPage";
 	}
 
 	

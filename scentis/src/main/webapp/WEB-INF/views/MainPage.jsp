@@ -16,12 +16,12 @@
 	<nav>
 		<div class="logo">Scentit</div>
 		<div class="menuBar">
-			<a href="">My Perfume</a>
+			<a href="goMusicPerfume">My Perfume</a>
 			<a href="">Music Chart</a>
 			<span>|</span>
 			<a href="Join">Sign up</a>
 			<a href="Login">Login</a>
-			<a href="">My Log</a>
+			<a href="goLogPage">My Log</a>
 		</div>
 	</nav>
 
