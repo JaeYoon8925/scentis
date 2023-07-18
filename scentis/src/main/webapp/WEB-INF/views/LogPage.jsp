@@ -14,11 +14,9 @@
 </head>
 
 <body>
-<!--  Trend Perfume : DB에서 가장 많이 cnt+된것 3개 가져오기
-
-	  user → user(id,nickname,생년월일 담겨있음)
-	  
-	   -->
+<!--  user에 사용자정보
+      Mylog에 내 로그 
+      TrendP에 트랜드퍼퓸 top3  -->
 	<nav>
         <a href="${cpath}/" class="logo">Scentit</a>
         <div class="menuBar">

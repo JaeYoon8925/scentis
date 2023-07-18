@@ -11,7 +11,7 @@ VALUES (#{ID}, #{PW}, #{NAME}, #{NICKNAME}, #{BIRTHDATE}, #{GENDER});
 
 <!-- 로그정보 가져가기 -->
 <select id="LogCheck" parameterType="kr.smhrd.entity.Member" resultType="kr.smhrd.entity.MyLog">
-SELECT A.LOG_NUM, A.ID, A.M_TITLE, A.M_ARTIST, A.P_NUM, B.P_BRAND, B.P_MODEL, B.P_PICPATH, B.P_INFO 
+SELECT A.LOG_NUM, A.ID, A.M_TITLE, A.M_ARTIST, A.P_NUM, B.P_BRAND, B.P_MODEL, B.P_INFO 
 FROM T_LOG A, T_PERFUME B 
 WHERE A.ID=#{ID} AND A.P_NUM=B.P_NUM
 </select>

@@ -17,7 +17,6 @@ public class MyLog {
 	private int P_NUM;
 	private String P_BRAND;
 	private String P_MODEL;
-	private String P_PICPATH; // 향수사진 정보
 	private String P_INFO;    // 향수 정보
 	
 	// private int LOG_STF;   // 결과 만족도
