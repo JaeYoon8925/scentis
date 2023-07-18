@@ -11,8 +11,8 @@ public class Log {
 
 	private int LOG_NUM;
 	private String ID;
-	private int M_NUM;
+	private int M_TITLE;
+	private int M_ARTIST;
 	private int P_NUM;
 	private int LOG_STF;  //향수만족도
-	
 }

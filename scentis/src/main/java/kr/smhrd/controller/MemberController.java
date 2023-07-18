@@ -1,12 +1,19 @@
 package kr.smhrd.controller;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.smhrd.entity.Log;
 import kr.smhrd.entity.Member;
+import kr.smhrd.entity.MyLog;
+import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
 
 
@@ -40,16 +47,26 @@ public class MemberController {
 	}
 	// 로그페이지 이동
 	@RequestMapping("/goLogPage")
-	public String goLogPage() {
+	public String goLogPage(Member user, Model model) {
+	// 회원의 MyLog + 향수cnt 기준 best top3
+		ArrayList<MyLog> log = mapper.LogCheck(user);
+		model.addAttribute("Mylog",log);
+		ArrayList<Log> log =  mapper.
 		return "LogPage";
 	}
 	
 	// 로그인
-	@PostMapping(value = "/Login")
-	public String Login(Member member, Model model) {
-		Member dto = mapper.Login(member);
-		model.addAttribute("dto",dto);
-		return "redirect://";
+	@PostMapping("/Login")
+	public String Login(Member member, HttpSession session) {
+		Member user = mapper.Login(member);
+		session.setAttribute("user",user);
+		return "redirect:/";
+	}
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String Logout(HttpSession session) {
+		session.removeAttribute("user");
+		return "redirect:/";
 	}
 	
 	// 회원가입 페이지로
@@ -59,8 +76,9 @@ public class MemberController {
 	    }
 	
 	// 회원가입
-	@RequestMapping(value = "/Join", method = RequestMethod.POST)
+	@PostMapping("/Join")
 	public String Join(Member member) {
+		System.out.println(member.getBIRTHDATE());
 	int row=mapper.Join(member);
 	if (row>0) {
 		System.out.println("회원가입성공!");

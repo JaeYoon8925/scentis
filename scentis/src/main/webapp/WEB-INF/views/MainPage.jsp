@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,16 +13,20 @@
 </head>
 
 <body>
-
 	<nav>
 		<div class="logo">Scentit</div>
 		<div class="menuBar">
 			<a href="goMusicPerfume">My Perfume</a>
 			<a href="">Music Chart</a>
 			<span>|</span>
+			<c:if test="${user eq null}">
 			<a href="Join">Sign up</a>
 			<a href="Login">Login</a>
+			</c:if>
+			<c:if test="${user ne null}">
 			<a href="goLogPage">My Log</a>
+            <a href="logout" class="logoutButton">Logout</a>
+            </c:if>
 		</div>
 	</nav>
 

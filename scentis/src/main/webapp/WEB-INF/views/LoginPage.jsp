@@ -33,7 +33,7 @@
 						<span class="e4_296">ID</span>
 						<div class=e4_297>
 							<div class=e4_298>
-								<input type="text" name="id" class="e4_299"></div>
+								<input type="text" name="ID" class="e4_299" ></div>
 							</div>
 						</div>
 
@@ -43,7 +43,7 @@
 						<span class="e1_699">PASSWORD</span>
 						<div class=e1_700>
 							<div class=e1_701>
-								<input type="password" name="pw" class="e1_702">
+								<input type="password" name="PW" class="e1_702">
 							</div>
 						</div>
 					</div>

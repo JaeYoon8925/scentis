@@ -3,17 +3,23 @@
 EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.smhrd.mapper.MemberMapper">
 
-<!-- 로그인 -->
-<select id="login"  parameterType="kr.smhrd.entity.Member" resultType="kr.smhrd.entity.Member">
-SELECT *  FROM T_MEMBER WHERE id=#{id} and pw=#{pw}
-</select>
-
 <!--회원가입-->
 <insert id="Join" parameterType="kr.smhrd.entity.Member">
 INSERT INTO T_MEMBER (ID, PW, NAME, NICKNAME, BIRTHDATE, GENDER) 
-VALUES (#{id}, #{pw}, #{name}, #{nickname}, #{birthdate}, #{gender});
+VALUES (#{ID}, #{PW}, #{NAME}, #{NICKNAME}, #{BIRTHDATE}, #{GENDER});
 </insert>
 
+<!-- 로그정보 가져가기 -->
+<select id="LogCheck" parameterType="kr.smhrd.entity.Member" resultType="kr.smhrd.entity.MyLog">
+SELECT A.LOG_NUM, A.ID, A.M_TITLE, A.M_ARTIST, A.P_NUM, B.P_BRAND, B.P_MODEL, B.P_PICPATH, B.P_INFO 
+FROM T_LOG A, T_PERFUME B 
+WHERE A.ID=#{ID} AND A.P_NUM=B.P_NUM
+</select>
 
+<select id="TrendP" resultType="kr.smhrd.entity.Perfume">
+SELECT A.* 
+FROM (SELECT * FROM T_PERFUME ORDER BY P_CNT DESC ) A
+WHERE ROWNUM <= 3
+</select>
 
 </mapper>
