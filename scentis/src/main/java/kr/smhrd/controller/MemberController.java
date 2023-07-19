@@ -67,15 +67,9 @@ public class MemberController {
 		ArrayList<Perfume> Mid = mapper.MixMid();
 		ArrayList<Perfume> Base = mapper.MixBase();
 		ArrayList<Perfume> Pdata = new ArrayList<Perfume>();
-		
-		System.out.println(Top.get(0));
-		
 		Pdata.addAll(0, Top);
 		Pdata.addAll(1, Mid);
 		Pdata.addAll(2, Base);
-		
-		System.out.println(Pdata.get(0));
-		
 		model.addAttribute("Pdata",Pdata);
 		return "mixPerfume";
 	}

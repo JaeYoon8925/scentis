@@ -19,6 +19,7 @@
 		<div class="menuBar">
 			<a href="goMusicPerfume">My Perfume</a>
 			<a href="AllP">Perfume</a>
+			<a href="MixP">MixPerfume</a>
 			<span>|</span>
 			<c:if test="${user eq null}">
 			<a href="Join">Sign up</a>

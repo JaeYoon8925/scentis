@@ -29,9 +29,9 @@
 			
 			<div>
 			<c:forEach items="#{Pdata}" var="d"> 
-			<span>${d.p_TOP}</span><!--  TOP불러오기 --><br>
-			<span>${d.p_MIDDLE}</span><br>
-			<span>${d.p_BASE}</span><br>
+			<span>${d.p_TOP}</span><!--  TOP불러오기 -->
+			<span>${d.p_MIDDLE}</span><!--  MID불러오기 -->
+			<span>${d.p_BASE}</span><!--  BASE불러오기 -->
 			</c:forEach>
 			</div>
 		</div>

@@ -27,6 +27,7 @@ public interface MemberMapper {
 	public ArrayList<MyLog> LogCheck(Member user);
 	
 	// trend perfume가져오기
+	@Select("SELECT * FROM T_PERFUME ORDER BY P_CNT DESC LIMIT 3")
 	public ArrayList<Perfume> TrendP();
 	
 	// 향수 모두 가져오기
