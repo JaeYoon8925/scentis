@@ -29,11 +29,12 @@
 			</c:if>
 		</div>
 	</nav>
+
 	<div>
 		<c:forEach items="${Pdata}" var="d">
 			<div>
 				<img src="resources/img/${d.p_BRAND}/${d.p_MODEL}.jpg"
-					height="100px" width="100px">
+					height="150px" width="150px">
 			</div>
 			<div>
 				<p class="perfume">
