@@ -2,10 +2,21 @@ package kr.smhrd.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import kr.smhrd.entity.Log;
 import kr.smhrd.entity.Member;
+import kr.smhrd.entity.Music;
 import kr.smhrd.mapper.MemberMapper;
 
 @RestController // @Controller + @ResponseBody 비동기통신 controller
@@ -25,6 +36,49 @@ public class MemberRESTController {
 			res = "false";
 		} return null;
 		
+		}
+	
+	// 플라스크 통신
+		@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)
+		@ResponseBody
+		public String sendDataToFlask(Log title) {
+		    System.out.println("sendDataToFlask 시작");
+		    // Music 객체를 JSON으로 변환하여 Flask 서버에 전송
+		    RestTemplate restTemplate = new RestTemplate();
+		    HttpHeaders headers = new HttpHeaders();
+		    headers.setContentType(MediaType.APPLICATION_JSON);
+		    
+		    HttpEntity<Log> request = new HttpEntity<>(title, headers);
+		    
+		    ResponseEntity<String> response = restTemplate.postForEntity("http://127.0.0.1:8087/sendDataToFlask", request, String.class);
+		    
+		    System.out.println(response.getBody().getClass()); // String 타입
+		    // {"m_title": "ㅇㅇ", "m_artist": "ㅇㅇ", "p_name": "대충 향수이름", "p_info": "향수 정보임"} 
+		    
+		    // JSON 문자열
+		    String jsonString = response.getBody();
+		    
+		    // Jackson ObjectMapper 객체 생성
+		    ObjectMapper objectMapper = new ObjectMapper();
+		    
+		    try {
+		        // JSON 문자열을 객체로 파싱
+		    	Log Data = objectMapper.readValue(jsonString, Log.class);
+		    	
+		        // 파싱된 데이터 꺼내기 + 확인
+		        String m_TITLE = Data.getM_TITLE();
+		        String m_ARTIST = Data.getM_ARTIST();
+		        int p_NUM = Data.getP_NUM();
+		        System.out.println("m_TITLE  : " + m_TITLE);
+		        System.out.println("m_ARTIST : " + m_ARTIST);
+		        System.out.println("p_NUM : " + p_NUM);
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+		    
+		    
+		    return "true";
+		    
 		}
 	
 

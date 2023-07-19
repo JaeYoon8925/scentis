@@ -22,9 +22,8 @@
 	<nav>
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
-			<a href="">Music Chart</a>
-			<span>|</span>
-			<a href="goLogPage">My Log</a>
+			<a href="">Music Chart</a> <span>|</span> <a href="goLogPage">My
+				Log</a>
 		</div>
 	</nav>
 
@@ -36,24 +35,30 @@
 			</div>
 		</section>
 		<section>
+		<form action="sendDataToFlask" method="POST">
 			<div class="searchbox">
 				<p class="title1">Search Perfume</p>
 				<div>
 					<div class="Box1">
 						<p class="title3">제목을 입력하세요</p>
-						<input class="inputbox" type="text" name="title">
+						<input class="inputbox" type="text" id="m_title" name="m_title">
 						<button id="selectbtn" class="btn">검색하기</button>
 					</div>
 				</div>
 			</div>
+		</form>
 
 		</section>
 		<section class="section3">
 			<div class="log">
-                <p class="title1">Trend Perfume</p>
-				<img src="resources/img/${TrendP[0].p_BRAND}/${TrendP[0].p_MODEL}.jpg" height="300px" width="250px">
-				<p class="perfume"> ${TrendP[0].p_BRAND} <br> ${TrendP[0].p_MODEL} </p>
-            </div>
+				<p class="title1">Trend Perfume</p>
+				<img
+					src="resources/img/${TrendP[0].p_BRAND}/${TrendP[0].p_MODEL}.jpg"
+					height="300px" width="250px">
+				<p class="perfume">
+					${TrendP[0].p_BRAND} <br> ${TrendP[0].p_MODEL}
+				</p>
+			</div>
 		</section>
 	</section>
 

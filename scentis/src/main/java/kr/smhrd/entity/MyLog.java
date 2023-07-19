@@ -12,8 +12,8 @@ public class MyLog {
 	private int LOG_NUM;
 	private String ID;
 	private String NICKNAME;
-	private int M_TITLE;
-	private int M_ARTIST;
+	private String M_TITLE;
+	private String M_ARTIST;
 	private int P_NUM;
 	private String P_BRAND;
 	private String P_MODEL;
