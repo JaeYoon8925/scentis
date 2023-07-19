@@ -24,28 +24,24 @@ public class MemberController {
 	// 메인화면 이동
 	@RequestMapping("/")
 	public String goMain() {
-		return "MainPage";
-	}
+		return "MainPage";	}
 
 	// 로그인 페이지로 이동
 	@RequestMapping("/Login")
 	public String goLogin() {
-		return "LoginPage";
-	}
+		return "LoginPage";	}
 
 	// 음악으로 향수 추천받기 페이지 이동
 	@RequestMapping("/goMusicPerfume")
 	public String goMusicPerfume(Model model) {
 		ArrayList<Perfume> TrendP = mapper.TrendP();
 		model.addAttribute("TrendP", TrendP);
-		return "MusicPerfume";
-	}
+		return "MusicPerfume";	}
 
 	// 향수결과 페이지 이동
 	@PostMapping("/ResultPerfume")
 	public String ResultPerfume() {
-		return "MusicPerfume";
-	}
+		return "MusicPerfume";	}
 
 	// 로그페이지 이동
 	@RequestMapping("/goLogPage")
@@ -55,9 +51,16 @@ public class MemberController {
 		model.addAttribute("Mylog", Mylog);
 		ArrayList<Perfume> TrendP = mapper.TrendP();
 		model.addAttribute("TrendP", TrendP);
-		return "LogPage";
-	}
+		return "LogPage";	}
 
+	// 종류별 향수 보기 페이지 이동
+	@RequestMapping("/AllP")
+	public String AllP(Model model) {
+		ArrayList<Perfume> Pdata = mapper.AllP();
+		model.addAttribute("Pdata",Pdata);
+		return "AllPerfume";
+	}
+	
 	// 로그인
 	@PostMapping("/Login")
 	public String Login(Member member, HttpSession session) {

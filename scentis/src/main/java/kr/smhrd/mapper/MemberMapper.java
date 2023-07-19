@@ -30,5 +30,5 @@ public interface MemberMapper {
 	public ArrayList<Perfume> TrendP();
 	
 	// test용
-	public Perfume test();
+	public ArrayList<Perfume> AllP();
 }
