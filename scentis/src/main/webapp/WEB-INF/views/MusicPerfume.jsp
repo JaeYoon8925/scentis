@@ -35,18 +35,17 @@
 			</div>
 		</section>
 		<section>
-		<form action="sendDataToFlask" method="POST">
 			<div class="searchbox">
 				<p class="title1">Search Perfume</p>
 				<div>
 					<div class="Box1">
 						<p class="title3">제목을 입력하세요</p>
-						<input class="inputbox" type="text" id="m_title" name="m_title">
+						<input class="inputbox" type="text" id="m_TITLE" name="m_TITLE">
 						<button id="selectbtn" class="btn">검색하기</button>
 					</div>
 				</div>
 			</div>
-		</form>
+			
 
 		</section>
 		<section class="section3">
@@ -98,9 +97,34 @@
 		$('.title').on('click', function() {
 			$('.searchbox').toggle();
 		})
-
+	</script>
+	<script>
+		// 검색하기 버튼 클릭할 때 ajax로 앨범, 가수 받아오기
 		$('#selectbtn').on('click', function() {
-			// 검색하기 버튼 클릭할 때 ajax로 앨범, 가수 받아오기
+			// 사용자로부터 입력된 데이터 가져오기
+			var m_TITLE = $('#m_TITLE').val();
+			// JSON 데이터 생성
+			var jsonData = {
+				m_TITLE : m_TITLE
+			};
+
+			console.log("버튼 클릭");
+			console.log(m_TITLE);
+			console.log(jsonData);
+
+			$.ajax({
+				type : 'POST',
+				url : '${cpath}/sendDataToFlask',
+				data : JSON.stringify(jsonData),
+				contentType : 'application/json',
+				success : function(res) {
+					console.log("json 통신 성공");
+					console.log(res);
+				},
+				error : function() {
+					console.log("json 통신 실패");
+				}
+			});
 		})
 	</script>
 
