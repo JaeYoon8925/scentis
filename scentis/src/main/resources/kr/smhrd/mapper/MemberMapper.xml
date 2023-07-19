@@ -15,12 +15,11 @@ SELECT A.LOG_NUM, A.ID, A.M_TITLE, A.M_ARTIST, A.P_NUM, B.P_BRAND, B.P_MODEL, B.
 FROM T_LOG A, T_PERFUME B 
 WHERE A.ID=#{ID} AND A.P_NUM=B.P_NUM
 </select>
+
 <!-- topperfume 3개 가져가기 -->
 <select id="TrendP" resultType="kr.smhrd.entity.Perfume">
 SELECT * FROM T_PERFUME ORDER BY P_CNT DESC LIMIT 3;
 </select>
 
-<select id="AllP" resultType="kr.smhrd.entity.Perfume">
-SELECT * FROM T_PERFUME</select>
 
 </mapper>

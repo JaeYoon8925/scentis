@@ -29,6 +29,15 @@ public interface MemberMapper {
 	// trend perfume가져오기
 	public ArrayList<Perfume> TrendP();
 	
-	// test용
+	// 향수 모두 가져오기
+	@Select("SELECT * FROM T_PERFUME")
 	public ArrayList<Perfume> AllP();
+	
+	// top,mid,base 가져오기
+	@Select("SELECT DISTINCT P_TOP FROM T_PERFUME")
+	public ArrayList<Perfume> MixTop();
+	@Select("SELECT DISTINCT P_MIDDLE FROM T_PERFUME")
+	public ArrayList<Perfume> MixMid();
+	@Select("SELECT DISTINCT P_BASE FROM T_PERFUME")
+	public ArrayList<Perfume> MixBase();
 }

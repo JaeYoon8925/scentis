@@ -60,6 +60,25 @@ public class MemberController {
 		model.addAttribute("Pdata",Pdata);
 		return "AllPerfume";
 	}
+	// 향선택 향수 찾기 페이지 이동
+	@RequestMapping("/MixP")
+	public String MixP(Model model) {
+		ArrayList<Perfume> Top = mapper.MixTop();
+		ArrayList<Perfume> Mid = mapper.MixMid();
+		ArrayList<Perfume> Base = mapper.MixBase();
+		ArrayList<Perfume> Pdata = new ArrayList<Perfume>();
+		
+		System.out.println(Top.get(0));
+		
+		Pdata.addAll(0, Top);
+		Pdata.addAll(1, Mid);
+		Pdata.addAll(2, Base);
+		
+		System.out.println(Pdata.get(0));
+		
+		model.addAttribute("Pdata",Pdata);
+		return "mixPerfume";
+	}
 	
 	// 로그인
 	@PostMapping("/Login")

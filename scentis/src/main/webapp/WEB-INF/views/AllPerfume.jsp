@@ -29,11 +29,6 @@
 			</c:if>
 		</div>
 	</nav>
-	
-			<div>
-				<img src="resources/img/논픽션/논픽션.jpg"
-					height="150px" width="150px">
-			</div>
 	<div>
 		<c:forEach items="${Pdata}" var="d">
 			<div>
