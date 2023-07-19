@@ -1,6 +1,5 @@
 package kr.smhrd.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +32,18 @@ public class MemberRESTController {
 	@RequestMapping("/idcheck")
 	public String idcheck(String id) {
 		Member dto = mapper.idCheck(id);
-		String res = "";   // 사용 가능한 id = true , 불가능 = false 응답
+		String res = ""; // 사용 가능한 id = true , 불가능 = false 응답
 		if (dto == null) { // id 성공
 			res = "true";
-		} else {           // id 실패
+		} else { // id 실패
 			res = "false";
-		} return null;
-		
 		}
-	
+		return null;
+
+	}
+
 	// 플라스크 통신
-			@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)
+	@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)
 			@ResponseBody
 			public MyLog sendDataToFlask(@RequestBody MyLog title) {
 			    System.out.println("sendDataToFlask 시작");
@@ -54,7 +54,7 @@ public class MemberRESTController {
 			    
 			    HttpEntity<MyLog> request = new HttpEntity<>(title, headers);
 			    
-			    ResponseEntity<String> response = restTemplate.postForEntity("http://127.0.0.1:8087/sendDataToFlask", request, String.class);
+			    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask", request, String.class);
 			    
 			    System.out.println(response.getBody().getClass()); // String 타입
 			    
@@ -104,13 +104,7 @@ public class MemberRESTController {
 				return Data;
 			    
 			}
-	
 
-	
-	
-	
-	
-	
 //	// 월별 데이터 조회할 수 있는 url
 //		@RequestMapping("/getMonthData")
 //		public ArrayList<BroadCast> getMonthData(String name) {
