@@ -30,6 +30,7 @@
 
 			<div class=e4_295>
 				<span class="e4_296">아이디</span>
+					<p id="result"></p>
 				<div class=e4_297>
 					<div class=e4_298>
 						<input type="text" name="ID" class="e4_299" id="idcheck">

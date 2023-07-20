@@ -55,9 +55,7 @@ public class MemberController {
 
 	// 종류별 향수 보기 페이지 이동
 	@RequestMapping("/AllP")
-	public String AllP(Model model) {
-		ArrayList<Perfume> Pdata = mapper.AllP();
-		model.addAttribute("Pdata",Pdata);
+	public String AllP() {
 		return "AllPerfume";
 	}
 	// 향선택 향수 찾기 페이지 이동

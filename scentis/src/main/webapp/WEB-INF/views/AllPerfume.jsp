@@ -146,11 +146,12 @@
          let gucci = $('.gu').text();
       })
       
+      
 	function Perfume () {
 	      var value = $(this).val();
 	      console.log(value);
 	      $.ajax({
-	         url : 'AllP',
+	         url : 'BrandP',
 	         type : 'get',
 	         data : {
 	            "P_BRAND" : value
@@ -166,7 +167,6 @@
 	         },
 	      });
 	   }
-   
    </script>
    
    

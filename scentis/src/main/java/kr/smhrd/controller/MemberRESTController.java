@@ -1,5 +1,6 @@
 package kr.smhrd.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import kr.smhrd.entity.Log;
 import kr.smhrd.entity.Member;
 import kr.smhrd.entity.Music;
 import kr.smhrd.entity.MyLog;
+import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
 
 @RestController // @Controller + @ResponseBody 비동기통신 controller
@@ -38,72 +40,73 @@ public class MemberRESTController {
 		} else { // id 실패
 			res = "false";
 		}
-		return null;
-
+		return res;
 	}
-
+	
+	// perfumeList 비동기로 보내주기
+	@RequestMapping("/BrandP")
+	public ArrayList<Perfume> AllP(String P_BRAND) {
+		ArrayList<Perfume> Pdata = mapper.AllP();
+		return Pdata;
+	}
+	
 	// 플라스크 통신
 	@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)
-			@ResponseBody
-			public MyLog sendDataToFlask(@RequestBody MyLog title) {
-			    System.out.println("sendDataToFlask 시작");
-			    // Music 객체를 JSON으로 변환하여 Flask 서버에 전송
-			    RestTemplate restTemplate = new RestTemplate();
-			    HttpHeaders headers = new HttpHeaders();
-			    headers.setContentType(MediaType.APPLICATION_JSON);
-			    
-			    HttpEntity<MyLog> request = new HttpEntity<>(title, headers);
-			    
-			    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask", request, String.class);
-			    
-			    System.out.println(response.getBody().getClass()); // String 타입
-			    
-			    // JSON 문자열
-			    String jsonString = response.getBody();
-			    System.out.println(jsonString);
-			    
-			    // Jackson ObjectMapper 객체 생성
-			    ObjectMapper objectMapper = new ObjectMapper();
-			    MyLog Data = null;
-			    try {
-			        // JSON 문자열을 객체로 파싱
-			    	Data = objectMapper.readValue(jsonString, MyLog.class);
-			    	
-			    	System.out.println(Data);
-			    	
-			        // 파싱된 데이터 꺼내기 + 확인
-			        List<String> TITLELIST = Data.getTitle_list();
-			        List<String> ARTISTLIST = Data.getArtist_list();
-			        List<String> IMGLIST = Data.getAlbum_img_list();
-			        List<String> TRACK_IDLIST = Data.getTrack_id_list();
-			       
-			        System.out.println("곡 1의 정보");
-			        System.out.println("TITLELIST 0  : " + TITLELIST.get(0));
-			        System.out.println("ARTISTLIST 0 : " + ARTISTLIST.get(0));
-			        System.out.println("IMGLIST 0 : " + IMGLIST.get(0));
-			        System.out.println("TRACK_IDLIST 0 : " + TRACK_IDLIST.get(0));
-			        
-			        System.out.println("곡 2의 정보");
-			        System.out.println("TITLELIST 1  : " + TITLELIST.get(1));
-			        System.out.println("ARTISTLIST 1 : " + ARTISTLIST.get(1));
-			        System.out.println("IMGLIST 1 : " + ARTISTLIST.get(1));
-			        System.out.println("TRACK_IDLIST 1 : " + TRACK_IDLIST.get(1));
-			        
-			        System.out.println("곡 3의 정보");
-			        System.out.println("TITLELIST 2  : " + TITLELIST.get(2));
-			        System.out.println("ARTISTLIST 2 : " + ARTISTLIST.get(2));
-			        System.out.println("IMGLIST 2 : " + IMGLIST.get(2));
-			        System.out.println("TRACK_IDLIST 2 : " + TRACK_IDLIST.get(2));
-			        
-			        
-			    } catch (Exception e) {
-			        e.printStackTrace();
-			    }
-			    
-			    
-				return Data;
-			    
-			}
+	public MyLog sendDataToFlask(@RequestBody MyLog title) {
+	    System.out.println("sendDataToFlask 시작");
+	    // Music 객체를 JSON으로 변환하여 Flask 서버에 전송
+	    RestTemplate restTemplate = new RestTemplate();
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_JSON);
+	    
+	    HttpEntity<MyLog> request = new HttpEntity<>(title, headers);
+	    
+	    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask", request, String.class);
+	    
+	    System.out.println(response.getBody().getClass()); // String 타입
+	    
+	    // JSON 문자열
+	    String jsonString = response.getBody();
+	    System.out.println(jsonString);
+	    
+	    // Jackson ObjectMapper 객체 생성
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    MyLog Data = null;
+	    try {
+	        // JSON 문자열을 객체로 파싱
+	    	Data = objectMapper.readValue(jsonString, MyLog.class);
+	    	
+	    	System.out.println(Data);
+	    	
+	        // 파싱된 데이터 꺼내기 + 확인
+	        List<String> TITLELIST = Data.getTitle_list();
+	        List<String> ARTISTLIST = Data.getArtist_list();
+	        List<String> IMGLIST = Data.getAlbum_img_list();
+	        List<String> TRACK_IDLIST = Data.getTrack_id_list();
+	       
+	        System.out.println("곡 1의 정보");
+	        System.out.println("TITLELIST 0  : " + TITLELIST.get(0));
+	        System.out.println("ARTISTLIST 0 : " + ARTISTLIST.get(0));
+	        System.out.println("IMGLIST 0 : " + IMGLIST.get(0));
+	        System.out.println("TRACK_IDLIST 0 : " + TRACK_IDLIST.get(0));
+	        
+	        System.out.println("곡 2의 정보");
+	        System.out.println("TITLELIST 1  : " + TITLELIST.get(1));
+	        System.out.println("ARTISTLIST 1 : " + ARTISTLIST.get(1));
+	        System.out.println("IMGLIST 1 : " + ARTISTLIST.get(1));
+	        System.out.println("TRACK_IDLIST 1 : " + TRACK_IDLIST.get(1));
+	        
+	        System.out.println("곡 3의 정보");
+	        System.out.println("TITLELIST 2  : " + TITLELIST.get(2));
+	        System.out.println("ARTISTLIST 2 : " + ARTISTLIST.get(2));
+	        System.out.println("IMGLIST 2 : " + IMGLIST.get(2));
+	        System.out.println("TRACK_IDLIST 2 : " + TRACK_IDLIST.get(2));
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+		return Data;
+	}
 
 //	// 월별 데이터 조회할 수 있는 url
 //		@RequestMapping("/getMonthData")

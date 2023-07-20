@@ -31,7 +31,7 @@ public interface MemberMapper {
 	public ArrayList<Perfume> TrendP();
 	
 	// 향수 모두 가져오기
-	@Select("SELECT * FROM T_PERFUME")
+	@Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{P_BRAND}")
 	public ArrayList<Perfume> AllP();
 	
 	// top,mid,base 가져오기
