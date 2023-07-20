@@ -303,10 +303,12 @@
             top: 0;
             left: 0;
             display: none;
+            display: flex;
         }
 
         .modal_content {
-            margin-top: 35%;
+        	padding: 25px;
+            margin-top: 30%;
             display: flex;
             justify-content: space-around;
             text-align: center;

@@ -15,7 +15,23 @@
 	href="https://fonts.googleapis.com/css?family=Arimo+Hebrew Subset&display=swap"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link rel="stylesheet" href="resources/css/perfume.css">
+<link rel="stylesheet" href="resources/css/musicperfume.css">
+<link rel="stylesheet" href="resources/css/popup.css" />
+<script type="text/javascript">
+	function setCookie(name, value, expiredays) {
+		var todayDate = new Date();
+		todayDate.setDate(todayDate.getDate() + expiredays);
+		document.cookie = name + "=" + escape(value) + "; path=/; expires="
+				+ todayDate.toGMTString() + ";"
+	}
+	function closePop() {
+		if (document.pop_form.chkbox.checked) {
+			setCookie("maindiv", "done", 1);
+		}
+		document.all['layer_popup'].style.visibility = "hidden";
+
+	}
+</script>
 </head>
 <body>
 	<nav>
@@ -29,6 +45,30 @@
 
 		</div>
 	</nav>
+	
+		<!-- 팝업 부분 -->
+		<div class="layerPopup" id="layer_popup" style="visibility: visible;">
+			<div class="layerBox">
+				<h4 class="title10">SCENTIT</h4>
+				<div class="cont">
+					<p>
+						<img id="popImg" src="resources/img/popup.jpg" width=350 height=300 usemap="#popup"
+							alt="event page">
+							<br>검색하기 버튼 클릭 후 <br>노래를 선택해주세요.
+					</p>
+				</div>
+				<form id="popBtn" name="pop_form">
+					<div id="check">
+						<p id="todayBtn" for="chkbox">&nbsp&nbsp오늘 하루동안 보지 않기</label>
+						<input type="checkbox" name="chkbox" value="checkbox" id='chkbox'>
+					</div>
+					<div id="close">
+						<a id="closeBtn" onclick="closePop();">닫기</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
 
 
 	<section class="section1">
@@ -43,7 +83,7 @@
 				<p class="title1">Search Perfume</p>
 				<div>
 					<div class="Box1">
-						<p class="title3">제목을 입력하세요</p>
+						<p class="title3">가수 또는 제목을 입력하세요</p>
 						<input class="inputbox" type="text" id="m_TITLE" name="m_TITLE">
 						<button id="selectbtn" class="btn">검색하기</button>
 					</div>
@@ -52,40 +92,15 @@
 
 
 			<div class="modal">
-				<div class="modal_content">
-					<div class="musicimg">
-						<img src="resources/img/앨범커버1.png" height="200px" width="200px"> <a
-							href="#" class="selectmusic1">
-							<p class="title3 musicname1">
-								비틀즈 <br> 제목
-							</p>
-						</a>
-					</div>
-
-					<div class="musicimg">
-						<img src="resources/img/앨범커버2.jpg" height="200px" width="200px">
-						 <a href="#" class="selectmusic2">
-							<p class="title3 musicname2"> 에스파 <br> 제목
-							</p>
-						</a>
-					</div>
-
-					<div class="musicimg">
-						<img src="resources/img/앨범커버3.jpg" height="200px" width="200px"> <a
-							href="#" class="selectmusic3">
-							<p class="title3 musicname3">
-								가수 <br> 제목
-							</p>
-						</a>
-					</div>
-				</div>
+				
 			</div>
+
 
 			<div id="loading">
 				<img src="resources/img/Spinner.gif" alt="loading">
 			</div>
 		</section>
-
+		
 		<section class="section3">
 			<div class="log">
 				<p class="title1">Trend Perfume</p>
@@ -132,16 +147,9 @@
 	</footer>
 
 	<script>
-		$('.title').on('click', function () {
-		     $('.searchbox').toggle(); })
-	</script>	     
-	<script>	     
-		$('.modal_content').click(function() {
-			$('.modal').fadeOut();
-			$('#loading').show();
-		})
-	</script>
-	<script>
+		//$('.title').on('click', function () {
+		//     $('.searchbox').toggle(); })
+
 		// 검색하기 버튼 클릭할 때 ajax로 앨범, 가수 받아오기
 		$('#selectbtn').on('click', function() {
 			// 사용자로부터 입력된 데이터 가져오기
@@ -164,37 +172,59 @@
 				success : function(res) {
 					console.log("json 통신 성공");
 					console.log(res);
-					for (i=0; i<res.length; i++){
-						albumimg=res.Album_img_list[i]
-						title=res.title_list[i]
-						track_id=res.track_id_list[i]
-						artist=res.artist_list[i]
-						$('.musicimg')[i].append(`
-						<img src=\${albumimg} height="200px" width="200px">
-						<a href="#" class="selectmusic2">
-							<p class="title3 musicname2"> \${title} <br> \${artist}
-							</p>
-						</a>
-						`)
-					}
+					
+		               let musicHTML="";
+		               for (let i=0; i<3; i++){
+		            	   
+		            	  console.log(res.album_img_list[i])
+		            	  
+		                  let albumimg=res.album_img_list[i]
+		                  let title=res.title_list[i]
+		                  let track_id=res.track_id_list[i]
+		                  let artist=res.artist_list[i]
+		                  
+		                  musicHTML+=`
+		                	  <div class="modal_content">
+		                		<div class="musicimg">
+		                  			<img src=\${albumimg} height="200px" width="200px">
+									<a href="#" class="selectmusic1">
+									<p class="title3" id="musicname1">
+										\${title} <br> \${artist}
+									</p>
+									</a>
+								</div>
+							</div>
+		                  `
+		               }
+		               $('.modal').html(musicHTML);
+
 					$('.modal').fadeIn();
 					$('.searchbox').hide();
+					
+					$('.musicimg').on('click', function() {
+					$('.modal').fadeOut();
+					$('#loading').show();
+				});
+					
 				},
 				error : function() {
 					console.log("json 통신 실패");
 				}
 			});
 		})
-	</script>
-
-	<script>
+		
+		
+		cookiedata = document.cookie;
+		if (cookiedata.indexOf("maindiv=done") < 0) {
+			document.getElementById('layer_popup').style.display = "block";
+		} else {
+			document.getElementById('layer_popup').style.display = "none";
+		}
+		
 		$(window).load(function() {
 			$('#loading').hide();
 		});
 	</script>
-
-
-
 
 
 
