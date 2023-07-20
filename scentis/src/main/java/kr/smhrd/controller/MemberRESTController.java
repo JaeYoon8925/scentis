@@ -43,13 +43,12 @@ public class MemberRESTController {
 		return res;
 	}
 	
-	// perfumeList 비동기로 보내주기
-	@RequestMapping("/BrandP")
-	public ArrayList<Perfume> AllP(String P_BRAND) {
-		ArrayList<Perfume> Pdata = mapper.BrandP();
-		System.out.println(Pdata);
-		return Pdata;
-	}
+   // perfumeList 비동기로 보내주기
+   @RequestMapping("/BrandP")
+   public ArrayList<Perfume> AllP(String name) {
+      ArrayList<Perfume> Pdata = mapper.AllP(name);
+      return Pdata;
+   }
 	
 	// 플라스크 통신
 	@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)

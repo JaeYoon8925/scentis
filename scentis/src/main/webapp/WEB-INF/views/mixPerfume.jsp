@@ -16,22 +16,23 @@
 	<nav>
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
-			<a href="goMusicPerfume">My Perfume</a> <a href="goPerfume">Perfume</a>
+			<a href="goMusicPerfume">My Perfume</a>
+			<a href="AllP">All Perfume</a>
 			<span>|</span>
-			<c:if test="${user eq null}">
-				<a href="Join">Sign up</a>
-				<a href="Login">Login</a>
-			</c:if>
-			<c:if test="${user ne null}">
-				<a href="goLogPage">My Log</a>
-				<a href="logout" class="logoutButton">Logout</a>
-			</c:if>
+			<a href="goLogPage">My Log</a>
+            <a href="logout" class="logoutButton">Logout</a>
+		</div>
+	</nav>
 			
 			<div>
 			<c:forEach items="#{Pdata}" var="d"> 
-			<span>${d.p_TOP}</span><!--  TOP불러오기 -->
-			<span>${d.p_MIDDLE}</span><!--  MID불러오기 -->
-			<span>${d.p_BASE}</span><!--  BASE불러오기 -->
+			<span>${d.p_TOP}</span><br><!--  TOP불러오기 -->
+			</c:forEach>
+			<c:forEach items="#{Pdata}" var="d"> 
+			<span>${d.p_MIDDLE}</span><br><!--  MID불러오기 -->
+			</c:forEach>
+			<c:forEach items="#{Pdata}" var="d"> 
+			<span>${d.p_BASE}</span><br><!--  BASE불러오기 -->
 			</c:forEach>
 			</div>
 		</div>

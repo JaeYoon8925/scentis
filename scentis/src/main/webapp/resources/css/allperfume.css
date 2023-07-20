@@ -49,14 +49,12 @@ div.menuBar>a:hover {
 
 /* 섹션 */
 section {
-   height: 968px;
-   /* background-size: 100%; */
-   /* background-size: cover; */
-   background-repeat: no-repeat;
+   height: 1650px;
    display: flex;
-   /* justify-content: center; */
-   align-items: center;
+   justify-content: center;
    text-align: center;
+   align-items: flex-start;
+   margin-top: 100px;
 }
 
 .sub_line {
@@ -188,8 +186,8 @@ a {
 
 .perfumemenu {
    text-align: center;
-   margin: 20px;
    font-size: 19px;
+   margin: 40px;
    font-weight: 600;
    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -205,6 +203,9 @@ span:hover {
 
 .perfumebox {
    display: flex;
+   width: 1700px;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-weight: 600;
 }
 
 .perfumeimg {
@@ -213,4 +214,12 @@ span:hover {
 
 .perfumebox {
    display: none;
+   margin-top: 50px;
+}
+
+.box {
+   float: left;
+   width: 250px;
+    height: 200px;
+    padding: 15px;
 }

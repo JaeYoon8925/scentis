@@ -30,9 +30,9 @@ public interface MemberMapper {
 	@Select("SELECT * FROM T_PERFUME ORDER BY P_CNT DESC LIMIT 3")
 	public ArrayList<Perfume> TrendP();
 	
-	// 향수 모두 가져오기
-	@Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{P_BRAND}")
-	public ArrayList<Perfume> BrandP();
+   // 향수 모두 가져오기
+   @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name}")
+   public ArrayList<Perfume> AllP(String name);
 	
 	// top,mid,base 가져오기
 	@Select("SELECT DISTINCT P_TOP FROM T_PERFUME")

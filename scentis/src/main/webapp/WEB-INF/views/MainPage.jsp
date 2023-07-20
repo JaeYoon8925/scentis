@@ -15,20 +15,28 @@
 
 <body>
 	<nav>
+	<c:choose>
+	<c:when test="${user eq null}">
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
-			<a href="goMusicPerfume">My Perfume</a>
-			<a href="AllP">Perfume</a>
-			<a href="MixP">MixPerfume</a>
+			<a href="Login">My Perfume</a>
+			<a href="Login">Scent Perfume</a>
+			<a href="AllP">All Perfume</a>
 			<span>|</span>
-			<c:if test="${user eq null}">
 			<a href="Join">Sign up</a>
 			<a href="Login">Login</a>
-			</c:if>
-			<c:if test="${user ne null}">
-			<a href="goLogPage">My Log</a>
+	</c:when>
+	<c:otherwise>
+		<a href="${cpath}/" class="logo">Scentit</a>
+		<div class="menuBar">
+			<a href="goMusicPerfume">My Perfume</a>  <!-- 음악으로 향수 만들기 -->
+			<a href="MixP">Scent Perfume</a>         <!-- 향으로 향수 만들기 -->
+			<a href="AllP">All Perfume</a>           <!-- 모든 향수 보기 -->
+			<span>|</span>
+			<a href="goLogPage">My Log</a>           <!-- 내 로그 보기 -->
             <a href="logout" class="logoutButton">Logout</a>
-            </c:if>
+	</c:otherwise>
+	</c:choose>
 		</div>
 	</nav>
 

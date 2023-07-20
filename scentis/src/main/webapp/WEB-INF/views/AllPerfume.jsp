@@ -18,87 +18,71 @@
       <a href="${cpath}/" class="logo">Scentit</a>
       
       <div class="menuBar">
-         <a href="goMusicPerfume">My Perfume</a>
-         <a href="goPerfume">Mix Perfume</a>
-         <span>|</span>
-         <c:if test="${user ne null}">
-            <a href="goLogPage">My Log</a>
+		<a href="${cpath}/" class="logo">Scentit</a>
+		<div class="menuBar">
+			<a href="goMusicPerfume">My Perfume</a>
+			<a href="MixP">Scent Perfume</a>
+			<span>|</span>
+			<a href="goLogPage">My Log</a>
             <a href="logout" class="logoutButton">Logout</a>
-         </c:if>
       </div>
    </nav>
 
    <nav class="nav2">
       <div class="perfumemenu">
          <div class="menu1">
-            <span class="gu">구찌</span>
+            <span class="name">구찌</span>
             <span>|</span>
-            <a href="">끌로에</a>
+            <span class="name">끌로에</span>
             <span>|</span>
-            <a href="">논픽션</a>
+            <span class="name">논픽션</span>
             <span>|</span>
-            <a href="">디올</a>
+            <span class="name">디올</span>
             <span>|</span>
-            <a href="">딥디크</a>
+            <span class="name">딥디크</span>
             <span>|</span>
-            <a href="">랄프로렌</a>
+            <span class="name">랄프로렌</span>
             <span>|</span>
-            <a href="">메종마르지엘라</a>
+            <span class="name">메종마르지엘라</span>
             <span>|</span>
-            <a href="">바이레도</a>
+            <span class="name">바이레도</span>
             <span>|</span>
-            <a href="">불가리</a>
+            <span class="name">불가리</span>
             <span>|</span>
-            <a href="">산타마리아노벨라</a>
+            <span class="name">산타마리아노벨라</span>
             <span>|</span>
          </div>
 
          <div class="menu1">
-            <a href="">아쿠아디파르마</a>
+            <span class="name">아쿠아디파르마</span>
             <span>|</span>
-            <a href="">아틀리에 코롱</a>
+            <span class="name">아틀리에 코롱</span>
             <span>|</span>
-            <a href="">입생로랑</a>
+            <span class="name">입생로랑</span>
             <span>|</span>
-            <a href="">조말론</a>
+            <span class="name">조말론</span>
             <span>|</span>
-            <a href="">지방시</a>
+            <span class="name">지방시</span>
             <span>|</span>
-            <a href="">캐롤리나 헤레라</a>
+            <span class="name">캐롤리나 헤레라</span>
             <span>|</span>
-            <a href="">크리드</a>
+            <span class="name">크리드</span>
             <span>|</span>
-            <a href="">페라리</a>
+            <span class="name">페라리</span>
             <span>|</span>
-            <a href="">펜할리곤스</a>
+            <span class="name">펜할리곤스</span>
          </div>
       </div>
    </nav>
 
    <section>
       <div class="perfumebox">
-         <c:forEach items="${Pdata}" var="d">
-         <c:choose>
-            <c:when test="${d.p_BRAND eq 'gucci'}">
-            <div>
+            <!--<div>
                <img class="perfumeimg" src="resources/img/${d.p_BRAND}/${d.p_MODEL}.jpg" height="100px" width="100px">
                <p class="perfume">
                   ${d.p_BRAND} <br> ${d.p_MODEL}
                </p>
-            </div>
-            </c:when>
-            <c:otherwise>
-               <c:if test="${d.p_BRAND eq '끌로에'}">
-                  <div>
-                     <img class="perfumeimg" src="resources/img/${d.p_BRAND}/${d.p_MODEL}.jpg" height="100px" width="100px">
-                     <p class="perfume">
-                        ${d.p_BRAND} <br> ${d.p_MODEL}
-                     </p>
-                  </div>
-               </c:if>
-            </c:otherwise>
-         </c:choose>
-         </c:forEach>
+            </div>-->
       </div>   
       
    </section>
@@ -141,32 +125,52 @@
    </footer>
    
    <script type="text/javascript">
-      $('.gu').on('click', function () {
-         console.log($('.gu').text())
-         let gucci = $('.gu').text();
-      })
+      $('.name').on('click', function (e) {
+         console.log($(e.target).text())
+         let name = $(e.target).text()
+         console.log(name)
+         $('.perfumebox').toggle();
       
-      
-	function Perfume () {
-	      var value = $(this).val();
-	      console.log(value);
-	      $.ajax({
-	         url : 'BrandP',
-	         type : 'get',
-	         data : {
-	            "P_BRAND" : value
-	         },
-	         success : function (res) {
-	            console.log(res);
-	            var p = $('#result');
-	            p.html('성공'
-	            ); //성공했을때 foreach문으로 꺼내오기
-	            } 
-	         error : function (e) {
-	            alert("요청 실패");
-	         },
-	      });
-	   }
+      $.ajax({
+            url : 'BrandP',
+            type : 'get',
+            data : {
+               "name" : name
+            },
+            success : function (res) {
+               console.log(res);
+               let perfumeHTML ="";
+               
+               for (let i = 0; i < res.length; i++){
+               //console.log(res[i].p_BRAND)
+               //console.log(res[i].p_MODEL)
+               let brand = res[i].p_BRAND
+               let model = res[i].p_MODEL
+               
+               //console.log(brand)
+               //console.log(model)
+            
+               let src1 = "resources/img/"+brand+"/"+model+".jpg";
+               
+               perfumeHTML+=`<div class="box">
+                        <img class="perfumeimg" src="\${src1}" height="100px" width="100px"/>
+                       
+                        <p class="perfume">
+                           \${brand} <br> \${model}
+                        </p>
+                     </div>`
+               }
+               $('.perfumebox').html(perfumeHTML);
+                  
+                  
+            },
+             
+            error : function (e) {
+               alert("요청 실패");
+            },
+         });
+
+      });
    </script>
    
    

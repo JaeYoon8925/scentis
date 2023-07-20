@@ -18,16 +18,15 @@
       Mylog에 내 로그 
       TrendP에 트랜드퍼퓸 top3  -->
 	<nav>
-        <a href="${cpath}/" class="logo">Scentit</a>
-        <div class="menuBar">
-            <a href="goMusicPerfume">My Perfume</a>
-            <a href="">Music Chart</a>
-            <span>|</span>
-            <c:if test="${user ne null}">
+		<a href="${cpath}/" class="logo">Scentit</a>
+		<div class="menuBar">
+			<a href="goMusicPerfume">My Perfume</a>
+			<a href="MixP">Scent Perfume</a>
+			<a href="AllP">All Perfume</a>
+			<span>|</span>
             <a href="logout" class="logoutButton">Logout</a>
-            </c:if>
-        </div>
-    </nav>
+		</div>
+	</nav>
 
     <section class="section1">
         <section class="section2">
