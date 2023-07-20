@@ -168,7 +168,7 @@
       var pwresult = $('#pwresult');
 
          if (userpw == confirmpw) {
-            pwresult.html("비밀번호가 같습니다.").css("color", "green");
+            pwresult.html().css("color", "green");
          } else {
             pwresult.html("비밀번호가 다릅니다.").css("color", "red");
          }

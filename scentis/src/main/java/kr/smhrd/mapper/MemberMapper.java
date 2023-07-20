@@ -32,7 +32,7 @@ public interface MemberMapper {
 	
 	// 향수 모두 가져오기
 	@Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{P_BRAND}")
-	public ArrayList<Perfume> AllP();
+	public ArrayList<Perfume> BrandP();
 	
 	// top,mid,base 가져오기
 	@Select("SELECT DISTINCT P_TOP FROM T_PERFUME")

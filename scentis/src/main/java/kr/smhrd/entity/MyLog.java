@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class MyLog {
 // 마이로그에 넘겨줄 내용들 로그번호, 가수명, 노래제목, 향수번호, 결과향수, 향수사진
+// DB 테이블 생성X
 	private int LOG_NUM;
 	private String ID;
 	private String NICKNAME;

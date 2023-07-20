@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Log {
-
-	private int LOG_NUM;
-	private String ID;
-	private String M_TITLE;
-	private String M_ARTIST;
-	private int P_NUM;
-	private int LOG_STF;  //향수만족도
+// 로그 저장될 DB내용
+	private int LOG_NUM;    // 로그번호
+	private String ID;      // 회원ID
+	private String M_TITLE; // 노래제목
+	private String M_ARTIST;// 노래가수
+	private String M_IMG;   // 앨범이미지 저장..?? 
+	private int P_NUM;      // 향수번호
+	private int LOG_STF;    // 향수만족도
 }

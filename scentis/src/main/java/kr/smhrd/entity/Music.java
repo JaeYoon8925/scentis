@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Music {
-
+// 확인하고 클래스,DB 지워주세요 
 	private int m_num;
 	private String m_artist;
 	private String m_title;

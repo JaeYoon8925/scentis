@@ -46,7 +46,8 @@ public class MemberRESTController {
 	// perfumeList 비동기로 보내주기
 	@RequestMapping("/BrandP")
 	public ArrayList<Perfume> AllP(String P_BRAND) {
-		ArrayList<Perfume> Pdata = mapper.AllP();
+		ArrayList<Perfume> Pdata = mapper.BrandP();
+		System.out.println(Pdata);
 		return Pdata;
 	}
 	
