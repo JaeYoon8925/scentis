@@ -19,7 +19,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.smhrd.entity.Log;
 import kr.smhrd.entity.Member;
-import kr.smhrd.entity.Music;
 import kr.smhrd.entity.MyLog;
 import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
@@ -54,12 +53,16 @@ public class MemberRESTController {
 	@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)
 	public MyLog sendDataToFlask(@RequestBody MyLog title) {
 	    System.out.println("sendDataToFlask 시작");
+	    System.out.println(title);
+	    
 	    // Music 객체를 JSON으로 변환하여 Flask 서버에 전송
 	    RestTemplate restTemplate = new RestTemplate();
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
 	    
 	    HttpEntity<MyLog> request = new HttpEntity<>(title, headers);
+	    
+	    System.out.println(request);
 	    
 	    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask", request, String.class);
 	    

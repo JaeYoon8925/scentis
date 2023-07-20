@@ -44,20 +44,23 @@ public class MemberController {
 		return "MusicPerfume";	}
 
 	// 로그페이지 이동
-	@RequestMapping("/goLogPage")
-	public String goLogPage(Member user, Model model) {
-		// 회원의 MyLog + 향수cnt 기준 best top3
-		ArrayList<MyLog> Mylog = mapper.LogCheck(user);
-		model.addAttribute("Mylog", Mylog);
-		ArrayList<Perfume> TrendP = mapper.TrendP();
-		model.addAttribute("TrendP", TrendP);
-		return "LogPage";	}
+		@RequestMapping("/goLogPage")
+		public String goLogPage(Member user, Model model) {
+			if (user.getID() == null) {
+				// 로그인이 되어있지 않다면 로그인 페이지로.
+				return "LoginPage"; 
+			}
+				// 회원의 MyLog + 향수cnt 기준 best top3
+				ArrayList<MyLog> Mylog = mapper.LogCheck(user);
+				model.addAttribute("Mylog", Mylog);
+				ArrayList<Perfume> TrendP = mapper.TrendP();
+				model.addAttribute("TrendP", TrendP);
 
-	// 종류별 향수 보기 페이지 이동
-	@RequestMapping("/AllP")
-	public String AllP() {
-		return "AllPerfume";
-	}
+			// 로그인이 되어있다면 요청대로 로그 페이지로 이동
+			return "LogPage";
+		}
+		
+		
 	// 향선택 향수 찾기 페이지 이동
 	@RequestMapping("/MixP")
 	public String MixP(Model model) {

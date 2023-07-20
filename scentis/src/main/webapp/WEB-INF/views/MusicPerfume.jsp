@@ -44,7 +44,7 @@
 				<div>
 					<div class="Box1">
 						<p class="title3">제목을 입력하세요</p>
-						<input class="inputbox" type="text" name="title">
+						<input class="inputbox" type="text" id="m_TITLE" name="m_TITLE">
 						<button id="selectbtn" class="btn">검색하기</button>
 					</div>
 				</div>
@@ -132,27 +132,30 @@
 	</footer>
 
 	<script>
-		// $('.title').on('click', function () {
-		//     $('.searchbox').toggle(); })
+		$('.title').on('click', function () {
+		     $('.searchbox').toggle(); })
+	</script>	     
+	<script>	     
 		$('.modal_content').click(function() {
 			$('.modal').fadeOut();
 			$('#loading').show();
 		})
-
+	</script>
+	<script>
+		// 검색하기 버튼 클릭할 때 ajax로 앨범, 가수 받아오기
 		$('#selectbtn').on('click', function() {
-			// 검색하기 버튼 클릭할 때 ajax로 앨범, 가수 받아오기
-			$('.modal').fadeIn();
-			$('.searchbox').hide();
 			// 사용자로부터 입력된 데이터 가져오기
 			var m_TITLE = $('#m_TITLE').val();
 			// JSON 데이터 생성
 			var jsonData = {
 				m_TITLE : m_TITLE
 			};
+			
 			let albumimg;
 			let title;
 			let track_id;
 			let artist;
+			
 			$.ajax({
 				type : 'POST',
 				url : '${cpath}/sendDataToFlask',
@@ -174,6 +177,8 @@
 						</a>
 						`)
 					}
+					$('.modal').fadeIn();
+					$('.searchbox').hide();
 				},
 				error : function() {
 					console.log("json 통신 실패");
