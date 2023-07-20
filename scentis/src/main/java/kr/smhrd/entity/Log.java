@@ -13,7 +13,11 @@ public class Log {
 	private String ID;      // 회원ID
 	private String M_TITLE; // 노래제목
 	private String M_ARTIST;// 노래가수
-	private String M_IMG;   // 앨범이미지 저장..?? 
-	private int P_NUM;      // 향수번호
+	private String M_IMG;   // 앨범이미지
+	private int P_NUM1;      // 향수1번호
+	private int P_NUM2;      // 향수2번호
+	private int P_NUM3;      // 향수3번호
 	private int LOG_STF;    // 향수만족도
+	
+	private String MOOD;    // 분위기
 }

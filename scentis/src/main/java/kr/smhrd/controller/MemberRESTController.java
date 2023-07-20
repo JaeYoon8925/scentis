@@ -22,13 +22,16 @@ import kr.smhrd.entity.Member;
 import kr.smhrd.entity.MyLog;
 import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
+import kr.smhrd.service.MemberService;
 
 @RestController // @Controller + @ResponseBody 비동기통신 controller
 public class MemberRESTController {
 
 	@Autowired
 	private MemberMapper mapper;
-
+	@Autowired
+	private MemberService service;
+	
 	// 아이디 중복체크
 	@RequestMapping("/idcheck")
 	public String idcheck(String id) {
@@ -41,13 +44,23 @@ public class MemberRESTController {
 		}
 		return res;
 	}
-	
-   // perfumeList 비동기로 보내주기
+   // 브랜드별 perfumeList 비동기로 보내주기
    @RequestMapping("/BrandP")
    public ArrayList<Perfume> AllP(String name) {
       ArrayList<Perfume> Pdata = mapper.AllP(name);
       return Pdata;
    }
+   // 모델에서 나온 타입으로 향수랜덤추천&DB에서 저장
+   @RequestMapping("/resultP")
+   public ArrayList<Perfume> ResultP(MyLog log){
+	   ArrayList<Perfume> Plist = mapper.MatchP(log);	   // 분위기로 향수 매칭
+	   log.setP_NUM1(Plist.get(0).getP_NUM());
+	   log.setP_NUM2(Plist.get(1).getP_NUM());
+	   log.setP_NUM3(Plist.get(2).getP_NUM());
+	   //mapper.saveLog(log);
+	   return Plist;
+		}
+	   
 	
 	// 플라스크 통신
 	@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)

@@ -14,12 +14,15 @@ import kr.smhrd.entity.Member;
 import kr.smhrd.entity.MyLog;
 import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
+import kr.smhrd.service.MemberService;
 
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberMapper mapper;
+	@Autowired
+	private MemberService service;
 
 	// 메인화면 이동
 	@RequestMapping("/")
@@ -32,33 +35,31 @@ public class MemberController {
 	public String goLogin() {
 		return "LoginPage";
 	}
-
+	// Allperfume페이지 이동
+	@RequestMapping("/AllP")
+	public String goAllP() {
+		return "AllPerfume";
+	}
 	// 음악으로 향수 추천받기 페이지 이동
 	@RequestMapping("/goMusicPerfume")
 	public String goMusicPerfume(Model model) {
-		ArrayList<Perfume> TrendP = mapper.TrendP();
-		model.addAttribute("TrendP", TrendP);
-		return "MusicPerfume";
-	}
-
-	// 향수결과 페이지 이동
-	@PostMapping("/ResultPerfume")
-	public String ResultPerfume() {
+		Perfume RecP = service.RecP();
+		model.addAttribute("RecP", RecP);
 		return "MusicPerfume";
 	}
 
 	// 로그페이지 이동
 	@RequestMapping("/goLogPage")
 	public String goLogPage(Member user, Model model) {
-		if (user.getID() == null) {
-			// 로그인이 되어있지 않다면 로그인 페이지로.
-			return "LoginPage";
-		}
+//		if (user.getID() == null) {
+//			// 로그인이 되어있지 않다면 로그인 페이지로.
+//			return "LoginPage";
+//		}
 		// 회원의 MyLog + 향수cnt 기준 best top3
 		ArrayList<MyLog> Mylog = mapper.LogCheck(user);
 		model.addAttribute("Mylog", Mylog);
-		ArrayList<Perfume> TrendP = mapper.TrendP();
-		model.addAttribute("TrendP", TrendP);
+		Perfume RecP = service.RecP();
+		model.addAttribute("RecP", RecP);
 
 		// 로그인이 되어있다면 요청대로 로그 페이지로 이동
 		return "LogPage";
@@ -77,13 +78,6 @@ public class MemberController {
 		model.addAttribute("Pdata", Pdata);
 		return "mixPerfume";
 	}
-
-	// 로그인 페이지로 이동
-	@RequestMapping("/AllP")
-	public String goAllP() {
-		return "AllPerfume";
-	}
-
 	// 로그인
 	@PostMapping("/Login")
 	public String Login(Member member, HttpSession session) {

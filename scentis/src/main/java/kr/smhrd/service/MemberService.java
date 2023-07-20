@@ -1,19 +1,21 @@
 package kr.smhrd.service;
 
-//import java.util.ArrayList;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//
-//import kr.smhrd.entity.Member;
-//import kr.smhrd.mapper.MemberMapper;
-//
-//@Service
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.smhrd.entity.Perfume;
+import kr.smhrd.mapper.MemberMapper;
+
+@Service
 public class MemberService {
-//
-//	@Autowired(required = false)
-//	private MemberMapper memberMapper;
-//
+
+	@Autowired // (required = false)
+	private MemberMapper mapper;
+
+	public Perfume RecP() {
+		Perfume RecP = mapper.RecP();
+		return RecP;
+	}
 //	// 테스트
 //	public ArrayList<Member> test() {
 //		ArrayList<Member> members = new ArrayList<>();
@@ -41,7 +43,6 @@ public class MemberService {
 //	public int dupCheck(String id) {
 //		System.out.println("id 중복확인 서비스");
 //		int result = memberMapper.dupCheck(id);
-//		
 //		return result;
 //	}
 //	

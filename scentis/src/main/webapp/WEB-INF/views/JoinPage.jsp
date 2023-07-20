@@ -30,7 +30,7 @@
 
 			<div class=e4_295>
 				<span class="e4_296">아이디</span>
-					<p id="result"></p>
+				<span id="result"></span>
 				<div class=e4_297>
 					<div class=e4_298>
 						<input type="text" name="ID" class="e4_299" id="idcheck">
@@ -50,8 +50,9 @@
 
 
 		<div class=e4_302>
-		<p id="pwresult"></p>
-			<span class="e4_303">비밀번호 확인 </span>	
+		
+			<span class="e4_303">비밀번호 확인 </span>
+			<span id="pwresult"></span>	
 			<div class=e4_304>
 				<div class=e4_305>
 					<input type="password" id="userpw-confirm" name="pw-confirm" class="e4_306">
@@ -144,9 +145,13 @@
             // 만약 사용 가능하다면  p태그 안에 사용 가능한 이메일입니다
             var p = $('#result');
             if (res == "true"){
-               p.html("사용 가능한 아이디입니다.").css("color", "green");
+               p.html("사용 가능한 아이디입니다.").css("color", "green")
+               .css("margin-left", "50px").css("font-size", "14px").css("position", "absolute");
+            		  
             } else {
-               p.html("중복된 아이디입니다.").css("color", "red");
+               p.html("중복된 아이디입니다.").css("color", "red").css("margin-left", "50px")
+               .css("font-size", "14px").css("position", "absolute");
+            	  
             } 
          },
          error : function (e) {
@@ -168,9 +173,11 @@
       var pwresult = $('#pwresult');
 
          if (userpw == confirmpw) {
-            pwresult.html().css("color", "green");
+            pwresult.html("사용 가능한 비밀번호입니다.").css("color", "green")
+            .css("margin-left", "100px").css("font-size", "14px").css("position", "absolute");
          } else {
-            pwresult.html("비밀번호가 다릅니다.").css("color", "red");
+            pwresult.html("비밀번호가 다릅니다.").css("color", "red").css("margin-left", "100px")
+            .css("font-size", "14px").css("position", "absolute");
          }
       };
 </script>

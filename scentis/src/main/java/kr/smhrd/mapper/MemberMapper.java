@@ -26,9 +26,9 @@ public interface MemberMapper {
 	// 로그보기
 	public ArrayList<MyLog> LogCheck(Member user);
 	
-	// trend perfume가져오기
-	@Select("SELECT * FROM T_PERFUME ORDER BY P_CNT DESC LIMIT 3")
-	public ArrayList<Perfume> TrendP();
+	// random perfume 하나씩 가져오기
+	@Select("SELECT * FROM T_PERFUME ORDER BY RAND() LIMIT 1")
+	public Perfume RecP();
 	
    // 향수 모두 가져오기
    @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name}")
@@ -41,4 +41,11 @@ public interface MemberMapper {
 	public ArrayList<Perfume> MixMid();
 	@Select("SELECT DISTINCT P_BASE FROM T_PERFUME")
 	public ArrayList<Perfume> MixBase();
+	
+	// 타입에 맞는 향수 3개 랜덤 매칭
+	@Select("SELECT * FROM T_PERFUME WHERE P_TYPE = #{P_TYPE} ORDER BY RAND() LIMIT 3")
+	public ArrayList<Perfume> MatchP(MyLog log);
+	
+	// 로그저장
+	public void saveLog(MyLog log);
 }
