@@ -233,10 +233,10 @@
 //			console.log(d)
 			
 			var jsonData2 = {
-				m_img : a
-				,m_title : b
-				,m_artist : c
-				,track_id : d
+				m_IMG : a ,
+				m_TITLE : b ,
+				m_ARTIST : c ,
+				track_id : d
 				};
 			// python으로 track_id 보내는 ajax
 			$.ajax({

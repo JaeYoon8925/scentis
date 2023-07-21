@@ -58,10 +58,7 @@ public class MemberController {
 		// 세션에 저장된 ID값 뽑아오기. 
 		// loginUser.get~~ 이녀석을 통해서 LogLoad , LogLoadPInfo 실행.
 		Member loginUser = (Member) session.getAttribute("user");
-		// Member(ID=asd, PW=asd, NAME=김재윤, NICKNAME=test, BIRTHDATE=null, GENDER=남)
-		
 		String id = loginUser.getID();
-		// asd
 
 //		// 회원의 MyLog + 향수cnt 기준 best top3
 //		ArrayList<MyLog> myLog = mapper.LogCheck(user);
