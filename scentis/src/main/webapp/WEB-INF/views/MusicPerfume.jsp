@@ -235,14 +235,18 @@
 			console.log(c)
 			console.log(d)
 			
+			var jsonData2 = {
+				track_id : d
+			};
+			
 			// python으로 track_id 보내는 ajax
 			$.ajax({
 				type : 'POST',
-				url : '${cpath}/sendDataToFlask',
-				data : JSON.stringify(jsonData),
+				url : '${cpath}/sendDataToFlask2',
+				data : JSON.stringify(jsonData2),
 				contentType : 'application/json',
 				success : function(res) {
-					
+					console.log(a)
 				},
 				error : function(){
 					

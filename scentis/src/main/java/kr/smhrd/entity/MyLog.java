@@ -29,7 +29,7 @@ public class MyLog {
 	private int LOG_STF;      // 결과 만족도
 	
 	
-//	private int M_TRACK_ID; // 스포티파이의 트랙ID
+	private String track_id; // 스포티파이의 트랙ID
 	private List<String> title_list;
 	private List<String> artist_list;
 	private List<String> album_img_list;

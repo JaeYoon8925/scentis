@@ -59,6 +59,7 @@
                 </div>
             </div>
         </section>
+
         <section class="section3">
             <div class="log">
                	<p class="title1">Recommend Perfume</p>
@@ -66,6 +67,8 @@
 				<p class="perfume">	${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
             </div>
         </section>
+        
+        
     </section>
 
 

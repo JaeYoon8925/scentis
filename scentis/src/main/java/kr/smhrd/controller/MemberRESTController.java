@@ -62,7 +62,7 @@ public class MemberRESTController {
 		}
 	   
 	
-	// 플라스크 통신
+// 플라스크 통신1 곡명 보내기.
 	@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)
 	public MyLog sendDataToFlask(@RequestBody MyLog title) {
 	    System.out.println("sendDataToFlask 시작");
@@ -123,6 +123,44 @@ public class MemberRESTController {
 	    }
 		return Data;
 	}
+	
+	// 플라스크 통신2 모델링에 사용할 곡 결정을 위해 spotify 곡id 보내기
+			@RequestMapping(value = "/sendDataToFlask2", method = RequestMethod.POST)
+			public MyLog sendDataToFlask2(@RequestBody MyLog track_id) {
+			    System.out.println("sendDataToFlask2 시작");
+			    System.out.println(track_id);
+			    
+			    RestTemplate restTemplate = new RestTemplate();
+			    HttpHeaders headers = new HttpHeaders();
+			    headers.setContentType(MediaType.APPLICATION_JSON);
+			    
+			    HttpEntity<MyLog> request = new HttpEntity<>(track_id, headers);
+			    
+			    System.out.println(request);
+			    
+			    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2", request, String.class);
+			    
+			    System.out.println(response.getBody().getClass()); // String 타입
+			    
+			    // JSON 문자열
+			    String jsonString = response.getBody();
+			    System.out.println(jsonString);
+			    
+//			    // Jackson ObjectMapper 객체 생성
+//			    ObjectMapper objectMapper = new ObjectMapper();
+//			    MyLog Data = null;
+//			    
+//			    try {
+//			        // JSON 문자열을 객체로 파싱
+//			    	Data = objectMapper.readValue(jsonString, MyLog.class);
+//			    	
+//			    	System.out.println(Data);
+//			    } catch (Exception e) {
+//			        e.printStackTrace();
+//			    }
+			    
+				return null;
+			}
 
 //	// 월별 데이터 조회할 수 있는 url
 //		@RequestMapping("/getMonthData")
