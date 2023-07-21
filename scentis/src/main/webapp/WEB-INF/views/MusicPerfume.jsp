@@ -234,9 +234,9 @@
 			
 			var jsonData2 = {
 				m_img : a
-				m_title : b
-				m_artist : c
-				track_id : d
+				,m_title : b
+				,m_artist : c
+				,track_id : d
 				};
 			// python으로 track_id 보내는 ajax
 			$.ajax({

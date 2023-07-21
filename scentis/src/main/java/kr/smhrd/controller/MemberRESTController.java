@@ -122,15 +122,34 @@ public class MemberRESTController {
 			    headers.setContentType(MediaType.APPLICATION_JSON);
 			    HttpEntity<MyLog> request = new HttpEntity<>(track_id, headers);
 			    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2", request, String.class);
-			    System.out.println(response.getBody().getClass()); // String 타입
-			    System.out.println(response.getBody());
+//			    System.out.println(response.getBody().getClass());
+//			    System.out.println(response.getBody());
 			    // python에서 나온 결과값(P_TYPE)으로 DB매칭
-			    // List<String> P_TYPE = response.getBody();
-			    //ArrayList<Perfume> Plist = mapper.MatchP(P_TYPE);  // 분위기로 향수 매칭
+			    String list = response.getBody(); // 
+			    System.out.println(list);
+			    ObjectMapper objectMapper = new ObjectMapper();
+			    MyLog Data = null;
+			    try {
+			        // JSON 문자열을 객체로 파싱
+			    	Data = objectMapper.readValue(list, MyLog.class);
+			    	
+			    	System.out.println(Data);
+//			    	
+//			        // 파싱된 데이터 꺼내기 + 확인
+//			        List<String> TITLELIST = Data.getTitle_list();
+//			        List<String> ARTISTLIST = Data.getArtist_list();
+//			        List<String> IMGLIST = Data.getAlbum_img_list();
+//			        List<String> TRACK_IDLIST = Data.getTrack_id_list();
+			    
+//			    List<Perfume> Plist = mapper.MatchP(P_TYPE);  // 분위기로 향수 매칭
 			    
 			    //mapper.saveLog(log);
-			    
+			    }catch (Exception e) {
+			        e.printStackTrace();
+			    }
 			    return null;
+			    }
+			
 //			    return Plist;
 			    
 //			    // Jackson ObjectMapper 객체 생성
@@ -146,7 +165,6 @@ public class MemberRESTController {
 //			        e.printStackTrace();
 //			    }
 
-			}
 
 //	// 월별 데이터 조회할 수 있는 url
 //		@RequestMapping("/getMonthData")
