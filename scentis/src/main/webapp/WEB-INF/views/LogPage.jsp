@@ -59,6 +59,19 @@
                 </div>
             </div>
         </section>
+        
+              <c:forEach items="${logListPerfume}" var="perfumeList">
+          <ul>
+             <c:forEach items="${perfumeList}" var="perfume">
+                  <li>
+                      P_NUM : ${perfume.p_NUM} <br>
+                      P_BRAND : ${perfume.p_BRAND} <br>
+                     P_MODEL : ${perfume.p_MODEL} <br>
+                     <img src="resources/img/${perfume.p_BRAND}/${perfume.p_MODEL}.jpg"height="60px" width="50px">
+                 </li>
+              </c:forEach>
+          </ul>
+      </c:forEach>
 
         <section class="section3">
             <div class="log">

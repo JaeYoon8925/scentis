@@ -102,8 +102,8 @@ div.menuBar>a:hover {
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         } */
 .title3 {
-	font-size: 18px;
-	font-weight: 600;
+	font-size: 20px;
+    font-weight: 500;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -350,4 +350,36 @@ a:hover {
 	font-weight: 500;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 	margin-top: 40px;
+}
+
+.p1{
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px 13px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.p1:hover{
+    border: 1px solid #fff87c;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid #fff87c;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.p2 {
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.p2:hover {
+	cursor: pointer;
 }

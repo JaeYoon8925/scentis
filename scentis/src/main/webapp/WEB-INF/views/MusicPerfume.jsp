@@ -73,11 +73,15 @@
 
 	<section class="section1">
 		<section class="section2">
-			<div class="log">
-				<a href="${cpath}/" class="title">HOME</a>
-				<p class="title">SEARCH</p>
-			</div>
-		</section>
+            <div class="log">
+                <p class="title">MY LOG</p>
+                <img class="pro" src="resources/img/프사.png">
+                <div class="idnick">
+                    <p>${user.ID}</p>
+                    <p>${user.NICKNAME}</p>
+                </div>
+            </div>
+        </section>
 		<section class="search">
 			<div class="searchbox">
 				<p class="title1">Search Perfume</p>
@@ -102,11 +106,11 @@
 		</section>
 		
 		<section class="section3">
-			<div class="log">
-				<p class="title1">Recommend Perfume</p>
-				<img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg" alt="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.png" height="300px" width="250px">
-				<p class="perfume">	${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
-			</div>
+         <div class="log">
+            <p class="title1">Recommend Perfume</p>
+            <img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg" alt="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.png" height="300px" width="250px">
+            <p class="perfume">   ${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
+         </div>
 		</section>
 	</section>
 
@@ -222,50 +226,23 @@
 		});
 		
 		function musicinfo(e,f,g,h) {
-			a = e; // 앨범이미지
-			b = f; // 노래 제목
-			c = g; // 가수
-			d = h; // track_id
-			perfumeHTML="";
-//			console.log(a)
-//			console.log(b)
-//			console.log(c)
-//			console.log(d)
+			a = e;
+			b = f;
+			c = g;
+			d = h;
+			console.log(a)
+			console.log(b)
+			console.log(c)
+			console.log(d)
 			
-			var jsonData2 = {
-				m_IMG : a ,
-				m_TITLE : b ,
-				m_ARTIST : c ,
-				track_id : d
-				};
 			// python으로 track_id 보내는 ajax
 			$.ajax({
 				type : 'POST',
-				url : '${cpath}/sendDataToFlask2',
-				data : JSON.stringify(jsonData2),
+				url : '${cpath}/sendDataToFlask',
+				data : JSON.stringify(jsonData),
 				contentType : 'application/json',
 				success : function(res) {
-					console.log(res)
-					for(let i of res) {
-						perfumeimg = "resources/img/"+i.p_BRAND+"/"+i.p_MODEL+".jpg";
-						console.log(i.p_BRAND);
-						console.log(i.p_MODEL);
-						perfumeHTML+=`
-							<div class="modal_content">
-	                		<div class="musicimg">
-	                  			<img src="\${perfumeimg}" height="200px" width="200px">
-								<a href="#" class="selectperfume">
-								<p class="title3" id="musicname1">
-									\${i.p_BRAND} <br> \${i.p_MODEL} </p>
-								</a>
-							</div>
-							</div>`
-							// 만족도 내용 추가필요
-					}
-		               $('#loading').hide();
-		               $('.modal').html(perfumeHTML);
-		               $('.modal').fadeIn();
-
+					
 				},
 				error : function(){
 					
