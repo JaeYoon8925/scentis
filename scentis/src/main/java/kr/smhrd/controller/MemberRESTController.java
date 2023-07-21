@@ -116,77 +116,43 @@ public class MemberRESTController {
 	}
 	
 	// 플라스크 통신2 모델링에 사용할 곡 결정을 위해 spotify 곡id 보내기
-			@RequestMapping(value = "/sendDataToFlask2", method = RequestMethod.POST)
-			public ArrayList<Perfume> sendDataToFlask2(@RequestBody MyLog track_id, HttpSession session) {
-			    System.out.println("sendDataToFlask2 시작");
-			    
-			    Member loginUser = (Member) session.getAttribute("user");
-			    String id = loginUser.getID();
-			    
-			    RestTemplate restTemplate = new RestTemplate();
-			    HttpHeaders headers = new HttpHeaders();
-			    headers.setContentType(MediaType.APPLICATION_JSON);
-			    HttpEntity<MyLog> request = new HttpEntity<>(track_id, headers);
-			    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2", request, String.class);
-			    System.out.println("리스폰스 받음.");
-			    System.out.println(response.getBody().getClass());
-			    System.out.println(response.getBody());
-			    // python에서 나온 결과값(P_TYPE)으로 DB매칭
-			    String list = response.getBody(); // 
-			    System.out.println(list);
-			    
-			    
-			    ObjectMapper objectMapper = new ObjectMapper();
-			    MyLog Data = null;
-			    
-			    
-			    try {
-			        // JSON 문자열을 객체로 파싱
-			    	Data = objectMapper.readValue(list, MyLog.class);
-			    	
-			    	System.out.println(Data);
-			    	
-			        // 파싱된 데이터 꺼내기 + 확인
-			    	String m_IMG = Data.getM_IMG();
-			        String m_TITLE = Data.getM_TITLE();
-			        String m_ARTIST = Data.getM_ARTIST();
-			        String p_TYPE = Data.getP_TYPE();
-			    
-			        System.out.println(m_TITLE);
-			        System.out.println(m_ARTIST);
-			        System.out.println(m_IMG);
-			        System.out.println(p_TYPE);
-			        
-			        List<Perfume> Plist = mapper.MatchP(p_TYPE);  // 분위기로 향수 매칭
-			        int pnum1 = Plist.get(0).getP_NUM();
-			        int pnum2 = Plist.get(1).getP_NUM();
-			        int pnum3 = Plist.get(2).getP_NUM();
-			        
-//			        VALUES(#{ID},${M_TITLE},${M_ARTIST},#{M_IMG},#{P_NUM1},#{P_NUM2},#{P_NUM3},#{LOG_STF})
-			        Log log = new Log();
-			        log.setID(id);
-			        log.setM_TITLE(m_TITLE);
-			        log.setM_ARTIST(m_ARTIST);
-			        log.setM_IMG(m_IMG);
-			        log.setP_NUM1(pnum1);
-			        log.setP_NUM2(pnum2);
-			        log.setP_NUM3(pnum3);
-			        log.setLOG_STF(0);
-			        
-			        System.out.println(log);
-//			        mapper.saveLog(log);
-			        
-			        
-			    }catch (Exception e) {
-			        e.printStackTrace();
-			    }
-			    
-			    return null;
-			    
-			    }
-			
-			
-//			    return Plist;
+	@RequestMapping(value = "/sendDataToFlask2", method = RequestMethod.POST)
+	public List<Perfume> sendDataToFlask2(@RequestBody MyLog track_id, HttpSession session) {
+		MyLog Data = null;
+		List<Perfume> Plist = null ;
+		Log log = new Log();
+		
+	    System.out.println("sendDataToFlask2 시작");
+	    Member user = (Member) session.getAttribute("user");
+	    String id = user.getID();
+	    RestTemplate restTemplate = new RestTemplate();
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_JSON);
+	    HttpEntity<MyLog> request = new HttpEntity<>(track_id, headers);
+	    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2", request, String.class);
+	    System.out.println("리스폰스 받음.");
+	    // python에서 나온 결과값(P_TYPE)으로 DB매칭
+	    String jsonString = response.getBody(); 
+	    ObjectMapper objectMapper = new ObjectMapper();
+
+	    try {
+	        // JSON 문자열을 객체로 파싱
+	    	Data = objectMapper.readValue(jsonString, MyLog.class);
+	    	// 파싱된 데이터 꺼내기 + 확인
+	    	Plist = mapper.MatchP(Data.getP_TYPE());  // 분위기로 향수 매칭
+	    	log.setID(id);
+	    	log.setM_ARTIST("'"+Data.getM_ARTIST()+"'");
+	    	log.setM_TITLE("'"+Data.getM_TITLE()+"'");
+	    	log.setM_IMG(Data.getM_IMG());
+	    	log.setP_NUM1(Plist.get(0).getP_NUM());
+	    	log.setP_NUM2(Plist.get(1).getP_NUM());
+	    	log.setP_NUM3(Plist.get(2).getP_NUM());
+		    mapper.saveLog(log);
+	    }catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return Plist;
+	    }
 			    
 //			    // Jackson ObjectMapper 객체 생성
 //			    ObjectMapper objectMapper = new ObjectMapper();

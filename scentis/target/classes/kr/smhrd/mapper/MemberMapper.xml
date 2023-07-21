@@ -31,7 +31,7 @@ SELECT * FROM T_PERFUME WHERE P_NUM IN (#{num1}, #{num2}, #{num3});
 
 <!-- 결과로그 저장 -->
 <insert id="saveLog" parameterType="kr.smhrd.entity.Log">
-INSERT INTO T_LOG (ID,M_TITLE,M_ARTIST,M_IMG,P_NUM1,P_NUM2,P_NUM3,LOG_STF) 
-VALUES(#{ID},${M_TITLE},${M_ARTIST},#{M_IMG},#{P_NUM1},#{P_NUM2},#{P_NUM3},#{LOG_STF})
+INSERT INTO T_LOG (ID,M_TITLE,M_ARTIST,M_IMG,P_NUM1,P_NUM2,P_NUM3) 
+VALUES(#{ID},${M_TITLE},${M_ARTIST},#{M_IMG},#{P_NUM1},#{P_NUM2},#{P_NUM3})
 </insert>
 </mapper>

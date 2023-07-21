@@ -112,11 +112,9 @@ public class MemberController {
 		ArrayList<Perfume> Top = mapper.MixTop();
 		ArrayList<Perfume> Mid = mapper.MixMid();
 		ArrayList<Perfume> Base = mapper.MixBase();
-		ArrayList<Perfume> Pdata = new ArrayList<Perfume>();
-		Pdata.addAll(0, Top);
-		Pdata.addAll(1, Mid);
-		Pdata.addAll(2, Base);
-		model.addAttribute("Pdata", Pdata);
+		model.addAttribute("Ptop", Top);
+		model.addAttribute("Pmid", Mid);
+		model.addAttribute("Pbase", Base);
 		return "mixPerfume";
 	}
 
