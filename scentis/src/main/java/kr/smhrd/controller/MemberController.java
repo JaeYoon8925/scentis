@@ -35,11 +35,13 @@ public class MemberController {
 	public String goLogin() {
 		return "LoginPage";
 	}
+
 	// Allperfume페이지 이동
 	@RequestMapping("/AllP")
 	public String goAllP() {
 		return "AllPerfume";
 	}
+
 	// 음악으로 향수 추천받기 페이지 이동
 	@RequestMapping("/goMusicPerfume")
 	public String goMusicPerfume(Model model) {
@@ -50,16 +52,58 @@ public class MemberController {
 
 	// 로그페이지 이동
 	@RequestMapping("/goLogPage")
-	public String goLogPage(Member user, Model model) {
-//		if (user.getID() == null) {
-//			// 로그인이 되어있지 않다면 로그인 페이지로.
-//			return "LoginPage";
-//		}
-		// 회원의 MyLog + 향수cnt 기준 best top3
-		ArrayList<MyLog> Mylog = mapper.LogCheck(user);
-		model.addAttribute("Mylog", Mylog);
-		Perfume RecP = service.RecP();
-		model.addAttribute("RecP", RecP);
+	public String goLogPage(HttpSession session, Member user, Model model) {
+		System.out.println("/goLogPage 요청받음.");
+		
+		// 세션에 저장된 ID값 뽑아오기. 
+		// loginUser.get~~ 이녀석을 통해서 LogLoad , LogLoadPInfo 실행.
+		Member loginUser = (Member) session.getAttribute("user");
+		// Member(ID=asd, PW=asd, NAME=김재윤, NICKNAME=test, BIRTHDATE=null, GENDER=남)
+		
+		String id = loginUser.getID();
+		// asd
+
+//		// 회원의 MyLog + 향수cnt 기준 best top3
+//		ArrayList<MyLog> myLog = mapper.LogCheck(user);
+//		model.addAttribute("myLog", myLog);
+		
+		ArrayList<MyLog> log = mapper.LogLoad(id);
+		System.out.println(log.size());
+		
+		int i=0;
+		ArrayList<ArrayList<Perfume>> logListPerfume = new ArrayList<ArrayList<Perfume>>();
+		
+		for (MyLog logList : log) {
+			i++;
+			
+			System.out.println(logList);
+			int num1 = logList.getP_NUM1();
+			int num2 = logList.getP_NUM2();
+			int num3 = logList.getP_NUM3();
+			
+			ArrayList<Perfume> logPerfume = mapper.LogLoadPInfo(num1, num2, num3);
+			System.out.println(logPerfume);
+			System.out.println(logPerfume.get(0));
+			System.out.println(logPerfume.get(1));
+			System.out.println(logPerfume.get(2));
+			System.out.println();
+			
+			logListPerfume.add(logPerfume);
+			
+			if (log.size() == i) {
+				session.setAttribute("logListPerfume", logListPerfume);
+				System.out.println(logListPerfume);
+			}
+			
+		}
+//		MyLog b = log.get(0);
+//		int P_num1 = b.getP_NUM1();
+//
+//		System.out.println(b);
+//		System.out.println(P_num1);
+		
+//		ArrayList<Perfume> TrendP = mapper.TrendP();
+//		model.addAttribute("TrendP", TrendP);
 
 		// 로그인이 되어있다면 요청대로 로그 페이지로 이동
 		return "LogPage";
@@ -78,6 +122,7 @@ public class MemberController {
 		model.addAttribute("Pdata", Pdata);
 		return "mixPerfume";
 	}
+
 	// 로그인
 	@PostMapping("/Login")
 	public String Login(Member member, HttpSession session) {
