@@ -150,9 +150,9 @@ public class MemberController {
 		System.out.println(member.getBIRTHDATE());
 		int row = mapper.Join(member);
 		if (row > 0) {
-			return "redirect://"; // 회원가입 성공 시 메인으로 이동
+			return "redirect:/"; // 회원가입 성공 시 메인으로 이동
 		} else
-			return "redirect://Join"; // 실패
+			return "redirect:/Join"; // 실패
 
 	}
 

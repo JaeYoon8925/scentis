@@ -49,18 +49,7 @@ public class MemberRESTController {
    public ArrayList<Perfume> AllP(String name) {
       ArrayList<Perfume> Pdata = mapper.AllP(name);
       return Pdata;
-   }
-   // 모델에서 나온 타입으로 향수랜덤추천&DB에서 저장
-   @RequestMapping("/resultP")
-   public ArrayList<Perfume> ResultP(MyLog log){
-	   ArrayList<Perfume> Plist = mapper.MatchP(log);	   // 분위기로 향수 매칭
-	   log.setP_NUM1(Plist.get(0).getP_NUM());
-	   log.setP_NUM2(Plist.get(1).getP_NUM());
-	   log.setP_NUM3(Plist.get(2).getP_NUM());
-	   //mapper.saveLog(log);
-	   return Plist;
-		}
-	   
+   }	   
 	
 // 플라스크 통신1 곡명 보내기.
 	@RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)
@@ -100,23 +89,23 @@ public class MemberRESTController {
 	        List<String> IMGLIST = Data.getAlbum_img_list();
 	        List<String> TRACK_IDLIST = Data.getTrack_id_list();
 	       
-	        System.out.println("곡 1의 정보");
-	        System.out.println("TITLELIST 0  : " + TITLELIST.get(0));
-	        System.out.println("ARTISTLIST 0 : " + ARTISTLIST.get(0));
-	        System.out.println("IMGLIST 0 : " + IMGLIST.get(0));
-	        System.out.println("TRACK_IDLIST 0 : " + TRACK_IDLIST.get(0));
-	        
-	        System.out.println("곡 2의 정보");
-	        System.out.println("TITLELIST 1  : " + TITLELIST.get(1));
-	        System.out.println("ARTISTLIST 1 : " + ARTISTLIST.get(1));
-	        System.out.println("IMGLIST 1 : " + ARTISTLIST.get(1));
-	        System.out.println("TRACK_IDLIST 1 : " + TRACK_IDLIST.get(1));
-	        
-	        System.out.println("곡 3의 정보");
-	        System.out.println("TITLELIST 2  : " + TITLELIST.get(2));
-	        System.out.println("ARTISTLIST 2 : " + ARTISTLIST.get(2));
-	        System.out.println("IMGLIST 2 : " + IMGLIST.get(2));
-	        System.out.println("TRACK_IDLIST 2 : " + TRACK_IDLIST.get(2));
+//	        System.out.println("곡 1의 정보");
+//	        System.out.println("TITLELIST 0  : " + TITLELIST.get(0));
+//	        System.out.println("ARTISTLIST 0 : " + ARTISTLIST.get(0));
+//	        System.out.println("IMGLIST 0 : " + IMGLIST.get(0));
+//	        System.out.println("TRACK_IDLIST 0 : " + TRACK_IDLIST.get(0));
+//	        
+//	        System.out.println("곡 2의 정보");
+//	        System.out.println("TITLELIST 1  : " + TITLELIST.get(1));
+//	        System.out.println("ARTISTLIST 1 : " + ARTISTLIST.get(1));
+//	        System.out.println("IMGLIST 1 : " + ARTISTLIST.get(1));
+//	        System.out.println("TRACK_IDLIST 1 : " + TRACK_IDLIST.get(1));
+//	        
+//	        System.out.println("곡 3의 정보");
+//	        System.out.println("TITLELIST 2  : " + TITLELIST.get(2));
+//	        System.out.println("ARTISTLIST 2 : " + ARTISTLIST.get(2));
+//	        System.out.println("IMGLIST 2 : " + IMGLIST.get(2));
+//	        System.out.println("TRACK_IDLIST 2 : " + TRACK_IDLIST.get(2));
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -126,25 +115,23 @@ public class MemberRESTController {
 	
 	// 플라스크 통신2 모델링에 사용할 곡 결정을 위해 spotify 곡id 보내기
 			@RequestMapping(value = "/sendDataToFlask2", method = RequestMethod.POST)
-			public MyLog sendDataToFlask2(@RequestBody MyLog track_id) {
+			public ArrayList<Perfume> sendDataToFlask2(@RequestBody MyLog track_id) {
 			    System.out.println("sendDataToFlask2 시작");
-			    System.out.println(track_id);
-			    
 			    RestTemplate restTemplate = new RestTemplate();
 			    HttpHeaders headers = new HttpHeaders();
 			    headers.setContentType(MediaType.APPLICATION_JSON);
-			    
 			    HttpEntity<MyLog> request = new HttpEntity<>(track_id, headers);
-			    
-			    System.out.println(request);
-			    
 			    ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2", request, String.class);
-			    
 			    System.out.println(response.getBody().getClass()); // String 타입
+			    System.out.println(response.getBody());
+			    // python에서 나온 결과값(P_TYPE)으로 DB매칭
+			    // List<String> P_TYPE = response.getBody();
+			    //ArrayList<Perfume> Plist = mapper.MatchP(P_TYPE);  // 분위기로 향수 매칭
 			    
-			    // JSON 문자열
-			    String jsonString = response.getBody();
-			    System.out.println(jsonString);
+			    //mapper.saveLog(log);
+			    
+			    return null;
+//			    return Plist;
 			    
 //			    // Jackson ObjectMapper 객체 생성
 //			    ObjectMapper objectMapper = new ObjectMapper();
@@ -158,8 +145,7 @@ public class MemberRESTController {
 //			    } catch (Exception e) {
 //			        e.printStackTrace();
 //			    }
-			    
-				return null;
+
 			}
 
 //	// 월별 데이터 조회할 수 있는 url

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import kr.smhrd.entity.Log;
 import kr.smhrd.entity.Member;
 import kr.smhrd.entity.MyLog;
 import kr.smhrd.entity.Perfume;
@@ -51,8 +52,8 @@ public interface MemberMapper {
 	
 	// 타입에 맞는 향수 3개 랜덤 매칭
 	@Select("SELECT * FROM T_PERFUME WHERE P_TYPE = #{P_TYPE} ORDER BY RAND() LIMIT 3")
-	public ArrayList<Perfume> MatchP(MyLog log);
+	public ArrayList<Perfume> MatchP(String P_TYPE);
 	
-//	// 로그저장
-//	public void saveLog(MyLog log);
+	// 로그저장
+	public void saveLog(Log log);
 }

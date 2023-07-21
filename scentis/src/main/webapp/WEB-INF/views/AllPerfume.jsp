@@ -82,9 +82,10 @@
                </p>
             </div>-->
       </div>   
-      
+ 
+			<div class="modal">
+			</div>
    </section>
-
 
    <footer>
       <div class="container">
@@ -124,9 +125,9 @@
    
    <script type="text/javascript">
       $('.name').on('click', function (e) {
-         console.log($(e.target).text())
+         //console.log($(e.target).text())
          let name = $(e.target).text()
-         console.log(name)
+         //console.log(name)
          $('.perfumebox').toggle();
       
       $.ajax({
@@ -136,22 +137,24 @@
                "name" : name
             },
             success : function (res) {
-               console.log(res);
+               //console.log(res);
                let perfumeHTML ="";
-               
+               let perfume = [];
                for (let i = 0; i < res.length; i++){
                //console.log(res[i].p_BRAND)
                //console.log(res[i].p_MODEL)
                let brand = res[i].p_BRAND
                let model = res[i].p_MODEL
-               
-               //console.log(brand)
-               //console.log(model)
+               perfume.push(brand)
+               perfume.push(model)
+               //console.log(perfume)
+               //console.log(brand)              
             
                let src1 = "resources/img/"+brand+"/"+model+".jpg";
+               let alt1 = "resources/img/"+brand+"/"+model+".png";
                
-               perfumeHTML+=`<div class="box">
-                        <img class="perfumeimg" src="\${src1}" height="100px" width="100px"/>
+               perfumeHTML+=`<div class="box" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')">
+                        <img class="perfumeimg" src="\${src1}" alt="\${alt1}" height="100px" width="100px"/>
                        
                         <p class="perfume">
                            \${brand} <br> \${model}
@@ -159,16 +162,35 @@
                      </div>`
                }
                $('.perfumebox').html(perfumeHTML);
-                  
-                  
             },
-             
             error : function (e) {
                alert("요청 실패");
             },
          });
 
       });
+      
+      // selectperfume 클릭 시 관련된 정보 보여주는 함수
+      function selectperfume(B,M,I){
+    	  let perfumeInfo ="";
+    	  url = "resources/img/"+B+"/"+M+".jpg";
+    	  perfumeInfo+=`
+    	  <div class="modal_content">
+    	  <div class="Perfumeimg">
+    	  <img src='\${url}'; height="300px" width="250px">
+    	  <strong><p id="perfume">\${B} <br> \${M} <br>\${I} </p></strong>
+    	  </div>
+    	  </div>`
+       $('.modal').html(perfumeInfo);
+    	  console.log('추가완');
+
+		$('.modal').fadeIn();
+		$('.perfumebox').hide();
+       }
+  	
+  	$('.name').on('click', function() {
+  	$('.modal').hide();
+        })
    </script>
    
    
