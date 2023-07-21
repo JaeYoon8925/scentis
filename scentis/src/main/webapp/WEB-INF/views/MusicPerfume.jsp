@@ -103,10 +103,13 @@
 		
 		<section class="section3">
 			<div class="log">
-				<p class="title1">Recommend Perfume</p>
-				<img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg"height="300px" width="250px">
-				<p class="perfume">	${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
-			</div>
+				<p class="title1">Trend Perfume</p>
+				<img
+					src="resources/img/${TrendP[0].p_BRAND}/${TrendP[0].p_MODEL}.jpg"
+					height="300px" width="250px">
+				<p class="perfume">
+					${TrendP[0].p_BRAND} <br> ${TrendP[0].p_MODEL}
+				</p>
 			</div>
 		</section>
 	</section>
@@ -144,9 +147,12 @@
 	</footer>
 
 	<script>
-		//$('.title').on('click', function () {
-		//     $('.searchbox').toggle(); })
-
+		
+		let a;
+		let b;
+		let c;
+		let d;
+		
 		// 검색하기 버튼 클릭할 때 ajax로 앨범, 가수 받아오기
 		$('#selectbtn').on('click', function() {
 			// 사용자로부터 입력된 데이터 가져오기
@@ -168,26 +174,30 @@
 				contentType : 'application/json',
 				success : function(res) {
 					console.log("json 통신 성공");
-					console.log(res);
+					//console.log(res);
 					
 		               let musicHTML="";
+		               
+		               //let track_id = [];
+		               
 		               for (let i=0; i<3; i++){
 		            	   
-		            	  console.log(res.album_img_list[i])
+		            	  // console.log(res.track_id_list[i])
 		            	  
 		                  let albumimg=res.album_img_list[i]
 		                  let title=res.title_list[i]
-		                  let track_id=res.track_id_list[i]
+		                  let track_id = res.track_id_list[i]
 		                  let artist=res.artist_list[i]
 		                  
 		                  musicHTML+=`
 		                	  <div class="modal_content">
-		                		<div class="musicimg">
+		                		<div class="musicimg" onclick="musicinfo('\${albumimg}', '\${title}', '\${artist}', '\${track_id}')">
 		                  			<img src=\${albumimg} height="200px" width="200px">
 									<a href="#" class="selectmusic1">
 									<p class="title3" id="musicname1">
 										\${title} <br> \${artist}
 									</p>
+									<p class="trackid"> \${track_id}</p>
 									</a>
 								</div>
 							</div>
@@ -201,14 +211,52 @@
 					$('.musicimg').on('click', function() {
 					$('.modal').fadeOut();
 					$('#loading').show();
+					//trackid = $('.trackid').val();
+					//track_id = trackid;
+					//let text = $(this).text();
+					//console.log(text);
 				});
+					
 					
 				},
 				error : function() {
 					console.log("json 통신 실패");
 				}
 			});
-		})
+		});
+		
+		function musicinfo(e,f,g,h) {
+			a = e;
+			b = f;
+			c = g;
+			d = h;
+			console.log(a)
+			console.log(b)
+			console.log(c)
+			console.log(d)
+			
+			// python으로 track_id 보내는 ajax
+			$.ajax({
+				type : 'POST',
+				url : '${cpath}/sendDataToFlask',
+				data : JSON.stringify(jsonData),
+				contentType : 'application/json',
+				success : function(res) {
+					
+				},
+				error : function(){
+					
+				}
+			})
+			
+			
+			
+			
+			
+			
+			
+		}
+		
 		
 		
 		cookiedata = document.cookie;
