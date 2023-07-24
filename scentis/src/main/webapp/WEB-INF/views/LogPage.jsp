@@ -149,10 +149,25 @@
     			let P_NUM1 = b;
     			let P_NUM2 = c;
     			let P_NUM3 = d;
-    			console.log(M_ID)
-    			console.log(P_NUM1)
-    			console.log(P_NUM2)
-    			console.log(P_NUM3)
+    			
+    			var jsonData = {
+       			    m_ID : M_ID,
+        		};
+        		
+        		$.ajax({
+        			type : 'POST',
+        			url : '${cpath}/sendDataToFlask4',
+        			data : JSON.stringify(jsonData),
+        			contentType : 'application/json',
+        			success : function(res) {
+        				console.log("json 통신 성공");
+        				console.log(res);
+        			},
+        			error : function() {
+        				console.log("json 통신 실패");
+        			}
+        		});
+        		
     		}
     		
 		//})
