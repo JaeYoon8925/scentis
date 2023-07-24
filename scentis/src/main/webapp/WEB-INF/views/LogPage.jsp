@@ -39,16 +39,46 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section class="section4">
             <p class="title1">Search Music</p>
             <div class="logbox">
-                
-                <c:forEach items="${log}" var="log">
-                	<div class="logbox2">
-	                	<img src="${log.m_IMG}" height="200px" width="200px">
-	                	<p class="title2">${log.m_ARTIST} <br> ${log.m_TITLE}</p>
-	            	</div>
-                </c:forEach>
+    <!-- 
+				<table>
+				<tr>
+				<c:forEach var="log" items="${log}" varStatus="status">
+				<c:if test="${status.index%2==0}">
+				</tr>
+				<tr>
+				</c:if>
+				    <td><img src="${log.m_IMG}" height="200px" width="200px">
+				    	<p class="title2" onclick="mid(${log.m_ID}, ${log.p_NUM1}, ${log.p_NUM2}, ${log.p_NUM3})"> ${log.m_ARTIST} <br> ${log.m_TITLE}</p>
+				    </td>
+				</c:forEach>
+				</tr>
+				</table> 
+           -->
+				<table>
+					<tr>
+						<c:forEach var="log" items="${log}" varStatus="status">
+							<c:if test="${status.index%2==0}">
+					</tr>
+					<tr>
+						</c:if>
+						<td
+							onclick="mid('${log.m_ID}', '${log.p_NUM1}', '${log.p_NUM2}', '${log.p_NUM3}')">
+							<img src="${log.m_IMG}" height="200px" width="200px">
+							<p class="title2">
+								${log.m_ARTIST} <br> ${log.m_TITLE}
+							</p>
+						</td>
+						</c:forEach>
+					</tr>
+				</table>
+
+
+				<div class="modal">
+				
+			</div>
                 
             </div>
         </section>
@@ -111,9 +141,21 @@
     </footer>
     
     <script type="text/javascript">
-    	$('.title2').on('click', function () {
+    	
+    	//$('.title2').on('click', function () {
 			
-		})
+    		function mid(a, b, c, d) {
+    			let M_ID = a;
+    			let P_NUM1 = b;
+    			let P_NUM2 = c;
+    			let P_NUM3 = d;
+    			console.log(M_ID)
+    			console.log(P_NUM1)
+    			console.log(P_NUM2)
+    			console.log(P_NUM3)
+    		}
+    		
+		//})
     
     
     

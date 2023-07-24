@@ -45,31 +45,35 @@ div.menuBar>a:hover {
 
 /* 섹션 */
 .section1 {
-	height: 800px;
+	/*height: 800px;*/
 	/* background-size: 100%; */
 	/* background-size: cover; */
 	background-repeat: no-repeat;
 	display: flex;
 	/* justify-content: center; */
 	justify-content: space-between;
-	align-items: center;
+	/*align-items: center;*/
 	text-align: center;
 }
 
 .section2 {
-	height: 800px;
+	/*height: 800px;*/
 	width: 400px;
 	align-items: center;
 	text-align: center;
 	background-color: #10c410;
+	display: flex;
+	justify-content: center;
 }
 
 .section3 {
-	height: 800px;
+	/*height: 800px;*/
 	width: 400px;
 	align-items: center;
 	text-align: center;
 	background-color: #fff87c;
+	display: flex;
+	justify-content: center;
 }
 
 .title {
@@ -230,9 +234,11 @@ div.column>a:hover {
 	margin-top: 40px;
 }
 
+/*
 .log {
 	margin-top: 40%;
 }
+*/
 
 .perfume {
 	font-size: 19px;
@@ -247,7 +253,7 @@ div.column>a:hover {
 .logbox {
 	display: flex;
 	/*overflow-x: hidden;*/
-	overflow: scroll;
+	/*overflow: scroll;*/
 }
 
 .logbox2 {
@@ -262,3 +268,19 @@ div.column>a:hover {
 	display: none;
 	display: flex;
 }
+
+.section4 {
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+}
+
+td {
+	padding: 30px;
+}
+
+.title2:hover {
+	cursor: pointer;
+	color: #10c410;
+}
+
