@@ -137,9 +137,9 @@
 		console.log(base_note);
 		// JSON 데이터 생성
 		var jsonData = {
-		    P_TOP : top_note,
-			P_MIDDLE : mid_note,
-			P_BASE : base_note
+		    p_TOP : top_note,
+			p_MIDDLE : mid_note,
+			p_BASE : base_note
 		};
 		
 		//let top;
@@ -148,7 +148,7 @@
 		
 		$.ajax({
 			type : 'POST',
-			url : '${cpath}/sendDataToFlask',
+			url : '${cpath}/sendDataToFlask3',
 			data : JSON.stringify(jsonData),
 			contentType : 'application/json',
 			success : function(res) {
