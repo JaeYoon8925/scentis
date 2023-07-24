@@ -42,21 +42,7 @@
         <section class="section4">
             <p class="title1">Search Music</p>
             <div class="logbox">
-    <!-- 
-				<table>
-				<tr>
-				<c:forEach var="log" items="${log}" varStatus="status">
-				<c:if test="${status.index%2==0}">
-				</tr>
-				<tr>
-				</c:if>
-				    <td><img src="${log.m_IMG}" height="200px" width="200px">
-				    	<p class="title2" onclick="mid(${log.m_ID}, ${log.p_NUM1}, ${log.p_NUM2}, ${log.p_NUM3})"> ${log.m_ARTIST} <br> ${log.m_TITLE}</p>
-				    </td>
-				</c:forEach>
-				</tr>
-				</table> 
-           -->
+
 				<table>
 					<tr>
 						<c:forEach var="log" items="${log}" varStatus="status">
@@ -142,9 +128,16 @@
     
     <script type="text/javascript">
     	
-    	//$('.title2').on('click', function () {
-			
     		function mid(a, b, c, d) {
+    			//let M_ID = a;
+    			//let P_NUM1 = b;
+    			//let P_NUM2 = c;
+    			//let P_NUM3 = d;
+    			//console.log(M_ID)
+    			//console.log(P_NUM1)
+    			//console.log(P_NUM2)
+    			//console.log(P_NUM3)
+    			
     			let M_ID = a;
     			let P_NUM1 = b;
     			let P_NUM2 = c;
@@ -168,9 +161,59 @@
         			}
         		});
         		
+        		
+        		
+    			$.ajax({
+    				type: "POST",
+    				url : "logP",
+    				data : {
+    					"P_NUM1" : b,
+    					"P_NUM2" : c,
+    					"P_NUM3" : d
+    				},
+    				success : function(res) {
+						console.log('성공')
+						
+						for (let i = 0; i<3; i++) {
+							let brand = res[i].p_BRAND
+							let model = res[i].p_MODEL
+							//let img = "resources/img/"+brand+"/"+model+".jpg"
+							
+							let logHTML = "";
+							
+							logHTML += `
+				                <div class="modal_content">
+			                		<div class="musicimg">
+			                  			<img src="resources/img/"+\${brand}+"/"+\${model}+".jpg" height="200px" width="200px">
+										<a href="#" class="selectmusic1">
+										<p class="title3" id="musicname1">
+											\${brand} <br> \${model}
+										</p>
+										</a>
+									</div>
+								</div>						
+							`
+						}
+						
+    				
+						$('.modal').html(logHTML);
+						
+						
+						$('.modal').fadeIn();
+						$('.logbox').hide();
+    				},
+					error : function() {
+						console.log('실패')
+					}
+    			})
+        		
+        		
+        		
     		}
+    				
+
     		
-		//})
+		
     
     
     
