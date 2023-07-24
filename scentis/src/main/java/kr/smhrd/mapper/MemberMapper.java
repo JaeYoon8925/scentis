@@ -44,11 +44,11 @@ public interface MemberMapper {
     public ArrayList<Perfume> AllP(String name);
    
    // top,mid,base 가져오기
-   @Select("SELECT DISTINCT P_TOP FROM T_PERFUME ORDER BY P_TOP DESC")
+   @Select("SELECT DISTINCT P_TOP FROM T_PERFUME ORDER BY P_TOP ASC")
    public ArrayList<Perfume> MixTop();
-   @Select("SELECT DISTINCT P_MIDDLE FROM T_PERFUME ORDER BY P_MIDDLE DESC")
+   @Select("SELECT DISTINCT P_MIDDLE FROM T_PERFUME ORDER BY P_MIDDLE ASC")
    public ArrayList<Perfume> MixMid();
-   @Select("SELECT DISTINCT P_BASE FROM T_PERFUME ORDER BY P_BASE DESC")
+   @Select("SELECT DISTINCT P_BASE FROM T_PERFUME ORDER BY P_BASE ASC")
    public ArrayList<Perfume> MixBase();
    
    // 타입에 맞는 향수 3개 랜덤 매칭

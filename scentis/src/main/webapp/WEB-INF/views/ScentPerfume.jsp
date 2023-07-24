@@ -160,13 +160,13 @@
 	               
 	               for (let i=0; i<3; i++){
 	            	   
-	                  let brand=res.p_BRAND[i]
-	                  let model = res.p_MODEL[i]
+	                  let brand = res[i].p_BRAND
+	                  let model = res[i].p_MODEL
 	                  
-	                  musicHTML+=`
+	                  perfumeHTML+=`
 	                	  <div class="modal_content">
 	                		<div class="musicimg">
-	                  			<img src="\${brand}/\${model}.jpg" height="200px" width="200px">
+	                  			<img src="resources/img/\${brand}/\${model}.jpg" height="200px" width="200px">
 								<a href="#" class="selectmusic1">
 								<p class="title3" id="musicname1">
 									\${brand} <br> \${model}
