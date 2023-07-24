@@ -30,7 +30,7 @@
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
 			<a href="goMusicPerfume">My Perfume</a>  <!-- 음악으로 향수 만들기 -->
-			<a href="MixP">Scent Perfume</a>         <!-- 향으로 향수 만들기 -->
+			<a href="ScentP">Scent Perfume</a>         <!-- 향으로 향수 만들기 -->
 			<a href="AllP">All Perfume</a>           <!-- 모든 향수 보기 -->
 			<span>|</span>
 			<a href="goLogPage">My Log</a>           <!-- 내 로그 보기 -->

@@ -19,7 +19,7 @@
       
 		<div class="menuBar">
 			<a href="goMusicPerfume">My Perfume</a>
-			<a href="MixP">Scent Perfume</a>
+			<a href="ScentP">Scent Perfume</a>
 			<span>|</span>
 			<a href="goLogPage">My Log</a>
             <a href="logout" class="logoutButton">Logout</a>

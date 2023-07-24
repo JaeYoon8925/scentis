@@ -16,7 +16,7 @@
 <body>
 <!--  user에 사용자정보
       Mylog에 내 로그 
-      TrendP에 트랜드퍼퓸 top3  -->
+      RecP에 랜덤퍼퓸  -->
 	<nav>
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
@@ -78,6 +78,7 @@
                	<p class="title1">Recommend Perfume</p>
 				<img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg"height="300px" width="250px">
 				<p class="perfume">	${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
+				<p>${RecP.p_BRAND} ${Recp.p_MODEL} ${Recp.p_TOP} ${Recp.p_MIDDLE} ${Recp.p_BASE}</p>
             </div>
         </section>
         

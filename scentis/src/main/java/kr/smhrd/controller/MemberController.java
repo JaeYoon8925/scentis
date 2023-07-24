@@ -55,14 +55,10 @@ public class MemberController {
 	public String goLogPage(HttpSession session, Member user, Model model) {
 		System.out.println("/goLogPage 요청받음.");
 		
-		// 세션에 저장된 ID값 뽑아오기. 
-		// loginUser.get~~ 이녀석을 통해서 LogLoad , LogLoadPInfo 실행.
+//		 세션에 저장된 ID값 뽑아오기. 
+//		 loginUser.get~~ 이녀석을 통해서 LogLoad , LogLoadPInfo 실행.
 		Member loginUser = (Member) session.getAttribute("user");
 		String id = loginUser.getID();
-
-//		// 회원의 MyLog + 향수cnt 기준 best top3
-//		ArrayList<MyLog> myLog = mapper.LogCheck(user);
-//		model.addAttribute("myLog", myLog);
 		
 		ArrayList<MyLog> log = mapper.LogLoad(id);
 		System.out.println(log.size());
@@ -79,11 +75,11 @@ public class MemberController {
 			int num3 = logList.getP_NUM3();
 			
 			ArrayList<Perfume> logPerfume = mapper.LogLoadPInfo(num1, num2, num3);
-			System.out.println(logPerfume);
-			System.out.println(logPerfume.get(0));
-			System.out.println(logPerfume.get(1));
-			System.out.println(logPerfume.get(2));
-			System.out.println();
+//			System.out.println(logPerfume);
+//			System.out.println(logPerfume.get(0));
+//			System.out.println(logPerfume.get(1));
+//			System.out.println(logPerfume.get(2));
+//			System.out.println();
 			
 			logListPerfume.add(logPerfume);
 			
@@ -93,29 +89,31 @@ public class MemberController {
 			}
 			
 		}
+		Perfume RecP = service.RecP();
+		model.addAttribute("RecP", RecP);
+		
 //		MyLog b = log.get(0);
 //		int P_num1 = b.getP_NUM1();
 //
 //		System.out.println(b);
 //		System.out.println(P_num1);
-		
-//		ArrayList<Perfume> TrendP = mapper.TrendP();
-//		model.addAttribute("TrendP", TrendP);
 
-		// 로그인이 되어있다면 요청대로 로그 페이지로 이동
+
 		return "LogPage";
 	}
 
 	// 향선택 향수 찾기 페이지 이동
-	@RequestMapping("/MixP")
+	@RequestMapping("/ScentP")
 	public String MixP(Model model) {
+		Perfume RecP = service.RecP();
+		model.addAttribute("RecP", RecP);
 		ArrayList<Perfume> Top = mapper.MixTop();
 		ArrayList<Perfume> Mid = mapper.MixMid();
 		ArrayList<Perfume> Base = mapper.MixBase();
 		model.addAttribute("Ptop", Top);
 		model.addAttribute("Pmid", Mid);
 		model.addAttribute("Pbase", Base);
-		return "mixPerfume";
+		return "ScentPerfume";
 	}
 
 	// 로그인
