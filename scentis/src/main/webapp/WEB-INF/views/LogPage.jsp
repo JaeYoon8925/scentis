@@ -40,45 +40,26 @@
             </div>
         </section>
         <section>
-            <div>
-                <p class="title1">Search Music</p>
-                <p class="title2">Singer - Music</p>
-                <div class="imgbox">
-                    <div>
-                        <img src="./image/블랑쉬.jpg" height="330px" width="250px">
-                        <p class="title3">바이레도 <br> 블랑쉬</p>
-                    </div>
-                    <div>
-                        <img src="./image/17 도손 오 드 뚜왈렛.jpg" height="330px" width="250px">
-                        <p class="title3">딥디크 <Br> 도손</p>
-                    </div>
-                    <div>
-                        <img src="./image/아쿠아 디 콜로니아 - 가데니아.jpg" height="330px" width="250px">
-                        <p class="title3">산타마리아노벨라 <br> 아쿠아 디 콜로니아</p>
-                    </div>
-                </div>
+            <p class="title1">Search Music</p>
+            <div class="logbox">
+                
+                <c:forEach items="${log}" var="log">
+                	<div class="logbox2">
+	                	<img src="${log.m_IMG}" height="200px" width="200px">
+	                	<p class="title2">${log.m_ARTIST} <br> ${log.m_TITLE}</p>
+	            	</div>
+                </c:forEach>
+                
             </div>
         </section>
         
-              <c:forEach items="${logListPerfume}" var="perfumeList">
-          <ul>
-             <c:forEach items="${perfumeList}" var="perfume">
-                  <li>
-                      P_NUM : ${perfume.p_NUM} <br>
-                      P_BRAND : ${perfume.p_BRAND} <br>
-                     P_MODEL : ${perfume.p_MODEL} <br>
-                     <img src="resources/img/${perfume.p_BRAND}/${perfume.p_MODEL}.jpg"height="60px" width="50px">
-                 </li>
-              </c:forEach>
-          </ul>
-      </c:forEach>
+
 
         <section class="section3">
             <div class="log">
                	<p class="title1">Recommend Perfume</p>
 				<img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg"height="300px" width="250px">
 				<p class="perfume">	${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
-				<p>${RecP.p_BRAND} ${Recp.p_MODEL} ${Recp.p_TOP} ${Recp.p_MIDDLE} ${Recp.p_BASE}</p>
             </div>
         </section>
         
@@ -128,6 +109,19 @@
             </div>
         </div>
     </footer>
+    
+    <script type="text/javascript">
+    	$('.title2').on('click', function () {
+			
+		})
+    
+    
+    
+    
+    
+    </script>
+    
+    
 
 
 </body>

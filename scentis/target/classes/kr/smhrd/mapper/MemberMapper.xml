@@ -16,22 +16,13 @@ FROM T_LOG A
 </select>
 
 <!-- 로그인 된 계정의 로그들 불러오기 -->
-<!-- 여기서 m_title , m_artist , m_img 를 뽑아내면 됌. -->
 <select id="LogLoad" resultType="kr.smhrd.entity.MyLog">
-SELECT *
-FROM T_LOG 
-WHERE ID=#{ID}
-</select>
-
-<!-- 로그에 있는 P_NUM1 을 통해 향수의 상세 정보 불러오기, 2와 3도 필요 --> 
-<!-- 여기서 p_num , p_brand , p_model , p_info 를 뽑아내면 됌. -->
-<select id="LogLoadPInfo" resultType="kr.smhrd.entity.Perfume">
-SELECT * FROM T_PERFUME WHERE P_NUM IN (#{num1}, #{num2}, #{num3});
+SELECT * FROM T_LOG WHERE ID=#{ID}
 </select>
 
 <!-- 결과로그 저장 -->
 <insert id="saveLog" parameterType="kr.smhrd.entity.Log">
-INSERT INTO T_LOG (ID,M_TITLE,M_ARTIST,M_IMG,P_NUM1,P_NUM2,P_NUM3) 
-VALUES(#{ID},${M_TITLE},${M_ARTIST},#{M_IMG},#{P_NUM1},#{P_NUM2},#{P_NUM3})
+INSERT INTO T_LOG (ID,M_ID,M_TITLE,M_ARTIST,M_IMG,P_NUM1,P_NUM2,P_NUM3) 
+VALUES(#{ID},#{M_ID},#{M_TITLE},#{M_ARTIST},#{M_IMG},#{P_NUM1},#{P_NUM2},#{P_NUM3})
 </insert>
 </mapper>

@@ -256,15 +256,31 @@
 						console.log(i.p_MODEL);
 						perfumeHTML+=`
 							<div class="modal_content">
-	                		<div class="musicimg">
-	                  			<img src="\${perfumeimg}" height="200px" width="200px">
-								<a href="#" class="selectperfume">
-								<p class="title3" id="musicname1">
-									\${i.p_BRAND} <br> \${i.p_MODEL} </p>
-								</a>
-							</div>
+		                		<div class="musicimg">
+		                			<div class="card">
+		                			
+		                  				<div class="side">
+		                  					<img src="\${perfumeimg}" height="300px" width="200px">
+											<a href="#" class="selectperfume">
+											<p class="title3" id="musicname1">
+												\${i.p_BRAND} <br> \${i.p_MODEL} </p>
+											</a>
+		                  				
+		                  				</div>
+		                  				
+										
+		                  				<div class="side back"> 
+		                  					<p>\${i.p_INFO}</p>
+		                  					<a href="\${i.p_PATH}">
+		                  						<p> 상품 보러 가기 </p>
+		                  					</a>
+		                  				</div>
+		                  				
+		                			</div>
+		                			
+									
+								</div>
 							</div>`
-							// 만족도 내용 추가필요
 					}
 		               $('#loading').hide();
 		               $('.modal').html(perfumeHTML);
