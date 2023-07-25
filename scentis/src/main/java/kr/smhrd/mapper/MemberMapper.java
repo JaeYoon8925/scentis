@@ -32,7 +32,7 @@ public interface MemberMapper {
    public ArrayList<MyLog> LogLoad(String id);
    
    // 각 로그별 향수 1 2 3 의 정보 불러오기
-   @Select("SELECT * FROM T_PERFUME WHERE P_NUM IN (#{num1}, #{num2}, #{num3});")
+   @Select("SELECT * FROM T_PERFUME WHERE P_NUM IN (#{num1}, #{num2}, #{num3})")
    public ArrayList<Perfume> LogP(@Param("num1") int num1, @Param("num2") int num2, @Param("num3") int num3);
    
    // random perfume 하나씩 가져오기

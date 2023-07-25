@@ -10,6 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,7 +57,7 @@ public class MemberRESTController {
 	}
 
 	// 로그에서 앨범클릭 시 관련 향수 전송
-	@RequestMapping("logP")
+	@RequestMapping(value = "/LogP", method = RequestMethod.POST)
 	public ArrayList<Perfume> LogP(int num1, int num2, int num3) {
 		ArrayList<Perfume> logP = mapper.LogP(num1, num2, num3);
 		return logP;

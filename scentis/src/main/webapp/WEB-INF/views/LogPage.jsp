@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
@@ -17,16 +17,16 @@
 <!--  user에 사용자정보
       Mylog에 내 로그 
       RecP에 랜덤퍼퓸  -->
-	<nav>
-		<a href="${cpath}/" class="logo">Scentit</a>
-		<div class="menuBar">
-			<a href="goMusicPerfume">My Perfume</a>
-			<a href="MixP">Scent Perfume</a>
-			<a href="AllP">All Perfume</a>
-			<span>|</span>
+   <nav>
+      <a href="${cpath}/" class="logo">Scentit</a>
+      <div class="menuBar">
+         <a href="goMusicPerfume">My Perfume</a>
+         <a href="MixP">Scent Perfume</a>
+         <a href="AllP">All Perfume</a>
+         <span>|</span>
             <a href="logout" class="logoutButton">Logout</a>
-		</div>
-	</nav>
+      </div>
+   </nav>
 
     <section class="section1">
         <section class="section2">
@@ -40,31 +40,29 @@
             </div>
         </section>
         <section class="section4">
+            <div class="modal">
+            </div>
             <p class="title1">Search Music</p>
             <div class="logbox">
 
-				<table>
-					<tr>
-						<c:forEach var="log" items="${log}" varStatus="status">
-							<c:if test="${status.index%2==0}">
-					</tr>
-					<tr>
-						</c:if>
-						<td
-							onclick="mid('${log.m_ID}', '${log.p_NUM1}', '${log.p_NUM2}', '${log.p_NUM3}')">
-							<img src="${log.m_IMG}" height="200px" width="200px">
-							<p class="title2">
-								${log.m_ARTIST} <br> ${log.m_TITLE}
-							</p>
-						</td>
-						</c:forEach>
-					</tr>
-				</table>
+            <table>
+               <tr>
+                  <c:forEach var="log" items="${log}" varStatus="status">
+                     <c:if test="${status.index%2==0}">
+               </tr>
+               <tr>
+                  </c:if>
+                  <td onclick="mid('${log.m_ID}','${log.p_NUM1}','${log.p_NUM2}','${log.p_NUM3}')">
+                     <img src="${log.m_IMG}" height="200px" width="200px">
+                     <p class="title2">${log.m_ARTIST} <br> ${log.m_TITLE}
+                     </p>
+                  </td>
+                  </c:forEach>
+               </tr>
+            </table>
 
 
-				<div class="modal">
-				
-			</div>
+
                 
             </div>
         </section>
@@ -73,9 +71,9 @@
 
         <section class="section3">
             <div class="log">
-               	<p class="title1">Recommend Perfume</p>
-				<img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg"height="300px" width="250px">
-				<p class="perfume">	${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
+                  <p class="title1">Recommend Perfume</p>
+            <img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg"height="300px" width="250px">
+            <p class="perfume">   ${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
             </div>
         </section>
         
@@ -127,93 +125,53 @@
     </footer>
     
     <script type="text/javascript">
-    	
-    		function mid(a, b, c, d) {
-    			//let M_ID = a;
-    			//let P_NUM1 = b;
-    			//let P_NUM2 = c;
-    			//let P_NUM3 = d;
-    			//console.log(M_ID)
-    			//console.log(P_NUM1)
-    			//console.log(P_NUM2)
-    			//console.log(P_NUM3)
-    			
-    			let M_ID = a;
-    			let P_NUM1 = b;
-    			let P_NUM2 = c;
-    			let P_NUM3 = d;
-    			
-    			var jsonData = {
-       			    m_ID : M_ID,
-        		};
-        		
-        		$.ajax({
-        			type : 'POST',
-        			url : '${cpath}/sendDataToFlask4',
-        			data : JSON.stringify(jsonData),
-        			contentType : 'application/json',
-        			success : function(res) {
-        				console.log("json 통신 성공");
-        				console.log(res);
-        			},
-        			error : function() {
-        				console.log("json 통신 실패");
-        			}
-        		});
-        		
-        		
-        		
-    			$.ajax({
-    				type: "POST",
-    				url : "logP",
-    				data : {
-    					"P_NUM1" : b,
-    					"P_NUM2" : c,
-    					"P_NUM3" : d
-    				},
-    				success : function(res) {
-						console.log('성공')
-						
-						for (let i = 0; i<3; i++) {
-							let brand = res[i].p_BRAND
-							let model = res[i].p_MODEL
-							//let img = "resources/img/"+brand+"/"+model+".jpg"
-							
-							let logHTML = "";
-							
-							logHTML += `
-				                <div class="modal_content">
-			                		<div class="musicimg">
-			                  			<img src="resources/img/"+\${brand}+"/"+\${model}+".jpg" height="200px" width="200px">
-										<a href="#" class="selectmusic1">
-										<p class="title3" id="musicname1">
-											\${brand} <br> \${model}
-										</p>
-										</a>
-									</div>
-								</div>						
-							`
-						}
-						
-    				
-						$('.modal').html(logHTML);
-						
-						
-						$('.modal').fadeIn();
-						$('.logbox').hide();
-    				},
-					error : function() {
-						console.log('실패')
-					}
-    			})
-        		
-        		
-        		
-    		}
-    				
+       
+          function mid(a, num1, num2, num3) {
 
-    		
-		
+        	  $.ajax({
+        		  url : 'LogP',
+        		  type: 'post',
+        		  data : {
+        			  "num1":num1,
+        			  "num2":num2,
+        			  "num3":num3
+        		  },
+        		   success : function(res) {
+        			   let logHTML = "";
+        				console.log('성공');
+        				//console.log(res[0].p_BRAND);
+        				//console.log(res[0].p_MODEL);
+        				for (let i = 0; i<3; i++) {
+        					let brand = res[i].p_BRAND
+        					let model = res[i].p_MODEL
+        					console.log(brand)
+        					console.log(model)
+        					let src1 = "resources/img/"+brand+"/"+model+".jpg";
+        					let alt1 = "resources/img/"+brand+"/"+model+".png";
+        					logHTML += `
+        					<div class="modal_content">
+        					<div class="musicimg">
+        					<img  src="\${src1}" alt="\${alt1}" height="200px" width="200px">
+                            <a href="#" class="selectmusic1">
+                            <p class="title3" id="musicname1">\${brand} <br> \${model}
+                            </p>
+                            </a>
+                            </div>
+                            </div>
+                            `}
+        				$('.modal').html(logHTML);
+        				$('.modal').fadeIn();
+        				$('.logbox').hide();
+        				},
+        				error : function() {
+        					console.log('실패')
+        					}
+             });
+        	  }
+                
+
+          
+      
     
     
     
