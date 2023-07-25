@@ -284,7 +284,7 @@
                               
                                     <div class="side back"> 
                                        <p>\${i.p_INFO}</p>
-                                       <p><a href="\${i.p_PATH}">
+                                       <p><a href="\${i.p_PATH}" target="_blank">
                                            상품 보러 가기 
                                        </a></p>
                                     </div>

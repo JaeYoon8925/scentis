@@ -17,7 +17,7 @@ FROM T_LOG A
 
 <!-- 로그인 된 계정의 로그들 불러오기 -->
 <select id="LogLoad" resultType="kr.smhrd.entity.MyLog">
-SELECT * FROM T_LOG WHERE ID=#{ID}
+SELECT * FROM T_LOG WHERE ID=#{ID} ORDER BY LOG_NUM DESC
 </select>
 
 <!-- 결과로그 저장 -->

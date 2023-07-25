@@ -180,7 +180,7 @@
 									
                                     <div class="side back"> 
                                     <p>\${res[i].p_INFO}</p>
-                                    <p><a href="\${res[i].p_PATH}">
+                                    <p><a href="\${res[i].p_PATH}" target="_blank">
                                         상품 보러 가기 
                                     </a></p>
                                  </div>

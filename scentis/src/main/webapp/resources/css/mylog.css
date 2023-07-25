@@ -279,6 +279,8 @@ div.column>a:hover {
 
 td {
 	padding: 30px;
+	border: 1px solid #c1c1c1;
+	border-radius: 50px;
 }
 
 .title2:hover {

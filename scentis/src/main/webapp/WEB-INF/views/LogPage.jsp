@@ -43,7 +43,7 @@
         </section>
         <section class="section4">
 
-            <p class="title1">Search Music</p>
+            <p class="title1">MY LOG</p>
             <div class="logbox">
 
             <table>
@@ -53,7 +53,7 @@
                </tr>
                <tr>
                   </c:if>
-                  <td onclick="mid('${log.m_ID}','${log.p_NUM1}','${log.p_NUM2}','${log.p_NUM3}')">
+                  <td class="a" onclick="mid('${log.m_ID}','${log.p_NUM1}','${log.p_NUM2}','${log.p_NUM3}')">
                      <img src="${log.m_IMG}" height="200px" width="200px">
                      <p class="title2">${log.m_ARTIST} <br> ${log.m_TITLE}
                      </p>
@@ -90,11 +90,11 @@
 
 
         <section class="section3">
-            <div class="log">
-                  <p class="title1">Recommend Perfume</p>
-            <img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg"height="300px" width="250px">
-            <p class="perfume">   ${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
-            </div>
+	        <video autoplay loop muted>
+				<source src="resources/img/banner.mp4"
+					type="video/mp4">
+	
+			</video>
         </section>
         
         
@@ -255,11 +255,11 @@
         				$('.title1').hide();
         				
         				$('.section4').on('click', function () {
-							$('.modal').fadeOut();
-							$('.chart').fadeOut();
-							$('.info').fadeOut();
-        					$('.logbox').fadeIn();
-        					$('.title1').fadeIn();
+							$('.modal').hide();
+							$('.chart').hide();
+							$('.info').hide();
+        					$('.logbox').show();
+        					$('.title1').show();
 						});
         				
         				
