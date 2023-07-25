@@ -11,6 +11,8 @@
 <title>Document</title>
 <link rel="stylesheet" href="resources/css/mylog.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
@@ -40,8 +42,7 @@
             </div>
         </section>
         <section class="section4">
-            <div class="modal">
-            </div>
+
             <p class="title1">Search Music</p>
             <div class="logbox">
 
@@ -60,11 +61,30 @@
                   </c:forEach>
                </tr>
             </table>
-
-
-
-                
             </div>
+            
+         	
+         	<div class="info">
+         		<div class="info1">
+	            	<div class="chart">
+	           		<canvas id="myChart"></canvas>
+	         		</div>
+	         	
+	         		<div class="info2">
+		         		<p>acusticness : 어쿠스틱 장르인 정도</p>
+		         		<p>danceability : 춤 추기에 어울리는 정도</p>
+		         		<p>energy : 빠르거나 시끄러운 음악인 정도</p>
+		         		<p>valence : 곡이 긍정적인 감정인지의 정도</p>
+		         		<p>tempo : 곡의 빠르기</p>
+		         		<p>time signature : 박자</p>
+	         		</div>
+         		</div>
+         		
+         	</div>
+         	
+            <div class="modal">
+            </div>
+            
         </section>
         
 
@@ -125,6 +145,37 @@
     </footer>
     
     <script type="text/javascript">
+		    let k =[];
+		    let v = [];
+		function makechart(k, v){
+		   let ctx = document.getElementById('myChart');
+		   let data = {
+		           labels: k,
+		           datasets: [{
+		             label: 'Music Data',
+		             data: v,
+		             fill: true,
+		             backgroundColor: 'rgba(255, 159, 64, 0.2)',
+		             borderColor: 'rgba(255, 159, 64, 0.6)',
+		             pointBackgroundColor: 'rgba(255, 159, 64, 0.2)',
+		             pointBorderColor: '#fff',
+		             pointHoverBackgroundColor: '#fff',
+		             pointHoverBorderColor: 'rgba(255, 159, 64, 0.2)'
+		           }]
+		         };
+		     new Chart(ctx, {
+		       type: 'radar',
+		       data: data,
+		       options: {
+		         scales: {
+		           y: {
+		             beginAtZero: true,
+		        	 display: false,
+		           }
+		         }
+		       }
+		     });
+		}
        
           function mid(a, num1, num2, num3) {
               //let M_ID = a;
@@ -135,9 +186,9 @@
               //console.log(P_NUM1)
               //console.log(P_NUM2)
               //console.log(P_NUM3)
-
+              
               var jsonData = {
-                     m_ID : a,
+                     m_ID : a
                };
                
                $.ajax({
@@ -147,14 +198,27 @@
                   contentType : 'application/json',
                   success : function(res) {
                      console.log("json 통신 성공");
-                     console.log(res);
-                     console.log(res);
-                     console.log(res);
+                     console.log(Object.keys(res));
+                     console.log(Object.values(res));
+                     k=[];
+                     v=[];
+                     for(let i = 0; i <6; i++){
+                        k.push(Object.keys(res)[i]);
+                        if ((Object.values(res)[i])<1){
+                           v.push((Object.values(res)[i])*100);
+                        }else if (Object.values(res)[i]>1){
+                        v.push(Object.values(res)[i]);
+                        }
+                         }
+                     makechart(k,v);
+                     
                   },
                   error : function() {
                      console.log("json 통신 실패");
                   }
                });
+
+
         	  $.ajax({
         		  url : 'LogP',
         		  type: 'post',
@@ -177,18 +241,28 @@
         					let alt1 = "resources/img/"+brand+"/"+model+".png";
         					logHTML += `
         					<div class="modal_content">
-        					<div class="musicimg">
-        					<img  src="\${src1}" alt="\${alt1}" height="200px" width="200px">
-                            <a href="#" class="selectmusic1">
-                            <p class="title3" id="musicname1">\${brand} <br> \${model}
-                            </p>
-                            </a>
-                            </div>
+        						<img  src="\${src1}" alt="\${alt1}" height="200px" width="200px">
+                            	<p class="title3" id="musicname1">\${brand} <br> \${model} </p>
+                            
                             </div>
                             `}
         				$('.modal').html(logHTML);
+        				
         				$('.modal').fadeIn();
+        				$('.chart').fadeIn();
+        				$('.info').fadeIn();
         				$('.logbox').hide();
+        				$('.title1').hide();
+        				
+        				$('.section4').on('click', function () {
+							$('.modal').fadeOut();
+							$('.chart').fadeOut();
+							$('.info').fadeOut();
+        					$('.logbox').fadeIn();
+        					$('.title1').fadeIn();
+						});
+        				
+        				
         				},
         				error : function() {
         					console.log('실패')

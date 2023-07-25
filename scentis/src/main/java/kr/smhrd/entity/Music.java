@@ -14,8 +14,6 @@ public class Music {
    private String energy;
    private String valence;
    private String tempo;
-   private String mode;
    private String time_signature;
-   private String loudness;
 
 }
