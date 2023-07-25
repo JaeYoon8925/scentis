@@ -204,7 +204,6 @@ public class MemberRESTController {
 	public Music sendDataToFlask3(@RequestBody Log M_ID) {
 		System.out.println("sendDataToFlask4 시작");
 		Music Data = null;
-
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -213,11 +212,10 @@ public class MemberRESTController {
 		System.out.println("4 리스폰스 받음.");
 		String jsonString = response.getBody();
 		ObjectMapper objectMapper = new ObjectMapper();
-
 		try {
 			// JSON 문자열을 객체로 파싱
 			Data = objectMapper.readValue(jsonString, Music.class);
-
+			System.out.println(Data);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

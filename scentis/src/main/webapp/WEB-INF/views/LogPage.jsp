@@ -127,7 +127,32 @@
     <script type="text/javascript">
        
           function mid(a, num1, num2, num3) {
+              //let M_ID = a;
+              //let P_NUM1 = b;
+              //let P_NUM2 = c;
+              //let P_NUM3 = d;
+              //console.log(M_ID)
+              //console.log(P_NUM1)
+              //console.log(P_NUM2)
+              //console.log(P_NUM3)
 
+              var jsonData = {
+                     m_ID : a,
+               };
+               
+               $.ajax({
+                  type : 'POST',
+                  url : '${cpath}/sendDataToFlask4',
+                  data : JSON.stringify(jsonData),
+                  contentType : 'application/json',
+                  success : function(res) {
+                     console.log("json 통신 성공");
+                     console.log(res);
+                  },
+                  error : function() {
+                     console.log("json 통신 실패");
+                  }
+               });
         	  $.ajax({
         		  url : 'LogP',
         		  type: 'post',
@@ -138,14 +163,14 @@
         		  },
         		   success : function(res) {
         			   let logHTML = "";
-        				console.log('성공');
+        				console.log('logP성공');
         				//console.log(res[0].p_BRAND);
         				//console.log(res[0].p_MODEL);
         				for (let i = 0; i<3; i++) {
         					let brand = res[i].p_BRAND
         					let model = res[i].p_MODEL
-        					console.log(brand)
-        					console.log(model)
+        					//console.log(brand)
+        					//console.log(model)
         					let src1 = "resources/img/"+brand+"/"+model+".jpg";
         					let alt1 = "resources/img/"+brand+"/"+model+".png";
         					logHTML += `

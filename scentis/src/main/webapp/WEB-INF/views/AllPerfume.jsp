@@ -137,18 +137,13 @@
                "name" : name
             },
             success : function (res) {
-               //console.log(res);
                let perfumeHTML ="";
                let perfume = [];
                for (let i = 0; i < res.length; i++){
-               //console.log(res[i].p_BRAND)
-               //console.log(res[i].p_MODEL)
                let brand = res[i].p_BRAND
                let model = res[i].p_MODEL
                perfume.push(brand)
                perfume.push(model)
-               //console.log(perfume)
-               //console.log(brand)              
             
                let src1 = "resources/img/"+brand+"/"+model+".jpg";
                let alt1 = "resources/img/"+brand+"/"+model+".png";
