@@ -41,7 +41,7 @@ div.menuBar>span {
 }
 
 div.menuBar>a:hover {
-    color:  #fff87c;
+    color:  #10c410;
 }
 
 /* 섹션 */
@@ -123,7 +123,7 @@ div.column>a {
 }
 
 div.column>a:hover {
-    color:  #fff87c;
+    color:  #10c410;
 }
 
 
@@ -151,7 +151,7 @@ div.column>a:hover {
 }
 
 .icon-box i:hover {
-    color:  #fff87c;
+    color:  #10c410;
 }
 
 /* KOREA 라인 */
@@ -178,5 +178,5 @@ div.column>a:hover {
 }
 
 .last-line a:hover {
-    color:  #fff87c;
+    color:  #10c410;
 }

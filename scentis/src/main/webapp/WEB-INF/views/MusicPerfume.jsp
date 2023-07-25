@@ -98,7 +98,11 @@
          <div class="modal">
             
          </div>
-
+         
+         <div>
+         	<button class="backbtn">다른 노래 검색하기</button>
+         	<button class="logbtn" onclick="location.href='goLogPage'">음악 분석 결과 확인하기</button>
+		 </div>
 
          <div id="loading">
             <img src="resources/img/Spinner.gif" alt="loading">
@@ -207,10 +211,19 @@
 
                $('.modal').fadeIn();
                $('.searchbox').hide();
+               $('.backbtn').show();
+               $('.logbtn').show();
                
-               $('.musicimg').on('click', function() {
-               $('.modal').fadeOut();
-               $('#loading').show();
+               $('.musicimg').on('click', function () {
+            	   $('#loading').show();
+			})
+               
+               $('.backbtn').on('click', function() {
+	               $('.modal').hide();
+	               $('.searchbox').show();
+	               $('#loading').hide();
+	               $('.backbtn').hide();
+	               $('.logbtn').hide();
                //trackid = $('.trackid').val();
                //track_id = trackid;
                //let text = $(this).text();

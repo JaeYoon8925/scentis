@@ -23,7 +23,7 @@
       <a href="${cpath}/" class="logo">Scentit</a>
       <div class="menuBar">
          <a href="goMusicPerfume">My Perfume</a>
-         <a href="MixP">Scent Perfume</a>
+         <a href="ScentP">Scent Perfume</a>
          <a href="AllP">All Perfume</a>
          <span>|</span>
             <a href="logout" class="logoutButton">Logout</a>

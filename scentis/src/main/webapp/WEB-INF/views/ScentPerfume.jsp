@@ -42,28 +42,28 @@
 					<div class="Box1">
 						<p class="title3">TOP NOTE</p>
 						<select class="p1" id="top_note">
-							<option value="0">TOP NOTE</option>
+							<option value="0">TOP NOTE SELECT</option>
 							<c:forEach items="${Ptop}" var="d">
 								<option class="p2" value="${d.p_TOP}">${d.p_TOP}</option>
 							</c:forEach>
 						</select>
 						<p class="title3">MIDDLE NOTE</p>
 						<select class="p1" id="mid_note">
-							<option value="0">MIDDLE NOTE</option>
+							<option value="0">MIDDLE NOTE SELECT</option>
 							<c:forEach items="${Pmid}" var="d">
 								<option class="p2" value="${d.p_MIDDLE}">${d.p_MIDDLE}</option>
 							</c:forEach>
 						</select>
 						<p class="title3">BASE NOTE</p>
 						<select class="p1" id="base_note">
-							<option value="0">BASE NOTE</option>
+							<option value="0">BASE NOTE SELECT</option>
 							<c:forEach items="${Pbase}" var="d">
 								<option class="p2" value="${d.p_BASE}">${d.p_BASE}</option>
 							</c:forEach>
 						</select>
 						<!--  <input class="inputbox" type="text" id="m_TITLE" name="m_TITLE">-->
-						<button id="selectbtn" class="btn">검색하기</button>
 					</div>
+						<button id="selectbtn" class="btn">검색하기</button>
 				</div>
 			</div>
 
@@ -71,6 +71,8 @@
 			<div class="modal">
 				
 			</div>
+				<button class="backbtn">뒤로가기</button>
+				
 
 
 			<div id="loading">
@@ -166,24 +168,41 @@
 	                  perfumeHTML+=`
 	                	  <div class="modal_content">
 	                		<div class="musicimg">
-	                  			<img src="resources/img/\${brand}/\${model}.jpg" height="200px" width="200px">
-								<a href="#" class="selectmusic1">
-								<p class="title3" id="musicname1">
-									\${brand} <br> \${model}
-								</p>
-								</a>
+	                			<div class="card">
+	                				<div class="side">
+		                  			<img src="resources/img/\${brand}/\${model}.jpg" height="200px" width="200px">
+									<a href="#" class="selectmusic1">
+									<p class="title3" id="musicname1">
+										\${brand} <br> \${model}
+									</p>
+									</a>
+									</div>
+									
+                                    <div class="side back"> 
+                                    <p>\${res[i].p_INFO}</p>
+                                    <p><a href="\${res[i].p_PATH}">
+                                        상품 보러 가기 
+                                    </a></p>
+                                 </div>
+								
+								
+								</div>
 							</div>
 						</div>
 	                  `
 	               }
-	               $('.modal').html(perfumeHTML);
-
+	            $('.modal').html(perfumeHTML);
+	            
+	            //$('#loading').show();
 				$('.modal').fadeIn();
 				$('.searchbox').hide();
+				$('.backbtn').show();
 				
-				$('.musicimg').on('click', function() {
-				$('.modal').fadeOut();
-				$('#loading').show();
+				$('.backbtn').on('click', function() {
+				$('.modal').hide();
+				$('.searchbox').show();
+				$('.backbtn').hide();
+				
 			});
 				
 				
@@ -195,6 +214,9 @@
 	});
 	
 	
+	$(window).load(function () {
+		$('#loading').hide();
+	});
 	
 	
 	</script>
