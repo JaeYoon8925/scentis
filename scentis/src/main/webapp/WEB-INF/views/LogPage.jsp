@@ -148,6 +148,8 @@
                   success : function(res) {
                      console.log("json 통신 성공");
                      console.log(res);
+                     console.log(res);
+                     console.log(res);
                   },
                   error : function() {
                      console.log("json 통신 실패");
