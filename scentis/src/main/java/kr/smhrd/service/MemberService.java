@@ -1,8 +1,11 @@
 package kr.smhrd.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.smhrd.entity.Member;
 import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
 
@@ -16,6 +19,15 @@ public class MemberService {
 		Perfume RecP = mapper.RecP();
 		return RecP;
 	}
+	
+	// 로그인 여부 확인. 로그인된 경우 1 아닌경우 0 리턴.
+	public int loginCheck(HttpSession session) {
+		if ((Member) session.getAttribute("user") == null) {
+			return 0;
+		}
+		return 1;
+	}
+	
 //	// 테스트
 //	public ArrayList<Member> test() {
 //		ArrayList<Member> members = new ArrayList<>();
@@ -46,5 +58,6 @@ public class MemberService {
 //		return result;
 //	}
 //	
+
 
 }
