@@ -143,6 +143,11 @@
     
     <script type="text/javascript">
     
+    	function resetCanvas(){
+    	   $('#myChart').html();
+    	   $('.chart').html('<canvas id="myChart"></canvas>');
+    	   }
+    	
 		    let k =[];
 		    let v = [];
 		function makechart(k, v){
@@ -255,6 +260,7 @@
         				$('.paging').hide();
         				
         				$('.backbtn').on('click', function () {
+        					 resetCanvas();
 							$('.modal').hide();
 							$('.chart').hide();
 							$('.info').hide();
