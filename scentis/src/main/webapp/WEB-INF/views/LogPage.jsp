@@ -46,21 +46,23 @@
             <p class="title1">MY LOG</p>
             <div class="logbox">
 
-            <table>
-               <tr>
-                  <c:forEach var="log" items="${log}" varStatus="status">
-                     <c:if test="${status.index%2==0}">
-               </tr>
-               <tr>
-                  </c:if>
-                  <td class="a" onclick="mid('${log.m_ID}','${log.p_NUM1}','${log.p_NUM2}','${log.p_NUM3}')">
-                     <img src="${log.m_IMG}" height="200px" width="200px">
-                     <p class="title2">${log.m_ARTIST} <br> ${log.m_TITLE}
-                     </p>
-                  </td>
-                  </c:forEach>
-               </tr>
-            </table>
+	            <table>
+	               <tr>
+	                  <c:forEach var="log" items="${log}" varStatus="status">
+	                     <c:if test="${status.index%2==0}">
+	               </tr>
+	               <tr>
+	                  </c:if>
+	                  <td class="a" onclick="mid('${log.m_ID}','${log.p_NUM1}','${log.p_NUM2}','${log.p_NUM3}')">
+	                     <img src="${log.m_IMG}" height="200px" width="200px">
+	                     <p class="title2">${log.m_ARTIST} <br> ${log.m_TITLE}
+	                     </p>
+	                  </td>
+	                  </c:forEach>
+	               </tr>
+	            </table>
+	            
+	            
             </div>
             
             <!--css 파일에 넣어뒀습니다. ctrl+f 페이징 버튼 -->
@@ -97,7 +99,7 @@
 
 
         <section class="section3">
-			<iframe width="400" height="800"
+			<iframe width="400" height="873"
 			src="https://www.youtube.com/embed/i52Rbuu0kdQ?showinfo=0&modestbranding=0&rel=0&amp;autoplay=1&mute=1&controls=0&amp;loop=1&playlist=i52Rbuu0kdQ"
 			frameborder="0"></iframe>
         </section>
