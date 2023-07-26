@@ -44,12 +44,6 @@
         <section class="section4">
 
             <p class="title1">MY LOG</p>
-            <!--css 파일에 넣어뒀습니다. ctrl+f 페이징 버튼 -->
-			<div class="paging">
-				<c:forEach var="pageNum" begin="1" end="${totalPage}">
-					<a href="goLogPage?PageNo=${pageNum}">${pageNum}</a>
-				</c:forEach>
-			</div>
             <div class="logbox">
 
             <table>
@@ -69,6 +63,12 @@
             </table>
             </div>
             
+            <!--css 파일에 넣어뒀습니다. ctrl+f 페이징 버튼 -->
+			<div class="paging">
+				<c:forEach var="pageNum" begin="1" end="${totalPage}">
+					<a class="page" href="goLogPage?PageNo=${pageNum}">${pageNum}</a>
+				</c:forEach>
+			</div>
          	
          	<div class="info">
          		<div class="info1">
@@ -250,6 +250,7 @@
         				$('.info').fadeIn();
         				$('.logbox').hide();
         				$('.title1').hide();
+        				$('.paging').hide();
         				
         				$('.backbtn').on('click', function () {
 							$('.modal').hide();
@@ -258,6 +259,7 @@
 							$('.backbtn').hide();
         					$('.logbox').show();
         					$('.title1').show();
+        					$('.paging').show();
 						});
         				
         				

@@ -41,7 +41,7 @@ div.menuBar>span {
 }
 
 div.menuBar>a:hover {
-	color: #fff87c;
+	color: #10c410;
 }
 
 /* 섹션 */
@@ -167,7 +167,7 @@ div.column>a {
 }
 
 div.column>a:hover {
-	color: #fff87c;
+	color: #10c410;
 }
 
 /* sns box */
@@ -194,7 +194,7 @@ div.column>a:hover {
 }
 
 .icon-box i:hover {
-	color: #fff87c;
+	color: #10c410;
 }
 
 /* KOREA 라인 */
@@ -220,7 +220,7 @@ div.column>a:hover {
 }
 
 .last-line a:hover {
-	color: #fff87c;
+	color: #10c410;
 }
 
 .pro {
@@ -353,10 +353,17 @@ td {
 
 /* 페이징 버튼 */
 .paging {
-  display: flex;
+  margin: 20px;
+  font-weight: 600;
 }
 
 .paging a {
   margin-right: 10px;
+  text-decoration: none;
+  color: black;
+  
 }
-/* 페이징 버튼 */
+
+.page:hover {
+	color: #10c410;
+}
