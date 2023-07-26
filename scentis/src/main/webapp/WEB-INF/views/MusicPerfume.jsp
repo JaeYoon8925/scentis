@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -9,11 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <link
-   href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+	rel="stylesheet">
 <link
-   href="https://fonts.googleapis.com/css?family=Arimo+Hebrew Subset&display=swap"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Arimo+Hebrew Subset&display=swap"
+	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <link rel="stylesheet" href="resources/css/musicperfume.css">
 <link rel="stylesheet" href="resources/css/popup.css" />
@@ -34,119 +34,128 @@
 </script>
 </head>
 <body>
-   <nav>
-      <a href="${cpath}/" class="logo">Scentit</a>
-      <div class="menuBar">
-         <a href="ScentP">Scent Perfume</a>
-         <a href="AllP">All Perfume</a>
-         <span>|</span>
-         <a href="goLogPage">My Log</a>
-            <a href="logout" class="logoutButton">Logout</a>
+	<nav>
+		<a href="${cpath}/" class="logo">Scentit</a>
+		<div class="menuBar">
+			<a href="ScentP">Scent Perfume</a> <a href="AllP">All Perfume</a> <span>|</span>
+			<a href="goLogPage">My Log</a> <a href="logout" class="logoutButton">Logout</a>
 
-      </div>
-   </nav>
-   
-      <!-- 팝업 부분 -->
-      <div class="layerPopup" id="layer_popup" style="visibility: visible;">
-         <div class="layerBox">
-            <h4 class="title10">SCENTIT</h4>
-            <div class="cont">
-               <p>
-                  <img id="popImg" src="resources/img/popup.jpg" width=350 height=300 usemap="#popup"
-                     alt="event page">
-                     <br>검색하기 버튼 클릭 후 <br>노래를 선택해주세요.
-               </p>
-            </div>
-            <form id="popBtn" name="pop_form">
-               <div id="check">
-                  <p id="todayBtn" for="chkbox">&nbsp&nbsp오늘 하루동안 보지 않기</label>
-                  <input type="checkbox" name="chkbox" value="checkbox" id='chkbox'>
-               </div>
-               <div id="close">
-                  <a id="closeBtn" onclick="closePop();">닫기</a>
-               </div>
-            </form>
-         </div>
-      </div>
+		</div>
+	</nav>
+
+	<!-- 팝업 부분 -->
+	<div class="layerPopup" id="layer_popup" style="visibility: visible;">
+		<div class="layerBox">
+			<h4 class="title10">SCENTIT</h4>
+			<div class="cont">
+				<p>
+					<img id="popImg" src="resources/img/popup.jpg" width=350 height=300
+						usemap="#popup" alt="event page"> <br>검색하기 버튼 클릭 후 <br>노래를
+					선택해주세요.
+				</p>
+			</div>
+			<form id="popBtn" name="pop_form">
+				<div id="check">
+					<p id="todayBtn" for="chkbox">
+						&nbsp&nbsp오늘 하루동안 보지 않기</label> <input type="checkbox" name="chkbox"
+							value="checkbox" id='chkbox'>
+				</div>
+				<div id="close">
+					<a id="closeBtn" onclick="closePop();">닫기</a>
+				</div>
+			</form>
+		</div>
+	</div>
 
 
 
-   <section class="section1">
-      <section class="section2">
-            <div class="log">
-                <p class="title">MY LOG</p>
-                <img class="pro" src="resources/img/프사.png">
-                <div class="idnick">
-                    <p>${user.ID}</p>
-                    <p>${user.NICKNAME}</p>
-                </div>
-            </div>
-        </section>
-      <section class="search">
-         <div class="searchbox">
-            <p class="title1">Search Perfume</p>
-            <div>
-               <div class="Box1">
-                  <p class="title3">가수 또는 제목을 입력하세요</p>
-                  <input class="inputbox" type="text" id="m_TITLE" name="m_TITLE">
-                  <button id="selectbtn" class="btn">검색하기</button>
-               </div>
-            </div>
-         </div>
+	<section class="section1">
+		<section class="section2">
+			<div class="log">
+				<p class="title">MY LOG</p>
+				<img class="pro" src="resources/img/프사.png">
+				<div class="idnick">
+					<p>${user.ID}</p>
+					<p>${user.NICKNAME}</p>
+				</div>
+			</div>
+		</section>
+		<section class="search">
+			<div class="searchbox">
+				<p class="title1">Search Perfume</p>
+				<div>
+					<div class="Box1">
+						<p class="title3">가수 또는 제목을 입력하세요</p>
+						<input class="inputbox" type="text" id="m_TITLE" name="m_TITLE">
+						<button id="selectbtn" class="btn">검색하기</button>
+					</div>
+				</div>
+			</div>
 
 
-         <div class="modal">
-            
-         </div>
-         
-         <div>
-         	<button class="backbtn">다른 노래 검색하기</button>
-         	<button class="logbtn" onclick="location.href='goLogPage'">음악 분석 결과 확인하기</button>
-		 </div>
+			<div class="modal"></div>
 
-         <div id="loading">
-            <img src="resources/img/Spinner.gif" alt="loading">
-         </div>
-      </section>
-      
-        <section class="section3">
+			<div>
+				<button class="backbtn">다른 노래 검색하기</button>
+				<button class="logbtn" onclick="location.href='goLogPage'">음악
+					분석 결과 확인하기</button>
+			</div>
+			<div>
+				<a id="btnTwitter" class="link-icon twitter"
+					href="javascript:shareTwitter();"> <img
+					src="resources/img/icon-twitter.png" alt="트위터">
+				</a> <a id="btnFacebook" class="link-icon facebook"
+					href="javascript:shareFacebook();"> <img
+					src="resources/img/icon-facebook.png" alt="페이스북">
+				</a> <a id="btnKakao" class="link-icon kakao"
+					href="javascript:shareKakao();"> <img
+					src="resources/img/icon-kakao.png" alt="카카오">
+				</a>
+			</div>
+
+			<div id="loading">
+				<img src="resources/img/Spinner.gif" alt="loading">
+			</div>
+		</section>
+
+		<section class="section3">
 			<iframe width="400" height="800"
-			src="https://www.youtube.com/embed/Sbmj_QpUaLY?showinfo=0&modestbranding=0&rel=0&amp;autoplay=1&mute=1&controls=0&amp;loop=1&playlist=Sbmj_QpUaLY"
-			frameborder="0"></iframe>
-        </section>
-      
-      
-   </section>
+				src="https://www.youtube.com/embed/Sbmj_QpUaLY?showinfo=0&modestbranding=0&rel=0&amp;autoplay=1&mute=1&controls=0&amp;loop=1&playlist=Sbmj_QpUaLY"
+				frameborder="0"></iframe>
+		</section>
+
+
+	</section>
 
 
 
-   <footer>
-      <div class="container">
-         <div class="footer-menu">
-            <div class="first-box">
+	<footer>
+		<div class="container">
+			<div class="footer-menu">
+				<div class="first-box">
 
-               <div class="column">
-                  <div class="sub-title">COMPANY</div>
-                  <a href="">About</a>
-               </div>
-               <div class="column">
-                  <div class="sub-title">COMMUNITIES</div>
-                  <a href="">For Artists</a> <a href="">Developers</a> <a href="">Advertising</a>
-                  <a href="">Investors</a> <a href="">Vendors</a>
-               </div>
-               <div class="column">
-                  <div class="sub-title">USEFUL LINKS</div>
-                  <a href="">Support</a> <a href="">Web player</a> <a href="">Free
-                     Mobile App</a>
-               </div>
-            </div>
+					<div class="column">
+						<div class="sub-title">COMPANY</div>
+						<a href="">About</a>
+					</div>
+					<div class="column">
+						<div class="sub-title">COMMUNITIES</div>
+						<a href="">For Artists</a> <a href="">Developers</a> <a href="">Advertising</a>
+						<a href="">Investors</a> <a href="">Vendors</a>
+					</div>
+					<div class="column">
+						<div class="sub-title">USEFUL LINKS</div>
+						<a href="">Support</a> <a href="">Web player</a> <a href="">Free
+							Mobile App</a>
+					</div>
+				</div>
 
-         </div>
-         <div class="KOREA">KOREA</div>
-      </div>
-   </footer>
+			</div>
+			<div class="KOREA">KOREA</div>
+		</div>
+	</footer>
 
-   <script>
+	<script>
       
       let a;
       let b;
@@ -312,6 +321,37 @@
       $(window).load(function() {
          $('#loading').hide();
       });
+   </script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script>
+   function shareTwitter() {
+	    var sendText = "Scentit"; // 전달할 텍스트
+	    var sendUrl = "http://localhost:8086/web/"; // 전달할 URL
+	    window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+	}
+   function shareFacebook() {
+	    var sendUrl = "http://localhost:8086/web/"; // 전달할 URL
+	    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+	}
+   function shareKakao() {
+	   // 사용할 앱의 JavaScript 키 설정
+	   Kakao.init('04e6ad0b59a65fec86c8db96d03f87de');
+
+	   // 카카오링크 버튼 생성
+	   Kakao.Link.createDefaultButton({
+	     container: '#btnKakao', // 카카오공유버튼ID
+	     objectType: 'feed',
+	     content: {
+	       title: "쓸모 없는 기능 테스트/주소눌러도 안들어가져용", // 보여질 제목
+	       description: "향수 추천해Dream", // 보여질 설명
+	       imageUrl: "http://localhost:8086/web/", // 콘텐츠 URL
+	       link: {
+	          mobileWebUrl: "http://localhost:8086/web/",
+	          webUrl: "http://localhost:8086/web/"
+	       }
+	     }
+	   });
+	 }
    </script>
 
 

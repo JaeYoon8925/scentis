@@ -434,3 +434,10 @@ a:hover {
 	color: black;
 	background-color: white;
 }
+
+/* SNS 공유하기 버튼 */
+.link-icon { position: relative; display: inline-block; width: auto;    font-size: 14px; font-weight: 500; color: #333; margin-right: 10px; padding-top: 50px; }
+.link-icon.twitter { background-repeat: no-repeat; }
+.link-icon.facebook { background-repeat: no-repeat; } 
+.link-icon.kakao { background-repeat: no-repeat; }
+/* SNS 공유하기 버튼 */
