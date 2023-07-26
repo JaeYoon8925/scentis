@@ -59,7 +59,7 @@ div.menuBar>a:hover {
 
 .section2 {
 	/*height: 800px;*/
-	width: 400px;
+	width: 350px;
 	align-items: center;
 	text-align: center;
 	background-color: #10c410;
@@ -69,10 +69,10 @@ div.menuBar>a:hover {
 
 .section3 {
 	/*height: 800px;*/
-	width: 400px;
+	/*width: 400px;*/
 	align-items: center;
 	text-align: center;
-	background-color: #fff87c;
+	/*background-color: #fff87c;*/
 	display: flex;
 	justify-content: center;
 }
@@ -350,13 +350,3 @@ td {
     font-family: 'Gowun Dodum', sans-serif;
     margin-top: 100px;
 }
-
-/* 페이징 버튼 */
-.paging {
-  display: flex;
-}
-
-.paging a {
-  margin-right: 10px;
-}
-/* 페이징 버튼 */

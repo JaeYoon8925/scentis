@@ -80,13 +80,12 @@
 			</div>
 		</section>
 		
-		<section class="section3">
-         <div class="log">
-            <p class="title1">Recommend Perfume</p>
-            <img src="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.jpg" alt="resources/img/${RecP.p_BRAND}/${RecP.p_MODEL}.png" height="300px" width="250px">
-            <p class="perfume">   ${RecP.p_BRAND} <br> ${RecP.p_MODEL}</p>
-         </div>
-		</section>
+        <section class="section3">
+			<iframe width="400" height="800"
+			src="https://www.youtube.com/embed/gg7ROWp7NAA?showinfo=0&modestbranding=0&rel=0&amp;autoplay=1&mute=1&controls=0&amp;loop=1&playlist=gg7ROWp7NAA"
+			frameborder="0"></iframe>
+        </section>
+        
 	</section>
 
 

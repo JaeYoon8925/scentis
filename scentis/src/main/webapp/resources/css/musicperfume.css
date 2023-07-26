@@ -62,18 +62,18 @@ div.menuBar>a:hover {
 
 .section2 {
    height: 800px;
-   width: 400px;
+   width: 350px;
    align-items: center;
    text-align: center;
    background-color: #10c410;
 }
 
 .section3 {
-   height: 800px;
-   width: 400px;
+   /*height: 800px;*/
+   /*width: 400px;*/
    align-items: center;
    text-align: center;
-   background-color: #fff87c;
+   /*background-color: #fff87c;*/
 }
 
 .title {

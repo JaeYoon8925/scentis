@@ -44,12 +44,6 @@
         <section class="section4">
 
             <p class="title1">MY LOG</p>
-			<!--css 파일에 넣어뒀습니다. ctrl+f 페이징 버튼 -->
-			<div class="paging">
-				<c:forEach var="pageNum" begin="1" end="${totalPage}">
-					<a href="goLogPage?PageNo=${pageNum}">${pageNum}</a>
-				</c:forEach>
-			</div>
             <div class="logbox">
 
             <table>
@@ -97,11 +91,9 @@
 
 
         <section class="section3">
-	        <video autoplay loop muted>
-				<source src="resources/img/banner.mp4"
-					type="video/mp4">
-	
-			</video>
+			<iframe width="400" height="800"
+			src="https://www.youtube.com/embed/i52Rbuu0kdQ?showinfo=0&modestbranding=0&rel=0&amp;autoplay=1&mute=1&controls=0&amp;loop=1&playlist=i52Rbuu0kdQ"
+			frameborder="0"></iframe>
         </section>
         
         
@@ -142,6 +134,7 @@
     </footer>
     
     <script type="text/javascript">
+    
 		    let k =[];
 		    let v = [];
 		function makechart(k, v){
