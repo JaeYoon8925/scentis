@@ -15,9 +15,21 @@ SELECT A.LOG_NUM, A.ID, A.M_TITLE, A.M_ARTIST
 FROM T_LOG A
 </select>
 
+<!-- 계정의 로그 갯수 카운트 -->
+<select id="count" resultType="int">
+	select count(LOG_NUM) 
+	  from T_LOG 
+	 where ID=#{ID}
+</select>
+
 <!-- 로그인 된 계정의 로그들 불러오기 -->
-<select id="LogLoad" resultType="kr.smhrd.entity.MyLog">
-SELECT * FROM T_LOG WHERE ID=#{ID} ORDER BY LOG_NUM DESC
+<select id="getLogList" resultType="kr.smhrd.entity.MyLog">
+	select *
+	from
+	( select *
+	from T_LOG order by LOG_NUM desc) as T1
+	where T1.ID = #{ID}
+	limit #{startNo}, 4
 </select>
 
 <!-- 결과로그 저장 -->

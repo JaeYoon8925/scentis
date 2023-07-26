@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.Member;
 import kr.smhrd.entity.MyLog;
+import kr.smhrd.entity.Page;
 import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
 import kr.smhrd.service.MemberService;
@@ -60,23 +62,37 @@ public class MemberController {
 	}
 
 	// 로그페이지 이동
-	@RequestMapping("/goLogPage")
-	public String goLogPage(HttpSession session, Member user, Model model) {
-		int loginCheck = service.loginCheck(session);
-		if (loginCheck == 0) {
-			return "LoginPage";
+		@RequestMapping("/goLogPage")
+		public String goLogPage(@RequestParam(required=false, defaultValue = "1")int PageNo, HttpSession session, Member user, Model model) {
+			// 로그인 확인.
+			int loginCheck = service.loginCheck(session);
+			if (loginCheck == 0) {
+				return "LoginPage";
+			}
+			Member loginUser = (Member) session.getAttribute("user");
+			String ID = loginUser.getID();
+			
+			Page page = new Page( PageNo, 4, mapper.count(ID) );
+			int startNo = page.getStartNo()-1;
+//			int endNo = page.getEndNo();
+			int totalCount = page.getTotalCount();
+			int totalPage = page.getTotalPage();
+			model.addAttribute("totalPage", totalPage);
+			
+//			System.out.println("토탈카운트 : " + totalCount);
+//			System.out.println("토탈페이지 : " + totalPage);
+			
+//			Map<String,Integer> Map = new HashMap<>();
+//			Map.put("startNo", page.getStartNo());
+//			Map.put("endNo", page.getEndNo());
+			
+			ArrayList<MyLog> log = mapper.getLogList(ID, startNo);
+			model.addAttribute("log", log);
+			
+			Perfume RecP = service.RecP();
+			model.addAttribute("RecP", RecP);
+			return "LogPage";
 		}
-		
-		Member loginUser = (Member) session.getAttribute("user");
-		String id = loginUser.getID();
-		
-		ArrayList<MyLog> log = mapper.LogLoad(id);
-		model.addAttribute("log", log);
-
-		Perfume RecP = service.RecP();
-		model.addAttribute("RecP", RecP);
-		return "LogPage";
-	}
 
 //      int i=0;
 //      ArrayList<ArrayList<Perfume>> logListPerfume = new ArrayList<ArrayList<Perfume>>();

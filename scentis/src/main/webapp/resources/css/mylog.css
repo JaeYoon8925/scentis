@@ -350,3 +350,13 @@ td {
     font-family: 'Gowun Dodum', sans-serif;
     margin-top: 100px;
 }
+
+/* 페이징 버튼 */
+.paging {
+  display: flex;
+}
+
+.paging a {
+  margin-right: 10px;
+}
+/* 페이징 버튼 */

@@ -28,8 +28,11 @@ public interface MemberMapper {
    // 로그보기, 아래 LogLoad와 LogLoadPInfo 로 기능 구현되서 미사용
    public ArrayList<MyLog> LogCheck(Member user);
    
-   // 로그인된 계정의 모든 로그 정보 불러오기
-   public ArrayList<MyLog> LogLoad(String id);
+   // 로그인된 계정의 로그 갯수 카운트
+   public int count(String id);
+   
+   // 로그인된 계정의 모든 로그 정보 불러오기 @Param("endNo") int endNo
+   public ArrayList<MyLog> getLogList(@Param("ID") String ID, @Param("startNo") int startNo);
    
    // 각 로그별 향수 1 2 3 의 정보 불러오기
    @Select("SELECT * FROM T_PERFUME WHERE P_NUM IN (#{num1}, #{num2}, #{num3})")
