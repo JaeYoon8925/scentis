@@ -68,7 +68,7 @@ section {
 
 /* footer */
 footer {
-   height: 530px;
+   /*height: 530px;*/
    background-color: black;
    display: flex;
    justify-content: center;
@@ -85,7 +85,7 @@ footer {
 .footer-menu {
    display: flex;
    justify-content: space-between;
-   height: 346px;
+   /*height: 346px;*/
 }
 
 /* footer menu box */
