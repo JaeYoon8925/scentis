@@ -233,4 +233,7 @@ span:hover {
 	cursor: pointer;
 }
 
-
+#perfume {
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-weight: 600;
+}

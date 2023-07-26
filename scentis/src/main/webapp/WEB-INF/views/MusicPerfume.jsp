@@ -100,7 +100,7 @@
 				<button class="logbtn" onclick="location.href='goLogPage'">음악
 					분석 결과 확인하기</button>
 			</div>
-			<div>
+			<div class="share">
 				<a id="btnTwitter" class="link-icon twitter"
 					href="javascript:shareTwitter();"> <img
 					src="resources/img/icon-twitter.png" alt="트위터">
@@ -133,21 +133,20 @@
 		<div class="container">
 			<div class="footer-menu">
 				<div class="first-box">
-
+					<div>
+						<img src="Spotify_Logo_RGB_White.png" alt="">
+					</div>
 					<div class="column">
 						<div class="sub-title">COMPANY</div>
 						<a href="">About</a>
 					</div>
 					<div class="column">
 						<div class="sub-title">COMMUNITIES</div>
-						<a href="">For Artists</a> <a href="">Developers</a> <a href="">Advertising</a>
-						<a href="">Investors</a> <a href="">Vendors</a>
+						<a href="">Instagram</a>
+						<a href="">Twitter</a>
+						<a href="">Youtube</a>
 					</div>
-					<div class="column">
-						<div class="sub-title">USEFUL LINKS</div>
-						<a href="">Support</a> <a href="">Web player</a> <a href="">Free
-							Mobile App</a>
-					</div>
+
 				</div>
 
 			</div>
@@ -218,6 +217,7 @@
                $('.searchbox').hide();
                $('.backbtn').show();
                $('.logbtn').show();
+               $('.share').hide();
                
                $('.musicimg').on('click', function () {
             	   $('#loading').show();
@@ -226,6 +226,7 @@
                $('.backbtn').on('click', function() {
 	               $('.modal').hide();
 	               $('.searchbox').show();
+	               $('.share').show();
 	               $('#loading').hide();
 	               $('.backbtn').hide();
 	               $('.logbtn').hide();
@@ -322,7 +323,9 @@
          $('#loading').hide();
       });
    </script>
+   
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	
 	<script>
    function shareTwitter() {
 	    var sendText = "Scentit"; // 전달할 텍스트

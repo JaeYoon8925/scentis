@@ -57,24 +57,20 @@
 					</div>
 					<div class="column">
 						<div class="sub-title">COMPANY</div>
-						<a href="">About</a> <a href="">Jobs</a> <a href="">For the
-							Record</a>
+						<a href="">About</a>
 					</div>
 					<div class="column">
 						<div class="sub-title">COMMUNITIES</div>
-						<a href="">For Artists</a> <a href="">Developers</a> <a href="">Advertising</a>
-						<a href="">Investors</a> <a href="">Vendors</a>
+						<a href="">Instagram</a>
+						<a href="">Twitter</a>
+						<a href="">Youtube</a>
 					</div>
-					<div class="column">
-						<div class="sub-title">USEFUL LINKS</div>
-						<a href="">Support</a> <a href="">Web player</a> <a href="">Free
-							Mobile App</a>
-					</div>
+
 				</div>
 
 			</div>
 			<div class="KOREA">
-				<i class="fas fa-globe-africa"></i> KOREA
+				KOREA
 			</div>
 
 		</div>
