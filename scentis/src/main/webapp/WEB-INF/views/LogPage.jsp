@@ -85,6 +85,7 @@
             <div class="modal">
             </div>
             
+            <button class="backbtn">다른 노래 확인하기</button>
         </section>
         
 
@@ -240,14 +241,16 @@
         				
         				$('.modal').fadeIn();
         				$('.chart').fadeIn();
+        				$('.backbtn').fadeIn();
         				$('.info').fadeIn();
         				$('.logbox').hide();
         				$('.title1').hide();
         				
-        				$('.section4').on('click', function () {
+        				$('.backbtn').on('click', function () {
 							$('.modal').hide();
 							$('.chart').hide();
 							$('.info').hide();
+							$('.backbtn').hide();
         					$('.logbox').show();
         					$('.title1').show();
 						});
