@@ -32,7 +32,7 @@
             position: absolute;
             left: 0px;
             top: 250px;
-            background-color: rgba(66.95258975028992, 24.43750709295273, 255, 1);
+            background-color: black;
             border-top-left-radius: 16px;
             border-top-right-radius: 16px;
             border-bottom-left-radius: 16px;
@@ -40,6 +40,12 @@
             color : white;
             font-size: 20px;
             font-family: DM Sans;
+        }
+        
+        .e1_690:hover {
+        	color : black;
+        	background-color: white;
+        	cursor: pointer;
         }
 
 /*        .e1_691 {
@@ -200,7 +206,7 @@
 
         .e1_729 {
             width: 965px;
-            height: 1152px;
+            /*height: 1152px;*/
             position: absolute;
             left: 955px;
             top: 0px;
@@ -214,7 +220,7 @@
             border-bottom-left-radius: 300px;
             /* background-image: linear-gradient(0deg, rgba(133.87499392032623, 140.42225539684296, 255, 1) 0%, rgba(67.00000360608101, 24.000000469386578, 255, 1) 100%); */
             width: 965px;
-            height: 950px;
+            height: 900px;
             position: absolute;
             left: 0px;
             top: 0px;
@@ -223,7 +229,7 @@
 
         .e1_731 {
             width: 3076.703369140625px;
-            height: 1823px;
+            height: 1800px;
             position: absolute;
             left: -1147px;
             top: -654px;
