@@ -49,12 +49,13 @@ div.menuBar>a:hover {
 
 /* 섹션 */
 section {
-   height: 1650px;
+   height: auto;
    display: flex;
    justify-content: center;
    text-align: center;
    align-items: flex-start;
    margin-top: 100px;
+   margin-bottom: 100px;
 }
 
 .sub_line {
@@ -197,7 +198,7 @@ a {
 }
 
 span:hover {
-   color: orange;
+   color: #10c410;
    cursor: pointer;
 }
 
@@ -212,6 +213,10 @@ span:hover {
    padding: 10px;
 }
 
+.perfumeimg:hover {
+	cursor: pointer;
+}
+
 .perfumebox {
    display: none;
    margin-top: 50px;
@@ -220,6 +225,12 @@ span:hover {
 .box {
    float: left;
    width: 250px;
-    height: 200px;
-    padding: 15px;
+   height: 200px;
+   padding: 15px;
 }
+
+.box:hover {
+	cursor: pointer;
+}
+
+

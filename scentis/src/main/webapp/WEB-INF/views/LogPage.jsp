@@ -126,17 +126,7 @@
                         <a href="">Free Mobile App</a>
                     </div>
                 </div>
-                <div class="second-box">
-                    <div class="icon-box">
-                        <i class="fab fa-instagram icon"></i>
-                    </div>
-                    <div class="icon-box">
-                        <i class="fab fa-twitter icon"></i>
-                    </div>
-                    <div class="icon-box">
-                        <i class="fab fa-facebook-f icon"></i>
-                    </div>
-                </div>
+                
             </div>
             <div class="KOREA">
                 KOREA

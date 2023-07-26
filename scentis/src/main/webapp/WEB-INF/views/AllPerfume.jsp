@@ -110,11 +110,7 @@
                      Mobile App</a>
                </div>
             </div>
-            <div class="second-box">
-               <div class="icon-box">
-                  <i class="fab fa-instagram icon"></i>
-               </div>
-            </div>
+            
          </div>
          <div class="KOREA">
             <i class="fas fa-globe-africa"></i> KOREA
@@ -183,8 +179,9 @@
 		$('.perfumebox').hide();
        }
   	
-  	$('.name').on('click', function() {
-  	$('.modal').hide();
+  		$('.name').on('click', function () {
+	  		$('.modal').hide();
+  			$('.perfumebox').show();
         })
    </script>
    
