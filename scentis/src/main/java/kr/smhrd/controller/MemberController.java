@@ -130,7 +130,15 @@ public class MemberController {
 	public String Login(Member member, HttpSession session) {
 		Member user = mapper.Login(member);
 		session.setAttribute("user", user);
-		return "redirect:/";
+		
+		String nextView = null;
+		
+		if (user != null) {
+			nextView = "MainPage";
+		} else {
+			nextView = "loginFail";
+		}
+			return nextView;
 	}
 
 	// 로그아웃
