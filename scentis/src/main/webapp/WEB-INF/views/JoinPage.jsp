@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE HTML>
 <head>
 <title>Scentit 당신의 향기에 즐거움을 선사하세요</title>
@@ -18,111 +20,76 @@
 </head>
 <body>
 
-	<div class=e1_726>
-		<span class="e1_727">Sign In</span>
+
+	<div id="title">
+		<h1>
+			<a href="${cpath}/">SCENTIT</a>
+		</h1>
 	</div>
+	
+	<div class="member">
 
-	<form action="Join" method="POST" class=e1_688>
-		<div class="container">
+		<!-- 필드 -->
+		<form action="Join" method="POST">
+			<div class="field">
+				<b>아이디</b> <span class="placehold-text"><input id="idcheck"
+					type="text" name="ID"></span>
+				<p id="result"></p>
+				<!-- 아이디 중복체크 결과를 출력하기 -->
 
+			</div>
+			<div class="field">
+				<b>비밀번호</b> <input id="userpw" class="userpw" type="password" name="PW">
+			</div>
+			<div class="field">
+				<b>비밀번호 재확인</b> <input id="userpw-confirm" class="userpw-confirm" type="password">
+				<p id="pwresult"></p>
+				<!-- 비밀번호 재확인 결과를 출력하기 -->
+			</div>
+			<div class="field">
+				<b>이름</b> <input type="text" name="NAME">
+			</div>
 
-
-
-			<div class=e4_295>
-				<span class="e4_296">아이디</span>
-				<span id="result"></span>
-				<div class=e4_297>
-					<div class=e4_298>
-						<input type="text" name="ID" class="e4_299" id="idcheck">
+			<div class="field tel-number">
+				<b>닉네임</b>
+				<div>
+					<input id="phoneNum" type="text" name="NICKNAME">
+				</div>
+			</div>
+			
+			<div class="field tel-number">
+				<b>생년월일</b>
+				<div>
+					<input id="phoneNum" type="date" name="BIRTHDATE">
+				</div>
+			</div>
+			
+			<div class="field tel-number">
+				<b>성별</b>
+				<div class="form_toggle">
+					<div class="form_radio_btn radio_male">
+						<input id="radio-1" type="radio" name="GENDER" value="M"
+							checked> <label for="radio-1">남자</label>
+					</div>
+	
+					<div class="form_radio_btn">
+						<input id="radio-2" type="radio" name="GENDER" value="F">
+						<label for="radio-2">여자</label>
 					</div>
 				</div>
 			</div>
-		</div>
+			
+			<button type="submit" id="join" onclick="location.href ='Login'">가입하기</button>
+			
 
-		<div class=e1_698>
-			<span class="e1_699">비밀번호</span>
-			<div class=e1_700>
-				<div class=e1_701>
-					<input id="userpw" type="password" name="PW" class="e1_702">
-				</div>
+		</form>
+		<!-- footer -->
+		<div class="member-footer">
+			<div>
+				<span>이용약관</span> <span>개인정보처리방침</span>
 			</div>
+			<span><a href="#">SCENTIT Corp.</a></span>
 		</div>
-
-
-		<div class=e4_302>
-		
-			<span class="e4_303">비밀번호 확인 </span>
-			<span id="pwresult"></span>	
-			<div class=e4_304>
-				<div class=e4_305>
-					<input type="password" id="userpw-confirm" name="pw-confirm" class="e4_306">
-				</div>
-			</div>
-		</div>
-		<div>
-            <p id="pwresult"></p>
-            </div>
-		<div class=e4_312>
-			<span class="e4_313">이름</span>
-			<div class=e4_314>
-				<div class=e4_315>
-					<input type="text" name="NAME" class="e4_316">
-				</div>
-			</div>
-		</div>
-
-		<div class=e4_322>
-			<span class="e4_323">닉네임</span>
-			<div class=e4_324>
-				<div class=e4_325>
-					<input type="text" name="NICKNAME" class="e4_326">
-				</div>
-			</div>
-		</div>
-		</div>
-
-		<div class=e4_337>
-			<span class="e4_338">생년월일</span>
-			<div class=e4_339>
-				<div class=e4_340>
-					<input type="date" name="BIRTHDATE">
-				</div>
-			</div>
-		</div>
-
-		<div class=e4_332>
-			<span class="e4_333">성별</span>
-			<div class="form_toggle">
-				<div class="form_radio_btn radio_male">
-					<input id="radio-1" type="radio" name="GENDER" value="M"
-						checked> <label for="radio-1">남자</label>
-				</div>
-
-				<div class="form_radio_btn">
-					<input id="radio-2" type="radio" name="GENDER" value="F">
-					<label for="radio-2">여자</label>
-				</div>
-			</div>
-
-		</div>
-
-		<button type="submit" class=e1_690>Sign In</button>
-		</div>
-	</form>
-
-	</div>
-
-	</div>
-	<div class=e1_729>
-		<div class=e1_730>
-
-			<div class="e1_731"></div>
-			<img alt="" src="resources/img/KakaoTalk_20230716_233001867.png">
-			<div class=e1_732>
-				<span class="e1_734">Scentit</span>
-			</div>
-		</div>
-	</div>
 	</div>
 
 <script>
@@ -145,12 +112,10 @@
             // 만약 사용 가능하다면  p태그 안에 사용 가능한 이메일입니다
             var p = $('#result');
             if (res == "true"){
-               p.html("사용 가능한 아이디입니다.").css("color", "green")
-               .css("margin-left", "50px").css("font-size", "14px").css("position", "absolute");
+            	p.html("사용 가능한 아이디입니다.").css("color", "green");
             		  
             } else {
-               p.html("중복된 아이디입니다.").css("color", "red").css("margin-left", "50px")
-               .css("font-size", "14px").css("position", "absolute");
+            	p.html("중복된 아이디입니다.").css("color", "red");
             	  
             } 
          },
@@ -161,25 +126,24 @@
    }
       
 // 비밀번호 재확인
-   $(document).ready(function () {
-      var pwinput = $('#userpw-confirm');
-      pwinput.on('input', pwCheck);
-   });
+	$(document).ready(function () {
+		var pwinput = $('#userpw-confirm');
+		pwinput.on('input', pwCheck);
+	});
    
-   function pwCheck () {
+	function pwCheck () {
 
-      var userpw = $('#userpw').val();
-      var confirmpw = $('#userpw-confirm').val();
-      var pwresult = $('#pwresult');
+		var userpw = $('#userpw').val();
+		var confirmpw = $('#userpw-confirm').val();
+		var pwresult = $('#pwresult');
 
-         if (userpw == confirmpw) {
-            pwresult.html("사용 가능한 비밀번호입니다.").css("color", "green")
-            .css("margin-left", "100px").css("font-size", "14px").css("position", "absolute");
-         } else {
-            pwresult.html("비밀번호가 다릅니다.").css("color", "red").css("margin-left", "100px")
-            .css("font-size", "14px").css("position", "absolute");
-         }
-      };
+			if (userpw == confirmpw) {
+				pwresult.html("비밀번호가 같습니다.").css("color", "green");
+			} else {
+				pwresult.html("비밀번호가 다릅니다.").css("color", "red");
+			}
+
+		};
 </script>
 </body>
 </html>
