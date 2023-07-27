@@ -163,8 +163,10 @@ form {
 }
 
 a:-webkit-any-link {
-    color: #10c410;
-    text-decoration: none;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: #ffca00;
+	color: #fff67ce8;
+	text-decoration: none;
     cursor: pointer;
 }
 #title h1 {
