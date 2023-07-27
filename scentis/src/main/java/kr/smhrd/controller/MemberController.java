@@ -41,10 +41,6 @@ public class MemberController {
 	// Allperfume페이지 이동
 	@RequestMapping("/AllP")
 	public String goAllP(HttpSession session) {
-		int loginCheck = service.loginCheck(session);
-		if (loginCheck == 0) {
-			return "LoginPage";
-		}
 		return "AllPerfume";
 	}
 
