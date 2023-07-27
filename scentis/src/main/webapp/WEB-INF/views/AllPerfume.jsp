@@ -13,17 +13,27 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-   <!-- 향수 종류별 보는 페이지 Pdata에 perfume정보 다 담겨있음 -->
    <nav class="nav1">
-      <a href="${cpath}/" class="logo">Scentit</a>
-      
+	<c:choose>
+	<c:when test="${user eq null}">
+		<a href="${cpath}/" class="logo">Scentit</a>
+		<div class="menuBar">
+			<a href="Login">My Perfume</a>
+			<a href="Login">Scent Perfume</a>
+			<span>|</span>
+			<a href="Join">Sign up</a>
+			<a href="Login">Login</a>
+	</c:when>
+	<c:otherwise>
+		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
 			<a href="goMusicPerfume">My Perfume</a>
 			<a href="ScentP">Scent Perfume</a>
 			<span>|</span>
 			<a href="goLogPage">My Log</a>
             <a href="logout" class="logoutButton">Logout</a>
-      </div>
+	</c:otherwise>
+	</c:choose>
    </nav>
 
    <nav class="nav2">

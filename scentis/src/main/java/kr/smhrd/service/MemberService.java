@@ -15,10 +15,10 @@ public class MemberService {
 	@Autowired // (required = false)
 	private MemberMapper mapper;
 
-	public Perfume RecP() {
-		Perfume RecP = mapper.RecP();
-		return RecP;
-	}
+//	public Perfume RecP() {
+//		Perfume RecP = mapper.RecP();
+//		return RecP;
+//	}
 	
 	// 로그인 여부 확인. 로그인된 경우 1 아닌경우 0 리턴.
 	public int loginCheck(HttpSession session) {

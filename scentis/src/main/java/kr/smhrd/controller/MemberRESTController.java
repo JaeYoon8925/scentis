@@ -26,21 +26,18 @@ import kr.smhrd.entity.Music;
 import kr.smhrd.entity.MyLog;
 import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
-import kr.smhrd.service.MemberService;
 
 @RestController // @Controller + @ResponseBody 비동기통신 controller
 public class MemberRESTController {
 
 	@Autowired
 	private MemberMapper mapper;
-	@Autowired
-	private MemberService service;
 
 	// 아이디 중복체크
 	@RequestMapping("/idcheck")
 	public String idcheck(String id) {
 		Member dto = mapper.idCheck(id);
-		String res = ""; // 사용 가능한 id = true , 불가능 = false 응답
+		String res = "";   // 사용 가능한 id = true , 불가능 = false 응답
 		if (dto == null) { // id 성공
 			res = "true";
 		} else { // id 실패
@@ -53,15 +50,6 @@ public class MemberRESTController {
 	@RequestMapping("/BrandP")
 	public ArrayList<Perfume> AllP(String name) {
 		ArrayList<Perfume> Pdata = mapper.AllP(name);
-		
-		System.out.println(Pdata.get(0));
-		System.out.println();
-		System.out.println(Pdata.get(1));
-		System.out.println();
-		System.out.println(Pdata.get(2));
-		
-		
-		
 		return Pdata;
 	}
 
@@ -116,18 +104,6 @@ public class MemberRESTController {
 //           System.out.println("ARTISTLIST 0 : " + ARTISTLIST.get(0));
 //           System.out.println("IMGLIST 0 : " + IMGLIST.get(0));
 //           System.out.println("TRACK_IDLIST 0 : " + TRACK_IDLIST.get(0));
-//           
-//           System.out.println("곡 2의 정보");
-//           System.out.println("TITLELIST 1  : " + TITLELIST.get(1));
-//           System.out.println("ARTISTLIST 1 : " + ARTISTLIST.get(1));
-//           System.out.println("IMGLIST 1 : " + ARTISTLIST.get(1));
-//           System.out.println("TRACK_IDLIST 1 : " + TRACK_IDLIST.get(1));
-//           
-//           System.out.println("곡 3의 정보");
-//           System.out.println("TITLELIST 2  : " + TITLELIST.get(2));
-//           System.out.println("ARTISTLIST 2 : " + ARTISTLIST.get(2));
-//           System.out.println("IMGLIST 2 : " + IMGLIST.get(2));
-//           System.out.println("TRACK_IDLIST 2 : " + TRACK_IDLIST.get(2));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -149,8 +125,7 @@ public class MemberRESTController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<MyLog> request = new HttpEntity<>(M_ID, headers);
-		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2",
-				request, String.class);
+		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2", request, String.class);
 //       System.out.println("리스폰스 받음.");
 		// python에서 나온 결과값(P_TYPE)으로 DB매칭
 		String jsonString = response.getBody();
@@ -162,7 +137,6 @@ public class MemberRESTController {
 			// 파싱된 데이터 꺼내기 + 확인
 			Plist = mapper.MatchP(Data.getP_TYPE()); // 분위기로 향수 매칭
 			log.setID(id);
-//          System.out.println(Data.getM_ID());
 			log.setM_ID(Data.getM_ID());
 			log.setM_ARTIST(Data.getM_ARTIST());
 			log.setM_TITLE(Data.getM_TITLE());
@@ -187,8 +161,7 @@ public class MemberRESTController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<Perfume> request = new HttpEntity<>(p_note, headers);
-		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask3",
-				request, String.class);
+		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask3", request, String.class);
 		System.out.println("리스폰스 받음.");
 		String jsonString = response.getBody();
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -198,9 +171,7 @@ public class MemberRESTController {
 			Data = objectMapper.readValue(jsonString, MyLog.class);
 			// 파싱된 데이터 꺼내기 + 확인
 			Plist = mapper.MatchP(Data.getP_TYPE()); // 분위기로 향수 매칭
-			System.out.println(Plist.get(0));
-			System.out.println(Plist.get(1));
-			System.out.println(Plist.get(2));
+//			System.out.println(Plist.get(0));
 //			Plist.get(2).getP_NUM());
 		} catch (Exception e) {
 			e.printStackTrace();

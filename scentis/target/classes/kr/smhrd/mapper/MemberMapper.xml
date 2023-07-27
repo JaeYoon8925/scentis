@@ -27,7 +27,8 @@ FROM T_LOG A
 	select *
 	from
 	( select *
-	from T_LOG order by LOG_NUM desc) as T1
+	from T_LOG 
+	order by LOG_NUM desc) as T1
 	where T1.ID = #{ID}
 	limit #{startNo}, 4
 </select>

@@ -38,9 +38,9 @@ public interface MemberMapper {
    @Select("SELECT * FROM T_PERFUME WHERE P_NUM IN (#{num1}, #{num2}, #{num3})")
    public ArrayList<Perfume> LogP(@Param("num1") int num1, @Param("num2") int num2, @Param("num3") int num3);
    
-   // random perfume 하나씩 가져오기
-   @Select("SELECT * FROM T_PERFUME ORDER BY RAND() LIMIT 1")
-   public Perfume RecP();
+//   // random perfume 하나씩 가져오기
+//   @Select("SELECT * FROM T_PERFUME ORDER BY RAND() LIMIT 1")
+//   public Perfume RecP();
    
     // 향수 모두 가져오기
     @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name}")

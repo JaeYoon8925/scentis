@@ -18,6 +18,5 @@ public class Log {
    private int P_NUM1;      // 향수1번호
    private int P_NUM2;      // 향수2번호
    private int P_NUM3;      // 향수3번호
-   private int LOG_STF;    // 향수만족도
-   private String MOOD;    // 분위기
+   private String P_TYPE;   // 분위기
 }

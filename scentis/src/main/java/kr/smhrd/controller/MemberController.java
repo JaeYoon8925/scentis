@@ -55,15 +55,12 @@ public class MemberController {
 		if (loginCheck == 0) {
 			return "LoginPage";
 		}
-		
-		Perfume RecP = service.RecP();
-		model.addAttribute("RecP", RecP);
 		return "MusicPerfume";
 	}
 
-	// 로그페이지 이동
+	// 로그페이지 이동 ( 페이지번호기능 추가 )
 		@RequestMapping("/goLogPage")
-		public String goLogPage(@RequestParam(required=false, defaultValue = "1")int PageNo, HttpSession session, Member user, Model model) {
+		public String goLogPage(@RequestParam(required=false, defaultValue = "1")int PageNo, HttpSession session, Model model) {
 			// 로그인 확인.
 			int loginCheck = service.loginCheck(session);
 			if (loginCheck == 0) {
@@ -85,18 +82,15 @@ public class MemberController {
 //			Map<String,Integer> Map = new HashMap<>();
 //			Map.put("startNo", page.getStartNo());
 //			Map.put("endNo", page.getEndNo());
-			
 			ArrayList<MyLog> log = mapper.getLogList(ID, startNo);
 			model.addAttribute("log", log);
-			
-			Perfume RecP = service.RecP();
-			model.addAttribute("RecP", RecP);
+
 			return "LogPage";
+			
 		}
 
 //      int i=0;
 //      ArrayList<ArrayList<Perfume>> logListPerfume = new ArrayList<ArrayList<Perfume>>();
-//      
 //      for (MyLog logList : log) {
 //         i++;
 //         System.out.println(logList);
@@ -107,9 +101,7 @@ public class MemberController {
 //         ArrayList<Perfume> logPerfume = mapper.LogLoadPInfo(num1, num2, num3);
 ////         System.out.println(logPerfume);
 ////         System.out.println(logPerfume.get(0));
-////         System.out.println(logPerfume.get(1));
-////         System.out.println(logPerfume.get(2));
-////         System.out.println();
+
 //         
 //         logListPerfume.add(logPerfume);
 //         
@@ -117,12 +109,9 @@ public class MemberController {
 //            session.setAttribute("logListPerfume", logListPerfume);
 //            System.out.println(logListPerfume);
 //         }      
-
 //      MyLog b = log.get(0);
 //      int P_num1 = b.getP_NUM1();
-//
-//      System.out.println(b);
-//      System.out.println(P_num1);
+
 
 	// 향선택 향수 찾기 페이지 이동
 	@RequestMapping("/ScentP")
@@ -131,9 +120,6 @@ public class MemberController {
 		if (loginCheck == 0) {
 			return "LoginPage";
 		}
-		
-		Perfume RecP = service.RecP();
-		model.addAttribute("RecP", RecP);
 		ArrayList<Perfume> Top = mapper.MixTop();
 		ArrayList<Perfume> Mid = mapper.MixMid();
 		ArrayList<Perfume> Base = mapper.MixBase();
@@ -167,10 +153,9 @@ public class MemberController {
 	// 회원가입
 	@PostMapping("/Join")
 	public String Join(Member member) {
-		System.out.println(member.getBIRTHDATE());
 		int row = mapper.Join(member);
 		if (row > 0) {
-			return "redirect:/"; // 회원가입 성공 시 메인으로 이동
+			return "redirect:/";     // 회원가입 성공 시 메인으로 이동
 		} else
 			return "redirect:/Join"; // 실패
 

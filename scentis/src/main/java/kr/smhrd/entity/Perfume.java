@@ -17,7 +17,6 @@ public class Perfume {
 	private String P_BASE; 
 	private String P_INFO; 
 	private String P_TYPE;    // 향
-	private String P_MOOD;    // 분위기
 	private String P_PATH;    // 향수 설명 사이트 정보
 	
 }
