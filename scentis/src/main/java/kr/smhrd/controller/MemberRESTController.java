@@ -131,6 +131,8 @@ public class MemberRESTController {
 		String jsonString = response.getBody();
 		ObjectMapper objectMapper = new ObjectMapper();
 
+		System.out.println(jsonString);
+		
 		try {
 			// JSON 문자열을 객체로 파싱
 			Data = objectMapper.readValue(jsonString, MyLog.class);
