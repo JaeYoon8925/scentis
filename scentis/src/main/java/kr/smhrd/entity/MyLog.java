@@ -21,7 +21,7 @@ public class MyLog {
    private int P_NUM1;
    private int P_NUM2;
    private int P_NUM3;
-   private String P_TYPE;    // 향 ( 모델에서 매칭시킬 내용 )
+   private int P_TYPE;    // 향 ( 모델에서 매칭시킬 내용 )
    private String P_BRAND;
    private String P_MODEL;
    private String P_INFO;    // 향수 정보
