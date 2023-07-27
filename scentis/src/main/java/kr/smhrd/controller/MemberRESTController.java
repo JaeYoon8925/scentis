@@ -53,6 +53,15 @@ public class MemberRESTController {
 	@RequestMapping("/BrandP")
 	public ArrayList<Perfume> AllP(String name) {
 		ArrayList<Perfume> Pdata = mapper.AllP(name);
+		
+		System.out.println(Pdata.get(0));
+		System.out.println();
+		System.out.println(Pdata.get(1));
+		System.out.println();
+		System.out.println(Pdata.get(2));
+		
+		
+		
 		return Pdata;
 	}
 

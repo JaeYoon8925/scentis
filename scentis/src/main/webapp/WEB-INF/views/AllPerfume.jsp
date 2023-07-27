@@ -29,6 +29,7 @@
    <nav class="nav2">
       <div class="perfumemenu">
          <div class="menu1">
+         	
             <span class="name">겔랑</span>
             <span>|</span>
             <span class="name">구찌</span>
@@ -189,8 +190,12 @@
                perfume.push(brand)
                perfume.push(model)
             
-               let src1 = "resources/img/"+brand+"/"+model+".jpg";
                let alt1 = "resources/img/"+brand+"/"+model+".png";
+               let src1 = "resources/img/"+brand+"/"+model+".jpg";
+               
+               if (brand === '아틀리에 코롱') {
+                   [src1, alt1] = [alt1, src1];
+               }
                
                perfumeHTML+=`<div class="box" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')">
                         <img class="perfumeimg" src="\${src1}" alt="\${alt1}" height="100px" width="100px"/>
