@@ -18,13 +18,13 @@
 			<c:when test="${user eq null}">
 				<a href="${cpath}/" class="logo">Scentit</a>
 				<div class="menuBar">
-					<a href="Login">My Perfume</a> <a href="Login">Scent Perfume</a> <span>|</span>
+					<a href="Login">Music Perfume</a> <a href="Login">Scent Perfume</a> <span>|</span>
 					<a href="Join">Sign up</a> <a href="Login">Login</a>
 			</c:when>
 			<c:otherwise>
 				<a href="${cpath}/" class="logo">Scentit</a>
 				<div class="menuBar">
-					<a href="goMusicPerfume">My Perfume</a> <a href="ScentP">Scent
+					<a href="goMusicPerfume">Music Perfume</a> <a href="ScentP">Scent
 						Perfume</a> <span>|</span> <a href="goLogPage">My Log</a> <a
 						href="logout" class="logoutButton">Logout</a>
 			</c:otherwise>

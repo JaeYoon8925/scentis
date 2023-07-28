@@ -19,7 +19,7 @@
 	<c:when test="${user eq null}">
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
-			<a href="Login">My Perfume</a>
+			<a href="Login">Music Perfume</a>
 			<a href="Login">Scent Perfume</a>
 			<a href="AllP">All Perfume</a>
 			<span>|</span>
@@ -29,7 +29,7 @@
 	<c:otherwise>
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
-			<a href="goMusicPerfume">My Perfume</a>  <!-- 음악으로 향수 만들기 -->
+			<a href="goMusicPerfume">Music Perfume</a>  <!-- 음악으로 향수 만들기 -->
 			<a href="ScentP">Scent Perfume</a>         <!-- 향으로 향수 만들기 -->
 			<a href="AllP">All Perfume</a>           <!-- 모든 향수 보기 -->
 			<span>|</span>
