@@ -21,7 +21,8 @@
 |라이브러리|<img src="https://user-images.githubusercontent.com/130940590/241096022-42acfffa-c7f3-49b6-823e-12d56a93f0bd.png">  |
 |개발도구|<img src="https://user-images.githubusercontent.com/130940590/241096754-4356e85e-0328-4b49-89c4-3c22d994655d.png"> |
 |서버환경|<img src="https://user-images.githubusercontent.com/130940590/241096925-e6a06e97-d198-491c-9baa-948a5f8f7d03.png"> |
-|데이터베이스|<img src="https://user-images.githubusercontent.com/130940590/241097085-b713c90a-fb9f-4186-86b6-cf123934f729.png"> |
+|데이터베이스|<img src="![image](https://github.com/2021-SMHRD-KDT-BigData-18/scentis/assets/130642967/22c3aaf4-e956-4328-b7d5-c81f855ca0ee)
+"> |
 |협업도구|<img src="https://user-images.githubusercontent.com/130940590/241097188-9c213634-a8c0-4658-98d3-211b2b48e5cd.png"> |
 
 ## ⚙ 시스템 아키텍처(구조)
