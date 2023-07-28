@@ -60,7 +60,7 @@ public interface MemberMapper {
 //   public Perfume RecP();
    
     // 향수 모두 가져오기
-    @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name} ORDER BY P_MODEL ASC")
+    @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name}")
     public ArrayList<Perfume> AllP(String name);
    
    // top,mid,base 가져오기
@@ -74,6 +74,9 @@ public interface MemberMapper {
    // 타입에 맞는 향수 3개 랜덤 매칭
    @Select("SELECT * FROM T_PERFUME WHERE P_TYPE = #{P_TYPE} ORDER BY RAND() LIMIT 3")
    public ArrayList<Perfume> MatchP(int P_TYPE);
+   
+   // TOP MIDDLE BASE NOTE 에 정확하게 맞는 향수 검색
+   public ArrayList<Perfume> searchP(Perfume p_note);
    
    // 로그저장
    public void saveLog(Log log);

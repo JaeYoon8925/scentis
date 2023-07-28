@@ -241,8 +241,16 @@ public class MemberRESTController {
 	@RequestMapping(value = "/sendDataToFlask3", method = RequestMethod.POST)
 	public List<Perfume> sendDataToFlask3(@RequestBody Perfume p_note, HttpSession session) {
 		MyLog Data = null;
-		List<Perfume> Plist = null;
-
+		ArrayList<Perfume> Plist = null;
+		
+		System.out.println(p_note); 
+		Plist = mapper.searchP(p_note);
+		int rowCount = Plist.size();
+		System.out.println(rowCount);
+		System.out.println(Plist);
+		
+		if  ( rowCount > 3 ) {
+		System.out.println(rowCount + "개의 검색결과가 나와 플라스크와 통신 시작");
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -252,7 +260,7 @@ public class MemberRESTController {
 		System.out.println("리스폰스 받음.");
 		String jsonString = response.getBody();
 		ObjectMapper objectMapper = new ObjectMapper();
-
+		
 		try {
 			// JSON 문자열을 객체로 파싱
 			Data = objectMapper.readValue(jsonString, MyLog.class);
@@ -263,6 +271,10 @@ public class MemberRESTController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return Plist;
+		}
+		
+		
 		return Plist;
 	}
 

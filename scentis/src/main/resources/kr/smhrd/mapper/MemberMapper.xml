@@ -60,6 +60,12 @@ FROM T_LOG A
 	limit #{startNo}, 4
 </select>
 
+<select id="searchP" parameterType="kr.smhrd.entity.Perfume" resultType="kr.smhrd.entity.Perfume">
+SELECT *
+  FROM T_PERFUME
+ WHERE P_TOP=#{P_TOP} AND P_MIDDLE=#{P_MIDDLE} AND P_BASE=#{P_BASE};
+</select>
+
 <!-- 결과로그 저장 -->
 <insert id="saveLog" parameterType="kr.smhrd.entity.Log">
 INSERT INTO T_LOG (ID,M_ID,M_TITLE,M_ARTIST,M_IMG,P_NUM1,P_NUM2,P_NUM3) 
