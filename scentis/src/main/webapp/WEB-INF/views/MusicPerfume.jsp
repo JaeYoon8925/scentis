@@ -94,14 +94,17 @@
 				</div>
 			</div>
 
-
-			<div class="modal"></div>
+			
+			<div class="modal">
+			
+			</div>
 
 			<div>
 				<button class="backbtn">다른 노래 검색하기</button>
 				<button class="logbtn" onclick="location.href='goLogPage'">음악
 					분석 결과 확인하기</button>
 			</div>
+
 			<div class="share">
 				<a id="btnTwitter" class="link-icon twitter"
 					href="javascript:shareTwitter();"> <img
@@ -211,8 +214,8 @@
                            </a>
                         </div>
                         <div id="player">
-                    	 <audio src="\${src}" controls></audio>
-                	    </div>
+                   	 		<audio src="\${src}" controls></audio>
+               	    	</div>
                      </div>
                         `
                      }
@@ -220,12 +223,12 @@
 
                $('.modal').fadeIn();
                $('.searchbox').hide();
-               $('.backbtn').show();
-               $('.logbtn').show();
                $('.share').hide();
                
                $('.musicimg').on('click', function () {
             	   $('#loading').show();
+	               $('.backbtn').show();
+	               $('.logbtn').show();
 			})
                
                $('.backbtn').on('click', function() {
