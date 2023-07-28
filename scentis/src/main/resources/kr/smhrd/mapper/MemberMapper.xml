@@ -9,6 +9,33 @@ INSERT INTO T_MEMBER (ID, PW, NAME, NICKNAME, BIRTHDATE, GENDER)
 VALUES (#{ID}, #{PW}, #{NAME}, #{NICKNAME}, #{BIRTHDATE}, #{GENDER});
 </insert>
 
+<!-- 메일 인증키 생성 -->
+<insert id="createEmailKey">
+INSERT INTO T_MAIL (email, email_key, issueDate, expiredDate) 
+            VALUES (#{email}, #{email_key}, #{issueDate}, #{expiredDate});
+</insert>
+
+<!-- 메일 인증 여부 확인 -->
+<select id="checkExp" resultType="kr.smhrd.entity.Mail">
+SELECT * 
+  FROM T_MAIL  
+ WHERE email=#{email}
+</select>
+
+<!-- 메일 인증 여부 확인 -->
+<select id="checkEmailKey" parameterType="kr.smhrd.entity.Mail" resultType="int">
+SELECT COUNT(*) 
+  FROM T_MAIL  
+ WHERE email=#{email} and email_key=#{email_key}
+</select>
+
+<!-- 메일 인증 완료시 DB에서 삭제 -->
+<delete id="deleteEmailKey">
+DELETE
+  FROM T_MAIL
+ WHERE email=#{email}
+</delete>
+
 <!-- 로그정보 가져가기 / 사용 안하는 중 -->
 <select id="LogCheck" parameterType="kr.smhrd.entity.Member" resultType="kr.smhrd.entity.MyLog">
 SELECT A.LOG_NUM, A.ID, A.M_TITLE, A.M_ARTIST

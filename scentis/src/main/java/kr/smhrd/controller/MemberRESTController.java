@@ -1,6 +1,8 @@
 package kr.smhrd.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,29 +24,109 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.smhrd.entity.Log;
+import kr.smhrd.entity.Mail;
 import kr.smhrd.entity.Member;
 import kr.smhrd.entity.Music;
 import kr.smhrd.entity.MyLog;
 import kr.smhrd.entity.Perfume;
 import kr.smhrd.mapper.MemberMapper;
+import kr.smhrd.service.MemberService;
 
 @RestController // @Controller + @ResponseBody 비동기통신 controller
 public class MemberRESTController {
 
 	@Autowired
 	private MemberMapper mapper;
+	@Autowired
+	private MemberService service;
 
 	// 아이디 중복체크
 	@RequestMapping("/idcheck")
 	public String idcheck(String id) {
 		Member dto = mapper.idCheck(id);
-		String res = "";   // 사용 가능한 id = true , 불가능 = false 응답
+		String res = ""; // 사용 가능한 id = true , 불가능 = false 응답
 		if (dto == null) { // id 성공
 			res = "true";
 		} else { // id 실패
 			res = "false";
 		}
 		return res;
+	}
+
+	// 이메일 인증키 생성 및 전송
+	@GetMapping("/createMailKey")
+	@ResponseBody
+	public String createMailKey(String email) throws Exception {
+		System.out.println("이메일 인증 요청이 들어옴!");
+		System.out.println("이메일 인증 이메일 : " + email);
+
+		// 이전에 같은 메일에 생성된 키 삭제
+		mapper.deleteEmailKey(email);
+		System.out.println("코드삭제");
+
+		Calendar cal1 = Calendar.getInstance();
+		cal1.add(Calendar.MINUTE, 3); // 분 연산
+		Date calDate = new Date(cal1.getTimeInMillis());
+		Date date = new Date();
+
+		// 랜덤 문자열을 생성해서 email_key 컬럼에 넣어주기
+		String email_key = service.getKey();
+		System.out.println("생성된 인증키 : " + email_key);
+
+		Mail emailKeyBind = new Mail();
+		emailKeyBind.setEmail(email);
+		emailKeyBind.setEmail_key(email_key);
+		emailKeyBind.setIssueDate(date); // 인증키 발급시간
+		emailKeyBind.setExpiredDate(calDate); // 인증키 유효시간
+
+		// 인증코드 생성
+		mapper.createEmailKey(emailKeyBind);
+		System.out.println("인증키 생성");
+
+		// 메일전송
+		String result = service.sendMail(email, email_key);
+		System.out.println("result : " + result);
+
+		return result;
+	}
+
+	// 이메일 인증키 체크
+	@GetMapping("/checkMailKey")
+	@ResponseBody
+	public String checkMailKey(String email, String email_key) throws Exception {
+		System.out.println("인증키 확인 시도");
+		System.out.println("입력받은 인증키 : " + email_key);
+		System.out.println("입력받은 이메일 : " + email);
+
+		Mail emailKeyBind = new Mail();
+		emailKeyBind.setEmail(email);
+		emailKeyBind.setEmail_key(email_key);
+
+		Mail checkExp = mapper.checkExp(emailKeyBind);
+
+		// 시간 비교 ( 0 이하 = exp 타임이 지난 후 / 0 초과 = exp 타임이 지나기 전)
+		Date date = new Date();
+		Date expDate = checkExp.getExpiredDate();
+		int expResult = expDate.compareTo(date);
+
+		System.out.println(checkExp);
+		System.out.println(expDate);
+		System.out.println(expResult);
+		System.out.println(emailKeyBind);
+
+		if (0 < expResult) {
+			int checkResult = mapper.checkEmailKey(emailKeyBind);
+			System.out.println(checkResult);
+
+			if (checkResult == 1) {
+				mapper.deleteEmailKey(email);
+				System.out.println("코드삭제");
+				return "true"; // 성공
+			} else {
+				return "false1"; // 인증키 오류
+			}
+		}
+		return "flase2"; // 타임아웃
 	}
 
 	// 브랜드별 perfumeList 비동기로 보내주기
@@ -125,14 +208,15 @@ public class MemberRESTController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<MyLog> request = new HttpEntity<>(M_ID, headers);
-		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2", request, String.class);
+		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2",
+				request, String.class);
 //       System.out.println("리스폰스 받음.");
 		// python에서 나온 결과값(P_TYPE)으로 DB매칭
 		String jsonString = response.getBody();
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		System.out.println(jsonString);
-		
+
 		try {
 			// JSON 문자열을 객체로 파싱
 			Data = objectMapper.readValue(jsonString, MyLog.class);
@@ -163,7 +247,8 @@ public class MemberRESTController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<Perfume> request = new HttpEntity<>(p_note, headers);
-		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask3", request, String.class);
+		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask3",
+				request, String.class);
 		System.out.println("리스폰스 받음.");
 		String jsonString = response.getBody();
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -190,7 +275,8 @@ public class MemberRESTController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<Log> request = new HttpEntity<>(M_ID, headers);
-		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask4", request, String.class);
+		ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask4",
+				request, String.class);
 		System.out.println("4 리스폰스 받음.");
 		String jsonString = response.getBody();
 		ObjectMapper objectMapper = new ObjectMapper();

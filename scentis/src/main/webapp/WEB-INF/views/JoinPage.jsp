@@ -38,6 +38,34 @@
 				<!-- 아이디 중복체크 결과를 출력하기 -->
 
 			</div>
+			
+			<div class=e4_332>
+				<div class="form-group email-form">
+					<label for="email">이메일</label>
+						<div class="input-group">
+							<input type="text" class="form-control" name="userEmail1" id="userEmail1" placeholder="이메일"> 
+								<select class="form-control" name="userEmail2" id="userEmail2">
+									<option>@naver.com</option>
+									<option>@daum.net</option>
+									<option>@gmail.com</option>
+									<option>@hanmail.com</option>
+									<option>@yahoo.co.kr</option>
+								</select>
+						</div>
+						<div class="input-group-addon">
+							<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
+						</div>
+						<div class="mail-check-box">
+							<input class="form-control mail-check-input" name="email_Key" id="email_KeyCheck"
+								placeholder="인증번호 6자리를 입력해주세요!" maxlength="6" disabled="disabled">
+							<button type="button" class="btn mail-check-input" 
+							id="emailKeyCheck-Btn" disabled="disabled" >인증하기</button>
+						</div>
+					<span id="mail-check-warn"></span>
+				</div>
+			</div>
+			
+			
 			<div class="field">
 				<b>비밀번호</b> <input id="userpw" class="userpw" type="password" name="PW">
 			</div>
@@ -79,7 +107,7 @@
 				</div>
 			</div>
 			
-			<button type="submit" id="join" onclick="location.href ='Login'">가입하기</button>
+			<button type="submit" id="join" onclick="location.href ='Login'" disabled="disabled">가입하기</button>
 			
 
 		</form>
@@ -145,5 +173,74 @@
 
 		};
 </script>
+<!-- 이메일 인증 -->
+	<script>
+		$('#mail-Check-Btn').click(function() {
+			const email = $('#userEmail1').val() + $('#userEmail2').val(); // 이메일 주소값 
+			console.log('완성된 이메일 : ' + email);     // 완성된 이메일 확인
+			const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
+
+			$.ajax({
+				type : 'get',
+				url : 'createMailKey',
+				data : {
+					email : email
+				},
+				success : function(data) {
+					console.log("data : " + data);
+					checkInput.attr('disabled', false);
+					if (data == "전송성공"){
+					alert('인증번호가 전송되었습니다. 3분 이내에 입력해주세요.')
+					} else {
+					alert('인증번호 발급에 실패했습니다. 이메일주소를 확인해주세요.')
+					}
+					
+				},
+				error : function(error) {
+					// 그냥 오류
+					console.log('이메일 인증 요청 실패');
+				},
+			}); // end ajax
+		}); // end send eamil
+		
+		$('#emailKeyCheck-Btn').click(function() {
+			const email = $('#userEmail1').val() + $('#userEmail2').val(); 
+			const email_key = $('#email_KeyCheck').val(); 
+			console.log('입력한 인증키 : ' + email_key);
+			const join = $('#join')
+
+			$.ajax({
+				type : 'get',
+				url : 'checkMailKey',
+				data : {
+					email : email,
+					email_key : email_key
+				},
+				success : function(data) {
+					
+					if (data=='true'){
+					console.log("email_Key : " + email_key);
+					console.log("data : " + data);
+					join.attr('disabled', false);
+					alert('인증되었습니다.')
+					}
+					
+					if (data=='false1'){
+					alert('인증키를 다시 확인해주세요..')
+					}
+					if (data=='false2'){
+					alert('인증키 유효시간이 지났습니다. 인증키 발급을 다시 진행해주세요.')
+					}
+					
+					
+				},
+				error : function(error) {
+					// 그냥 오류
+					console.log('인증 실패. 인증 번호를 다시 확인해주세요.');
+				},
+			}); // end ajax
+		}); // end send eamil
+		
+	</script>
 </body>
 </html>

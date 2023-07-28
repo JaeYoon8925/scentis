@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import kr.smhrd.entity.Log;
+import kr.smhrd.entity.Mail;
 import kr.smhrd.entity.Member;
 import kr.smhrd.entity.MyLog;
 import kr.smhrd.entity.Perfume;
@@ -20,6 +21,22 @@ public interface MemberMapper {
    
    // 회원가입
    public int Join(Member dto);
+   
+//////////////////////////////////////////////////////////////////////////////////////////////////   
+   
+   // 회원가입시 인증코드 생성
+   public int createEmailKey(Mail emailKeyBind) throws Exception;
+   
+   // 인증 시 유효기간 체크
+   public Mail checkExp(Mail emailKeyBind) throws Exception;
+   
+   // 인증 여부 확인 >> 1=인증, 0=미인증
+   public int checkEmailKey(Mail emailKeyBind) throws Exception;
+   
+   // 인증 완료후 DB에서 삭제
+   public int deleteEmailKey(@Param("email") String email) throws Exception;
+   
+//////////////////////////////////////////////////////////////////////////////////////////////////
    
    // 아이디 중복 체크
    @Select("SELECT * FROM T_MEMBER WHERE ID=#{ID}")
