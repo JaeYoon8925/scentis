@@ -33,7 +33,7 @@
     <section class="section1">
         <section class="section2">
             <div class="log">
-                <p class="title">MY LOG</p>
+                <p class="title">MY PROFILE</p>
                 <img class="pro" src="resources/img/프사.png">
                 <div class="idnick">
                     <p>${user.ID}</p>
