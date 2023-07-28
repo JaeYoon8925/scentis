@@ -92,9 +92,6 @@
 		<div class="container">
 			<div class="footer-menu">
 				<div class="first-box">
-					<div>
-						<img src="Spotify_Logo_RGB_White.png" alt="">
-					</div>
 					<div class="column">
 						<div class="sub-title">COMPANY</div>
 						<a href="">About</a>
@@ -138,9 +135,10 @@
             
                let src1 = "resources/img/"+brand+"/"+model+".jpg";
 
-               perfumeHTML+=`<div class="box" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')">
-                        <img class="perfumeimg" src="\${src1}" height="100px" width="100px"/>
-                       
+               perfumeHTML+=`
+               <div class="box">
+                        <img class="perfumeimg" src="\${src1}" height="100px" width="100px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')"/>
+                        <span class="heart">🤍</span>
                         <p class="perfume">
                            \${brand}
                         </p>
@@ -148,6 +146,12 @@
                      </div>`
                }
                $('.perfumebox').html(perfumeHTML);
+               $('.heart').on('click', function () {
+					//console.log($(this).text());
+					$(this).text('🧡');
+					
+					;
+			})
             },
             error : function (e) {
                alert("요청 실패");
@@ -155,6 +159,7 @@
          });
 
       });
+
       
       // selectperfume 클릭 시 관련된 정보 보여주는 함수
       function selectperfume(B,M,I){
