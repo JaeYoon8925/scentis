@@ -64,10 +64,10 @@
 
 			<div class="menu1">
 				<span class="name">킬리안</span> <span>|</span> <span class="name">탬버린즈</span>
-				<span>|</span> <span class="name">트루사르디</span> <span>|</span> <span
-					class="name">퍼퓸 드 말리</span> <span>|</span> <span class="name">페라리</span>
-				<span>|</span> <span class="name">펜할리곤스</span> <span>|</span> <span
-					class="name">프라고나르</span> <span>|</span> <span class="name">프라다</span>
+				<span>|</span><span class="name">톰포드</span> <span>|</span><span class="name">트루사르디</span>
+				 <span>|</span><span class="name">퍼퓸 드 말리</span> <span>|</span> <span class="name">페라리</span>
+				<span>|</span> <span class="name">펜할리곤스</span> <span>|</span> <span class="name">포맨트</span>
+				 <span>|</span><span class="name">프라고나르</span> <span>|</span> <span class="name">프라다</span>
 				<span>|</span> <span class="name">프란체스카 비앙키</span> <span>|</span> <span
 					class="name">프레데릭 말</span> <span>|</span> <span class="name">프로소디 런던</span> 
 					<span>|</span> <span class="name">플로리스 런던</span>
