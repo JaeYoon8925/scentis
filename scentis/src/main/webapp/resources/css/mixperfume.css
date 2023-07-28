@@ -451,3 +451,16 @@ a:hover {
 	color: black;
 	background-color: white;
 }
+
+.content1 {
+	font-family: "Noto Sans KR", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modal_content1 {
+   margin-top: 40%;
+   display: flex;
+   justify-content: space-around;
+   text-align: center;
+}

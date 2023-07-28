@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -13,105 +13,105 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-	<nav class="nav1">
-		<c:choose>
-			<c:when test="${user eq null}">
-				<a href="${cpath}/" class="logo">Scentit</a>
-				<div class="menuBar">
-					<a href="Login">Music to Perfume</a> <a href="Login">Scent to Perfume</a> <span>|</span>
-					<a href="Join">Sign up</a> <a href="Login">Login</a>
-			</c:when>
-			<c:otherwise>
-				<a href="${cpath}/" class="logo">Scentit</a>
-				<div class="menuBar">
-					<a href="goMusicPerfume">Music to Perfume</a> <a href="ScentP">Scent to
-						Perfume</a> <span>|</span> <a href="goLogPage">My Log</a> <a
-						href="logout" class="logoutButton">Logout</a>
-			</c:otherwise>
-		</c:choose>
-	</nav>
+   <nav class="nav1">
+      <c:choose>
+         <c:when test="${user eq null}">
+            <a href="${cpath}/" class="logo">Scentit</a>
+            <div class="menuBar">
+               <a href="Login">Music to Perfume</a> <a href="Login">Scent to Perfume</a> <span>|</span>
+               <a href="Join">Sign up</a> <a href="Login">Login</a>
+         </c:when>
+         <c:otherwise>
+            <a href="${cpath}/" class="logo">Scentit</a>
+            <div class="menuBar">
+               <a href="goMusicPerfume">Music to Perfume</a> <a href="ScentP">Scent to
+                  Perfume</a> <span>|</span> <a href="goLogPage">My Log</a> <a
+                  href="logout" class="logoutButton">Logout</a>
+         </c:otherwise>
+      </c:choose>
+   </nav>
 
-	<nav class="nav2">
-		<div class="perfumemenu">
-			<div class="menu1">
+   <nav class="nav2">
+      <div class="perfumemenu">
+         <div class="menu1">
 
-				<span class="name">겔랑</span> <span>|</span> <span class="name">구찌</span>
-				<span>|</span> <span class="name">끌로에</span> <span>|</span> <span
-					class="name">나르시소 로드리게즈</span> <span>|</span> <span class="name">논픽션</span>
-				<span>|</span> <span class="name">니샤네</span> <span>|</span> <span
-					class="name">디올</span> <span>|</span> <span class="name">딥디크</span>
-				<span>|</span> <span class="name">랄프로렌</span> <span>|</span> <span
-					class="name">메종마르지엘라</span> <span>|</span> <span class="name">바이레도</span>
-				<span>|</span> <span class="name">반클리프 앤 아펠</span> <span>|</span> <span class="name">베르사체</span>
-				<span>|</span> <span class="name">불가리</span> <span>|</span> <span class="name">산타마리아노벨라</span>
-				<span>|</span> <span class="name">시티리듬</span> <span>|</span>
+            <span class="name">겔랑</span> <span>|</span> <span class="name">구찌</span>
+            <span>|</span> <span class="name">끌로에</span> <span>|</span> <span
+               class="name">나르시소 로드리게즈</span> <span>|</span> <span class="name">논픽션</span>
+            <span>|</span> <span class="name">니샤네</span> <span>|</span> <span
+               class="name">디올</span> <span>|</span> <span class="name">딥디크</span>
+            <span>|</span> <span class="name">랄프로렌</span> <span>|</span> <span
+               class="name">메종마르지엘라</span> <span>|</span> <span class="name">바이레도</span>
+            <span>|</span> <span class="name">반클리프 앤 아펠</span> <span>|</span> <span class="name">베르사체</span>
+            <span>|</span> <span class="name">불가리</span> <span>|</span> <span class="name">산타마리아노벨라</span>
+            <span>|</span> <span class="name">시티리듬</span> <span>|</span>
 
-			</div>
+         </div>
 
-			<div class="menu1">
-				<span class="name">아무아쥬</span> <span>|</span> <span class="name">아쿠아디파르마</span>
-				<span>|</span> <span class="name">아틀리에 코롱</span> <span>|</span> <span
-					class="name">에르메스</span> <span>|</span> <span class="name">오디딸리</span>
-				<span>|</span> <span class="name">이솝</span> <span>|</span> <span
-					class="name">입생로랑</span> <span>|</span> <span class="name">제르조프</span>
-				<span>|</span> <span class="name">조말론</span> <span>|</span> <span
-					class="name">존바바토스</span> <span>|</span> <span class="name">지방시</span>
-				<span>|</span> <span class="name">캐롤리나 헤레라</span> <span>|</span> <span
-					class="name">케네스콜</span> <span>|</span> <span class="name">크리드</span>
-				<span>|</span> <span class="name">클린리저브</span> <span>|</span>
+         <div class="menu1">
+            <span class="name">아무아쥬</span> <span>|</span> <span class="name">아쿠아디파르마</span>
+            <span>|</span> <span class="name">아틀리에 코롱</span> <span>|</span> <span
+               class="name">에르메스</span> <span>|</span> <span class="name">오디딸리</span>
+            <span>|</span> <span class="name">이솝</span> <span>|</span> <span
+               class="name">입생로랑</span> <span>|</span> <span class="name">제르조프</span>
+            <span>|</span> <span class="name">조말론</span> <span>|</span> <span
+               class="name">존바바토스</span> <span>|</span> <span class="name">지방시</span>
+            <span>|</span> <span class="name">캐롤리나 헤레라</span> <span>|</span> <span
+               class="name">케네스콜</span> <span>|</span> <span class="name">크리드</span>
+            <span>|</span> <span class="name">클린리저브</span> <span>|</span>
 
-			</div>
+         </div>
 
-			<div class="menu1">
-				<span class="name">킬리안</span> <span>|</span> <span class="name">탬버린즈</span>
-				<span>|</span><span class="name">톰포드</span> <span>|</span><span class="name">트루사르디</span>
-				 <span>|</span><span class="name">퍼퓸 드 말리</span> <span>|</span> <span class="name">페라리</span>
-				<span>|</span> <span class="name">펜할리곤스</span> <span>|</span> <span class="name">포맨트</span>
-				 <span>|</span><span class="name">프라고나르</span> <span>|</span> <span class="name">프라다</span>
-				<span>|</span> <span class="name">프란체스카 비앙키</span> <span>|</span> <span
-					class="name">프레데릭 말</span> <span>|</span> <span class="name">프로소디 런던</span> 
-					<span>|</span> <span class="name">플로리스 런던</span>
-			</div>
-		</div>
-	</nav>
+         <div class="menu1">
+            <span class="name">킬리안</span> <span>|</span> <span class="name">탬버린즈</span>
+            <span>|</span><span class="name">톰포드</span> <span>|</span><span class="name">트루사르디</span>
+             <span>|</span><span class="name">퍼퓸 드 말리</span> <span>|</span> <span class="name">페라리</span>
+            <span>|</span> <span class="name">펜할리곤스</span> <span>|</span> <span class="name">포맨트</span>
+             <span>|</span><span class="name">프라고나르</span> <span>|</span> <span class="name">프라다</span>
+            <span>|</span> <span class="name">프란체스카 비앙키</span> <span>|</span> <span
+               class="name">프레데릭 말</span> <span>|</span> <span class="name">프로소디 런던</span> 
+               <span>|</span> <span class="name">플로리스 런던</span>
+         </div>
+      </div>
+   </nav>
 
-	<section>
-		<div class="perfumebox">
-			<!--<div>
+      <section>
+      <div class="perfumebox">
+         <!--<div>
                <img class="perfumeimg" src="resources/img/${d.p_BRAND}/${d.p_MODEL}.jpg" height="100px" width="100px">
                <p class="perfume">
                   ${d.p_BRAND} <br> ${d.p_MODEL}
                </p>
             </div>-->
-		</div>
+      </div>
 
-		<div class="modal"></div>
-	</section>
+      <div class="modal"></div>
+   </section>
 
-	<footer>
-		<div class="container">
-			<div class="footer-menu">
-				<div class="first-box">
-					<div class="column">
-						<div class="sub-title">COMPANY</div>
-						<a href="">About</a>
-					</div>
-					<div class="column">
-						<div class="sub-title">COMMUNITIES</div>
-						<a href="">Instagram</a> <a href="">Twitter</a> <a href="">Youtube</a>
-					</div>
+   <footer>
+      <div class="container">
+         <div class="footer-menu">
+            <div class="first-box">
+               <div class="column">
+                  <div class="sub-title">COMPANY</div>
+                  <a href="">About</a>
+               </div>
+               <div class="column">
+                  <div class="sub-title">COMMUNITIES</div>
+                  <a href="">Instagram</a> <a href="">Twitter</a> <a href="">Youtube</a>
+               </div>
 
-				</div>
+            </div>
 
-			</div>
-			<div class="KOREA">
-				<i class="fas fa-globe-africa"></i> KOREA
-			</div>
+         </div>
+         <div class="KOREA">
+            <i class="fas fa-globe-africa"></i> KOREA
+         </div>
 
-		</div>
-	</footer>
+      </div>
+   </footer>
 
-	<script type="text/javascript">
+   <script type="text/javascript">
       $('.name').on('click', function (e) {
          //console.log($(e.target).text())
          let name = $(e.target).text()
@@ -138,7 +138,7 @@
                perfumeHTML+=`
                <div class="box">
                         <img class="perfumeimg" src="\${src1}" height="100px" width="100px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')"/>
-                        <span class="heart">🤍</span>
+                        <span class="heart" onclick="heartclick('\${model}')">🤍</span>
                         <p class="perfume">
                            \${brand}
                         </p>
@@ -146,12 +146,7 @@
                      </div>`
                }
                $('.perfumebox').html(perfumeHTML);
-               $('.heart').on('click', function () {
-					//console.log($(this).text());
-					$(this).text('🧡');
-					
-					;
-			})
+
             },
             error : function (e) {
                alert("요청 실패");
@@ -160,33 +155,69 @@
 
       });
 
+      // 찜하기
+      function heartclick(model) {
+      $.ajax({
+         url : "like",
+         type : "get",
+         data : { 'P_MODEL' : model},
+         success : function (res) {
+            console.log('하트 완료');
+            if (res == 1) {
+               $('.heart').text('🧡');
+            } else if (res == -1) {
+               alert('로그인이 필요한 서비스입니다.');
+            } else {
+               $('.heart').text('🤍');
+               alert('찜 취소하시겠습니까?');
+               dislike()
+            }
+         },
+         error : function (e) {
+            alert('에러');
+         }
+      })
+   }
+      
+      function dislike(model) {
+      $.ajax({
+         url : "dislike",
+         type : "get",
+         data : {'P_MODEL' : model},
+         success : function (res) {
+            console.log('찜 취소 완료');
+         },
+         error : function (e) {
+            console.log('에러');
+         }
+      })
+   }
       
       // selectperfume 클릭 시 관련된 정보 보여주는 함수
       function selectperfume(B,M,I){
-    	  let perfumeInfo ="";
-    	  url = "resources/img/"+B+"/"+M+".jpg";
-    	  perfumeInfo+=`
-    	  <div class="modal_content">
-    	  <div class="Perfumeimg">
-	    	  <img src='\${url}'; height="300px" width="250px">
-	    	  <p id="perfume">\${B} </p>
-	    	  <p id="perfume">\${M} </p>
-	    	  <p id="perfume">\${I} </p>
-    	  </div>
-    	  </div>`
+         let perfumeInfo ="";
+         url = "resources/img/"+B+"/"+M+".jpg";
+         perfumeInfo+=`
+         <div class="modal_content">
+         <div class="Perfumeimg">
+            <img src='\${url}'; height="300px" width="250px">
+            <p id="perfume">\${B} </p>
+            <p id="perfume">\${M} </p>
+            <p id="perfume">\${I} </p>
+         </div>
+         </div>`
        $('.modal').html(perfumeInfo);
-    	  console.log('추가완');
+         console.log('추가완');
 
-		$('.modal').fadeIn();
-		$('.perfumebox').hide();
+      $('.modal').fadeIn();
+      $('.perfumebox').hide();
        }
-  	
-  		$('.name').on('click', function () {
-	  		$('.modal').hide();
-  			$('.perfumebox').show();
+     
+        $('.name').on('click', function () {
+           $('.modal').hide();
+           $('.perfumebox').show();
         })
    </script>
-
 
 </body>
 </html>

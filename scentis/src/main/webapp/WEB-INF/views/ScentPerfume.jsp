@@ -149,38 +149,46 @@
 				console.log(res);
 				
 	               let perfumeHTML="";
-	               
-	               
-	               for (let i=0; i<3; i++){
 	            	   
-	                  let brand = res[i].p_BRAND
-	                  let model = res[i].p_MODEL
 	                  
-	                  perfumeHTML+=`
-	                	  <div class="modal_content">
-	                		<div class="musicimg">
-	                			<div class="card">
-	                				<div class="side">
-		                  			<img src="resources/img/\${brand}/\${model}.jpg" height="200px" width="200px">
-									<a href="#" class="selectmusic1">
-									<p class="title3" id="musicname1">
-										\${brand} <br> \${model}
-									</p>
-									</a>
+	                  console.log(res);
+	                  if (res.length == 0){
+	                	  perfumeHTML+=`
+	                	  <div class="modal_content1">
+	                	  	<p class="content1">해당 조합의 향수가 존재하지 않습니다</p>
+	                	  </div>`
+	                	  
+	                  } else {
+	                	  for (let i=0; i<3; i++){
+			                  let brand = res[i].p_BRAND
+			                  let model = res[i].p_MODEL
+			                	  
+			                  perfumeHTML+=`
+			                	  <div class="modal_content">
+			                		<div class="musicimg">
+			                			<div class="card">
+			                				<div class="side">
+				                  			<img src="resources/img/\${brand}/\${model}.jpg" height="200px" width="200px">
+											<a href="#" class="selectmusic1">
+											<p class="title3" id="musicname1">
+												\${brand} <br> \${model}
+											</p>
+											</a>
+											</div>
+											
+		                                    <div class="side back"> 
+		                                    <p>\${res[i].p_INFO}</p>
+		                                    <p><a href="\${res[i].p_PATH}" target="_blank">
+		                                        상품 보러 가기 
+		                                    </a></p>
+		                                 </div>
+										
+										
+										</div>
 									</div>
-									
-                                    <div class="side back"> 
-                                    <p>\${res[i].p_INFO}</p>
-                                    <p><a href="\${res[i].p_PATH}" target="_blank">
-                                        상품 보러 가기 
-                                    </a></p>
-                                 </div>
-								
-								
 								</div>
-							</div>
-						</div>
-	                  `
+			                  `
+	               }
 	               }
 	            $('.modal').html(perfumeHTML);
 	            
