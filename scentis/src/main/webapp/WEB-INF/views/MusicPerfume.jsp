@@ -37,7 +37,7 @@
 	<nav>
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
-			<a href="ScentP">Scent Perfume</a>
+			<a href="ScentP">Scent to Perfume</a>
 			<a href="AllP">All Perfume</a>
 			<span>|</span>
 			<a href="goLogPage">My Log</a>
@@ -138,9 +138,6 @@
 		<div class="container">
 			<div class="footer-menu">
 				<div class="first-box">
-					<div>
-						<img src="Spotify_Logo_RGB_White.png" alt="">
-					</div>
 					<div class="column">
 						<div class="sub-title">COMPANY</div>
 						<a href="">About</a>
