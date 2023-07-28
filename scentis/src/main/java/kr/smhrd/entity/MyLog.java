@@ -35,4 +35,5 @@ public class MyLog {
    private List<String> artist_list;
    private List<String> album_img_list;
    private List<String> track_id_list;
+   private List<String> url_list;
 }

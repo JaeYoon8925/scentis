@@ -441,3 +441,6 @@ a:hover {
 .link-icon.facebook { background-repeat: no-repeat; } 
 .link-icon.kakao { background-repeat: no-repeat; }
 /* SNS 공유하기 버튼 */
+
+#player {width:30px;height:30px;overflow:hidden;border-radius:50%; border:1px solid #cccccc;box-sizing:content-box;}
+#player audio {margin-top:-12px;margin-left:-13px;display:block}

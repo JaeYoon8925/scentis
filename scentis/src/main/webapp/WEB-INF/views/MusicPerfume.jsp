@@ -198,7 +198,7 @@
                         let title=res.title_list[i]
                         let track_id = res.track_id_list[i]
                         let artist=res.artist_list[i]
-                        
+                        let src = res.url_list[i]
                         musicHTML+=`
                            <div class="modal_content">
                             <div class="musicimg" onclick="musicinfo('\${albumimg}', '\${title}', '\${artist}', '\${track_id}')">
@@ -210,6 +210,9 @@
                            <p class="trackid"> \${track_id}</p>
                            </a>
                         </div>
+                        <div id="player">
+                    	 <audio src="\${src}" controls></audio>
+                	    </div>
                      </div>
                         `
                      }
