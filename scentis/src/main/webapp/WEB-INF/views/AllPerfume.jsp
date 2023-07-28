@@ -159,19 +159,19 @@
       function heartclick(model) {
       $.ajax({
          url : "like",
-         type : "get",
+         type : "post",
          data : { 'P_MODEL' : model},
          success : function (res) {
             console.log('하트 완료');
             if (res == 1) {
-               $('.heart').text('🧡');
+            	$('.heart').on('click', function () {
+	               $(this).text('🧡');
+				})
             } else if (res == -1) {
-               alert('로그인이 필요한 서비스입니다.');
-            } else {
+               alert('찜 취소가 완료되었습니다.');
                $('.heart').text('🤍');
-               alert('찜 취소하시겠습니까?');
-               dislike()
-            }
+               //dislike()
+            } 
          },
          error : function (e) {
             alert('에러');
@@ -179,19 +179,20 @@
       })
    }
       
-      function dislike(model) {
-      $.ajax({
-         url : "dislike",
-         type : "get",
-         data : {'P_MODEL' : model},
-         success : function (res) {
-            console.log('찜 취소 완료');
-         },
-         error : function (e) {
-            console.log('에러');
-         }
-      })
-   }
+      //function dislike(model) {
+      //$.ajax({
+      //  url : "like",
+      //   type : "post",
+      //   data : {'P_MODEL' : model},
+      //   success : function (res) {
+      //  	 $('.heart').text('🤍');
+      //      console.log('찜 취소 완료');
+      //   },
+      //   error : function (e) {
+      //      console.log('에러');
+      //   }
+      //})
+//   }
       
       // selectperfume 클릭 시 관련된 정보 보여주는 함수
       function selectperfume(B,M,I){

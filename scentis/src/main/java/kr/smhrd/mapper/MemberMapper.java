@@ -2,10 +2,13 @@ package kr.smhrd.mapper;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import kr.smhrd.entity.Like;
 import kr.smhrd.entity.Log;
 import kr.smhrd.entity.Mail;
 import kr.smhrd.entity.Member;
@@ -60,7 +63,7 @@ public interface MemberMapper {
 //   public Perfume RecP();
    
     // 향수 모두 가져오기
-    @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name}")
+    @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name} ORDER BY P_MODEL ASC")
     public ArrayList<Perfume> AllP(String name);
    
    // top,mid,base 가져오기
@@ -75,9 +78,17 @@ public interface MemberMapper {
    @Select("SELECT * FROM T_PERFUME WHERE P_TYPE = #{P_TYPE} ORDER BY RAND() LIMIT 3")
    public ArrayList<Perfume> MatchP(int P_TYPE);
    
-   // TOP MIDDLE BASE NOTE 에 정확하게 맞는 향수 검색
-   public ArrayList<Perfume> searchP(Perfume p_note);
-   
    // 로그저장
    public void saveLog(Log log);
+   
+   // 찜여부 확인
+   @Select("SELECT * FROM T_LIKE WHERE ID=#{ID} AND P_MODEL=#{P_MODEL}")
+   public Like likeYN(Like l);
+   // 찜기능
+   @Insert("INSERT INTO T_LIKE VALUES(#{ID}, #{P_MODEL}, 1)")
+   public int like(Like l);
+   
+   // 찜삭제기능
+   @Delete("DELETE FROM T_LIKE WHERE ID=#{ID} AND P_MODEL = #{P_MODEL}")
+   public int dislike(Like l);
 }

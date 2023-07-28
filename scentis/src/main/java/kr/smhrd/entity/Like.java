@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Like {
 
-	private int F_NUM;
-	private String ID;
-	private int P_NUM; // 좋아요시 등록, 취소시 delete하는걸로
-	private int LIKE; // 0= X  1=O
+   private String ID;
+   private String P_MODEL; // 좋아요시 등록, 취소시 delete하는걸로
+   private int LIKE; // 0= X  1=O
 }
