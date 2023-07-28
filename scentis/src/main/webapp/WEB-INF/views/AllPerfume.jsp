@@ -42,8 +42,8 @@
 					class="name">디올</span> <span>|</span> <span class="name">딥디크</span>
 				<span>|</span> <span class="name">랄프로렌</span> <span>|</span> <span
 					class="name">메종마르지엘라</span> <span>|</span> <span class="name">바이레도</span>
-				<span>|</span> <span class="name">반클리프 앤 아펠</span> <span>|</span> <span
-					class="name">불가리</span> <span>|</span> <span class="name">산타마리아노벨라</span>
+				<span>|</span> <span class="name">반클리프 앤 아펠</span> <span>|</span> <span class="name">베르사체</span>
+				<span>|</span> <span class="name">불가리</span> <span>|</span> <span class="name">산타마리아노벨라</span>
 				<span>|</span> <span class="name">시티리듬</span> <span>|</span>
 
 			</div>

@@ -60,7 +60,7 @@ public interface MemberMapper {
 //   public Perfume RecP();
    
     // 향수 모두 가져오기
-    @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name}")
+    @Select("SELECT * FROM T_PERFUME WHERE P_BRAND=#{name} ORDER BY P_MODEL ASC")
     public ArrayList<Perfume> AllP(String name);
    
    // top,mid,base 가져오기
