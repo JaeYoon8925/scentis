@@ -1,6 +1,7 @@
 package kr.smhrd.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.smhrd.entity.Like;
 import kr.smhrd.entity.Member;
 import kr.smhrd.entity.MyLog;
 import kr.smhrd.entity.Page;
@@ -40,8 +42,24 @@ public class MemberController {
 
 	// Allperfume페이지 이동
 	@RequestMapping("/AllP")
-	public String goAllP(HttpSession session) {
-		return "AllPerfume";
+	public String goAllP(HttpSession session,Model model) {
+	Member user = (Member) session.getAttribute("user");
+	String ID = user.getID();
+	List<String> Llist = mapper.AllL(ID);
+	System.out.println(Llist);
+	model.addAttribute("Llist",Llist);
+	return "AllPerfume";
+	}
+	
+	// Likepage로 이동
+	@RequestMapping("/likep")
+	public String golikep(HttpSession session, Model model) {
+		Member user = (Member) session.getAttribute("user");
+		List<String> list = mapper.LikeP1(user.getID());
+		System.out.println(list);
+		ArrayList<Perfume> p = mapper.LikeP2(list);
+		model.addAttribute("p", p);
+		return "like";
 	}
 
 	// 음악으로 향수 추천받기 페이지 이동

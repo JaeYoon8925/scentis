@@ -21,7 +21,7 @@
 		<div class="menuBar">
 			<a href="Login">Music to Perfume</a>
 			<a href="Login">Scent to Perfume</a>
-			<a href="AllP">All Perfume</a>
+			<a href="Login">All Perfume</a>
 			<span>|</span>
 			<a href="Join">Sign up</a>
 			<a href="Login">Login</a>

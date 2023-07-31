@@ -60,18 +60,18 @@ public class MemberRESTController {
       l.setP_MODEL(P_MODEL);
       Member user = (Member) session.getAttribute("user");
       l.setID(user.getID());
-      System.out.println(l);
       Like re = mapper.likeYN(l);
-      System.out.println(re);
+//      System.out.println(l);
+//      System.out.println(re);
       if (re==null) {
          int row = mapper.like(l); // 좋아요
-         System.out.println("좋아요 완");
+//         System.out.println("좋아요 완");
          return 1;
       } else {
          System.out.println("이미 누름");
          int row = mapper.dislike(l); // 싫어요기능
-         System.out.println(row);
-         System.out.println("좋아요 취소완");
+//         System.out.println(row);
+//         System.out.println("좋아요 취소완");
          return -1;
       }
    }
