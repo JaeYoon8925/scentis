@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>.
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -11,7 +11,6 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-
 	<nav>
 			<a href="${cpath}/" class="logo">Scentit</a>
 			<div class="menuBar">
@@ -21,13 +20,34 @@
 				<span>|</span> 
 				<a href="goLogPage">My Log</a>
 				<a href="logout" class="logoutButton">Logout</a>
-		</div>
+			</div>
 	</nav>
 
+
+
 	<section>
-	<div class ="perfumebox">
-	</div>
+		<div class ="perfumebox">
+	            <table>
+	               <tr>
+	                  <c:forEach var="p" items="${p}" varStatus="status">
+	                     <c:if test="${status.index%6==0}">
+	               </tr>
+	               <tr>
+	                  </c:if>
+	                  <td class="a" onclick="heartclick('\${p.p_MODEL}', event)">
+	                     <img src="resources/img/${p.p_BRAND}/${p.p_MODEL}.jpg" height="200px" width="200px">
+	                     <span class="heart" onclick="heartclick('\${p.p_MODEL}', event)">🧡</span>
+	                     <p class="title2">${p.p_BRAND} <br> ${p.p_MODEL}
+	                     </p>
+	                  </td>
+	                  </c:forEach>
+	               </tr>
+	            </table>
+		
+		</div>
 	</section>
+
+
 
 	<footer>
 		<div class="container">
@@ -56,23 +76,33 @@
 
 
 
-	<script type="text/javascript">
-	let perfumeHTML ="";
-
-    console.log('${p[0].p_BRAND}');
-    for (let i = 0; i < ${p.size()}; i++){
-    	let brand = '\${p[i].p_BRAND}';
-    	let model = '\${p[i].p_MODEL}';
-    let src1 = "resources/img/"+'\${p[i].p_BRAND}'+"/"+'\${p[i].p_MODEL}'+".jpg";
-      perfumeHTML+=`
-    	  <div class="box">
-      	  <img class="perfumeimg" src="\${src1}" height="100px" width="100px" onclick="selectperfume('\${p[i].p_BRAND}','\${p[i].p_MODEL}','\${(p[i].p_INFO).replaceAll("\n"," ")}')"/>
-          <p class="perfume"> \${brand} </p>
-          <p class="perfumename">\${model}</p>
-          <span class="heart" onclick="heartclick('\${model}', event)">🤍</span>
-            </div>`
- 	}
-    $('.perfumebox').html(perfumeHTML);
+	
+   <script type="text/javascript">
+	
+    // 찜하기
+    function heartclick(model, event) {
+  		  $.ajax({
+  			  url : "like",
+  			  type : "post",
+  			  data : { 'P_MODEL' : model},
+  			  success : function (res) {
+  				  if (res == 1) {
+  					  alert('찜 저장 완료');
+  					  event.target.textContent = '🧡';
+  				} else if(res == -1) {
+  					alert('찜 취소 완료');
+  					event.target.textContent = '🤍';
+  				}else alert('오류');
+  			},
+  			error : function (e) {
+  				alert('에러');
+  			}
+  			});
+ 		}
+    
+	    
 	</script>
+	
+	
 </body>
 </html>
