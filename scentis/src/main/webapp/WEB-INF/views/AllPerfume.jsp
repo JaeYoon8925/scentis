@@ -112,6 +112,10 @@
    </footer>
 
    <script type="text/javascript">
+   let Llist = '${Llist}';
+   Llist = Llist.replaceAll("[","").replaceAll("]","").split(",");
+	//	console.log('${Llist}');
+	//	console.log('${Llist[0]}');
       $('.name').on('click', function (e) {
          //console.log($(e.target).text())
          let name = $(e.target).text()
@@ -125,8 +129,6 @@
                "name" : name
             },
             success : function (res) {
-//            	console.log('${Llist}');
-//            	console.log('${Llist[0]}');
                let perfumeHTML ="";
                let perfume = [];
                for (let i = 0; i < res.length; i++){
@@ -134,22 +136,26 @@
                let model = res[i].p_MODEL
                perfume.push(brand)
                perfume.push(model)
-
-               let src1 = "resources/img/"+brand+"/"+model+".jpg";   
-               perfumeHTML+=`
-               <div class="box">
-                        <img class="perfumeimg" src="\${src1}" height="100px" width="100px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')"/>
-                        <span class="heart" onclick="heartclick('\${model}')">🤍</span>
-                        <p class="perfume"> \${brand} </p>
-                        <p class="perfumename">\${model}</p>
-                     </div>`
-               $('.perfumebox').html(perfumeHTML);
-               console.log('${Llist[0]}');
-               for (let k = 0; k <${Llist.size()}; k++){
-                	console.log('\${Llist[k])}');
-            	   
-               } 
-               }
+               let src1 = "resources/img/"+brand+"/"+model+".jpg";
+	               perfumeHTML+=`
+	                      	<div class="box">
+	       		            <img class="perfumeimg" src="\${src1}" height="100px" width="100px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')"/>
+	       		         	<span class="heart" onclick="heartclick('\${model}', event)">🤍</span>
+	       		            <p class="perfume"> \${brand} </p>
+	       		            <p class="perfumename">\${model}</p>
+	       		            </div>`
+            	}
+		       $('.perfumebox').html(perfumeHTML);
+		       
+		       for (let item of Llist) {
+		    	   for(let i = 0; i< res.length; i++){
+		    		   //console.log(res[i].p_MODEL)
+		    		   if(res[i].p_MODEL == item.trim()){
+		    			   //document.getElementsByClassName('test_class')[i].innerText('🧡')
+            		   	$('.heart').eq(i).text('🧡');
+		    		   }
+		    	  	 }
+            	   }
             },
             error : function (e) {
                alert("요청 실패");
@@ -159,29 +165,24 @@
       });
 
       // 찜하기
-      function heartclick(model) {
-      $.ajax({
-         url : "like",
-         type : "post",
-         data : { 'P_MODEL' : model},
-         success : function (res) {
-            console.log('하트 완료');
-            if (res == 1) {
-               $('.heart').on('click', function () {
-                  $(this).text('🧡');
-            })
-            } else if (res == -1) {
-               alert('찜 취소 완료');
-               $('.heart').text('🤍');
-            } else {
-               alert('찜 취소하시겠습니까?');
-               dislike()
-            }
-         },
-         error : function (e) {
-            alert('에러');
-         }
-      })
+      function heartclick(model, event) {
+    		  $.ajax({
+    			  url : "like",
+    			  type : "post",
+    			  data : { 'P_MODEL' : model},
+    			  success : function (res) {
+    				  if (res == 1) {
+    					  alert('찜 저장 완료');
+    					  event.target.textContent = '🧡';
+    				} else if(res == -1) {
+    					alert('찜 취소 완료');
+    					event.target.textContent = '🤍';
+    				}else alert('오류');
+    			},
+    			error : function (e) {
+    				alert('에러');
+    			}
+    			});
    }
       
       // selectperfume 클릭 시 관련된 정보 보여주는 함수

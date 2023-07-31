@@ -42,23 +42,22 @@ public class MemberController {
 
 	// Allperfume페이지 이동
 	@RequestMapping("/AllP")
-	public String goAllP(HttpSession session,Model model) {
-	Member user = (Member) session.getAttribute("user");
-	String ID = user.getID();
-	List<String> Llist = mapper.AllL(ID);
-	System.out.println(Llist);
-	model.addAttribute("Llist",Llist);
-	return "AllPerfume";
+	public String goAllP(HttpSession session, Model model) {
+		Member user = (Member) session.getAttribute("user");
+		String ID = user.getID();
+		List<String> Llist = mapper.AllL(ID);
+		model.addAttribute("Llist", Llist);
+		return "AllPerfume";
 	}
-	
+
 	// Likepage로 이동
 	@RequestMapping("/likep")
 	public String golikep(HttpSession session, Model model) {
 		Member user = (Member) session.getAttribute("user");
-		List<String> list = mapper.LikeP1(user.getID());
-		System.out.println(list);
-		ArrayList<Perfume> p = mapper.LikeP2(list);
-		model.addAttribute("p", p);
+		List<String> list = mapper.AllL(user.getID());
+//		System.out.println(list);
+//		ArrayList<Perfume> p = mapper.LikeP(list);
+//		model.addAttribute("p", p);
 		return "like";
 	}
 
@@ -73,35 +72,36 @@ public class MemberController {
 	}
 
 	// 로그페이지 이동 ( 페이지번호기능 추가 )
-		@RequestMapping("/goLogPage")
-		public String goLogPage(@RequestParam(required=false, defaultValue = "1")int PageNo, HttpSession session, Model model) {
-			// 로그인 확인.
-			int loginCheck = service.loginCheck(session);
-			if (loginCheck == 0) {
-				return "LoginPage";
-			}
-			Member loginUser = (Member) session.getAttribute("user");
-			String ID = loginUser.getID();
-			
-			Page page = new Page( PageNo, 4, mapper.count(ID) );
-			int startNo = page.getStartNo()-1;
+	@RequestMapping("/goLogPage")
+	public String goLogPage(@RequestParam(required = false, defaultValue = "1") int PageNo, HttpSession session,
+			Model model) {
+		// 로그인 확인.
+		int loginCheck = service.loginCheck(session);
+		if (loginCheck == 0) {
+			return "LoginPage";
+		}
+		Member loginUser = (Member) session.getAttribute("user");
+		String ID = loginUser.getID();
+
+		Page page = new Page(PageNo, 4, mapper.count(ID));
+		int startNo = page.getStartNo() - 1;
 //			int endNo = page.getEndNo();
-			int totalCount = page.getTotalCount();
-			int totalPage = page.getTotalPage();
-			model.addAttribute("totalPage", totalPage);
-			
+		int totalCount = page.getTotalCount();
+		int totalPage = page.getTotalPage();
+		model.addAttribute("totalPage", totalPage);
+
 //			System.out.println("토탈카운트 : " + totalCount);
 //			System.out.println("토탈페이지 : " + totalPage);
-			
+
 //			Map<String,Integer> Map = new HashMap<>();
 //			Map.put("startNo", page.getStartNo());
 //			Map.put("endNo", page.getEndNo());
-			ArrayList<MyLog> log = mapper.getLogList(ID, startNo);
-			model.addAttribute("log", log);
+		ArrayList<MyLog> log = mapper.getLogList(ID, startNo);
+		model.addAttribute("log", log);
 
-			return "LogPage";
-			
-		}
+		return "LogPage";
+
+	}
 
 //      int i=0;
 //      ArrayList<ArrayList<Perfume>> logListPerfume = new ArrayList<ArrayList<Perfume>>();
@@ -126,7 +126,6 @@ public class MemberController {
 //      MyLog b = log.get(0);
 //      int P_num1 = b.getP_NUM1();
 
-
 	// 향선택 향수 찾기 페이지 이동
 	@RequestMapping("/ScentP")
 	public String MixP(HttpSession session, Model model) {
@@ -148,15 +147,15 @@ public class MemberController {
 	public String Login(Member member, HttpSession session) {
 		Member user = mapper.Login(member);
 		session.setAttribute("user", user);
-		
+
 		String nextView = null;
-		
+
 		if (user != null) {
 			nextView = "MainPage";
 		} else {
 			nextView = "loginFail";
 		}
-			return nextView;
+		return nextView;
 	}
 
 	// 로그아웃
@@ -177,7 +176,7 @@ public class MemberController {
 	public String Join(Member member) {
 		int row = mapper.Join(member);
 		if (row > 0) {
-			return "redirect:/";     // 회원가입 성공 시 메인으로 이동
+			return "redirect:/"; // 회원가입 성공 시 메인으로 이동
 		} else
 			return "redirect:/Join"; // 실패
 

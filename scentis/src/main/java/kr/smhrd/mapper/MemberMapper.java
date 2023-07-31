@@ -83,11 +83,8 @@ public interface MemberMapper {
    // 로그저장
    public void saveLog(Log log);
    
-   // 좋아요 향수 가져오기
-   @Select("SELECT P_MODEL FROM T_LIKE WHERE ID=#{ID}")
-   public List<String> LikeP1(String ID);
-   @Select("SELECT * FROM T_PERFUME WHERE P_MODEL IN #{list} ORDER BY P_MODEL ASC")
-   public ArrayList<Perfume> LikeP2(List<String> list);
+   
+
    
    @Select("SELECT P_MODEL FROM T_LIKE WHERE ID=#{ID}")
    public List<String> AllL(String ID);
@@ -97,7 +94,6 @@ public interface MemberMapper {
    // 찜기능
    @Insert("INSERT INTO T_LIKE VALUES(#{ID}, #{P_MODEL}, 1)")
    public int like(Like l);
-   
    // 찜삭제기능
    @Delete("DELETE FROM T_LIKE WHERE ID=#{ID} AND P_MODEL = #{P_MODEL}")
    public int dislike(Like l);

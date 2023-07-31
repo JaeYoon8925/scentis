@@ -9,6 +9,8 @@ INSERT INTO T_MEMBER (ID, PW, NAME, NICKNAME, BIRTHDATE, GENDER)
 VALUES (#{ID}, #{PW}, #{NAME}, #{NICKNAME}, #{BIRTHDATE}, #{GENDER});
 </insert>
 
+
+
 <!-- 메일 인증키 생성 -->
 <insert id="createEmailKey">
 INSERT INTO T_MAIL (email, email_key, issueDate, expiredDate) 
