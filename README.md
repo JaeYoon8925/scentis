@@ -2,7 +2,9 @@
 ![logo](https://github.com/2021-SMHRD-KDT-BigData-18/scentis/assets/130745390/c5ccd891-e97a-4a83-a68b-5d779ff992c8)
 
 ## 🤼 참여자 
-이수하 강수연 이예은 박상준 박종현 김재윤 
+팀장 : 이수하 
+
+팀원 : 강수연 이예은 박상준 박종현 김재윤 
 
 ## ✏️ 서비스 소개
 <li>서비스명  </br> 
