@@ -37,7 +37,7 @@
 |데이터베이스|![mysql-color](https://github.com/2021-SMHRD-KDT-BigData-18/scentis/assets/130745390/2a7a2586-25f8-4ec8-a5eb-cbeb4ea8b6d6) mysql|
 |협업도구|![github-color](https://github.com/2021-SMHRD-KDT-BigData-18/scentis/assets/130745390/4f02bd37-8cdc-4860-92a7-1d8d4e10bbdb) github |
 
-## 로드맵
+## 👌 로드맵
  * [x] [회원가입 및 로그인]
      * [x] 메일 인증
      * [ ] 회원정보 찾기
