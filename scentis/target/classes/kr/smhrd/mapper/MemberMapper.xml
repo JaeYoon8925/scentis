@@ -9,7 +9,13 @@ INSERT INTO T_MEMBER (ID, PW, NAME, NICKNAME, BIRTHDATE, GENDER)
 VALUES (#{ID}, #{PW}, #{NAME}, #{NICKNAME}, #{BIRTHDATE}, #{GENDER});
 </insert>
 
-
+<!-- 좋아요 향수 가져오기 -->
+<select id="LikeP" parameterType="java.util.List" resultType="kr.smhrd.entity.Perfume">
+SELECT * FROM T_PERFUME WHERE P_MODEL IN 
+<foreach item="item" collection="list" open="(" separator="," close=")">
+#{item}
+</foreach>
+</select>
 
 <!-- 메일 인증키 생성 -->
 <insert id="createEmailKey">

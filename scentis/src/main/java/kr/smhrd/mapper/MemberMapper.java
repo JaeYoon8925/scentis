@@ -83,8 +83,8 @@ public interface MemberMapper {
    // 로그저장
    public void saveLog(Log log);
    
-   
-
+   // 좋아요 향수 가져오기
+   public ArrayList<Perfume> LikeP(List<String> list);
    
    @Select("SELECT P_MODEL FROM T_LIKE WHERE ID=#{ID}")
    public List<String> AllL(String ID);

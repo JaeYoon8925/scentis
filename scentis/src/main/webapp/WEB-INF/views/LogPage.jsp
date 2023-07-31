@@ -236,12 +236,11 @@
         					//console.log(brand)
         					//console.log(model)
         					let src1 = "resources/img/"+brand+"/"+model+".jpg";
-        					let alt1 = "resources/img/"+brand+"/"+model+".png";
         					logHTML += `
         					<div class="modal_content">
-        						<img  src="\${src1}" alt="\${alt1}" height="200px" width="200px">
+        						<img  src="\${src1}" height="200px" width="200px">
+        	       		        <span class="heart" onclick="heartclick('\${model}', event)">🤍</span>
                             	<p class="title3" id="musicname1">\${brand} <br> \${model} </p>
-                            
                             </div>
                             `}
         				$('.modal').html(logHTML);
@@ -272,7 +271,26 @@
         					}
              });
         	  }
-                
+     // 찜하기
+        function heartclick(model, event) {
+      		  $.ajax({
+      			  url : "like",
+      			  type : "post",
+      			  data : { 'P_MODEL' : model},
+      			  success : function (res) {
+      				  if (res == 1) {
+      					  alert('찜 저장 완료');
+      					  event.target.textContent = '🧡';
+      				} else if(res == -1) {
+      					alert('찜 취소 완료');
+      					event.target.textContent = '🤍';
+      				}else alert('오류');
+      			},
+      			error : function (e) {
+      				alert('에러');
+      			}
+      			});
+      		  }
 
           
       

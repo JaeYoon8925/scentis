@@ -54,10 +54,10 @@ public class MemberController {
 	@RequestMapping("/likep")
 	public String golikep(HttpSession session, Model model) {
 		Member user = (Member) session.getAttribute("user");
-		List<String> list = mapper.AllL(user.getID());
-//		System.out.println(list);
-//		ArrayList<Perfume> p = mapper.LikeP(list);
-//		model.addAttribute("p", p);
+		String ID = user.getID();
+		List<String> list = mapper.AllL(ID);
+		ArrayList<Perfume> p = mapper.LikeP(list);
+	    model.addAttribute("p", p);
 		return "like";
 	}
 
