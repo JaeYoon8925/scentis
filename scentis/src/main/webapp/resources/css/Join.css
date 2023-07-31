@@ -3,6 +3,7 @@
 @import
 	url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800")
 	;
+
 @import
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap')
 	;
@@ -167,18 +168,21 @@ a:-webkit-any-link {
 	-webkit-text-stroke-color: #ffca00;
 	color: #fff67ce8;
 	text-decoration: none;
-    cursor: pointer;
+	cursor: pointer;
 }
+
 #title h1 {
-    font-family: 'Oleo Script', serif;
-    font-weight: 400;
-    font-size: 5em;
-    letter-spacing: 0.05em;
-    text-align: center;
+	font-family: 'Oleo Script', serif;
+	font-weight: 400;
+	font-size: 5em;
+	letter-spacing: 0.05em;
+	text-align: center;
 }
+
 #title {
 	margin-top: 5%;
 }
+
 .form_radio_btn {
 	width: 47%;
 	/*height: 45px;*/
@@ -233,11 +237,11 @@ button:hover {
 
 button {
 	width: 360px;
-    height: 50px;
-    border: 0;
-    margin-top: 25px;
-    background-color: black;
-    font-size: 25px;
-    color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	height: 50px;
+	margin-top: 25px;
+	border: 0;
+	background-color: black;
+	font-size: 25px;
+	color: white;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

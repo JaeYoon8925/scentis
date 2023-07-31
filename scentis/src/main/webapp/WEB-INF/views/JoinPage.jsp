@@ -39,10 +39,10 @@
 
 			</div>
 
-			<div class=e4_332>
+			<div class="e4_332">
 				<div class="form-group email-form">
-					<label for="email">이메일</label>
-					<div class="input-group">
+					<label for="email" style="margin-right: 10px;">이메일</label>
+					<div class="input-group" style="display: flex;">
 						<input type="text" class="form-control" name="userEmail1"
 							id="userEmail1" placeholder="이메일"> <select
 							class="form-control" name="userEmail2" id="userEmail2">
@@ -52,17 +52,24 @@
 							<option>@hanmail.com</option>
 							<option>@yahoo.co.kr</option>
 						</select>
-						<div class="input-group-addon">
-							<button type="button" class="btn btn-primary" id="mail-Check-Btn">본인인증</button>
-						</div>
 					</div>
+					<div class="input-group-addon">
+						<button type="button" class="btn btn-primary" id="mail-Check-Btn"
+							style="margin-top: 0px; margin-bottom: 5px;">본인인증</button>
+					</div>
+				</div>
+				<div class="modal">
+
+
 					<div class="mail-check-box">
 						<input class="form-control mail-check-input" name="email_Key"
 							id="email_KeyCheck" placeholder="인증번호 6자리를 입력해주세요!" maxlength="6"
 							disabled="disabled">
 						<button type="button" class="btn mail-check-input"
-							id="emailKeyCheck-Btn" disabled="disabled">인증하기</button>
+							id="emailKeyCheck-Btn" disabled="disabled"
+							style="margin-top: 0px; margin-bottom: 5px;">인증하기</button>
 					</div>
+
 					<span id="mail-check-warn"></span>
 				</div>
 			</div>
@@ -196,6 +203,7 @@
 					checkInput.attr('disabled', false);
 					if (data == "전송성공") {
 						alert('인증번호가 전송되었습니다. 3분 이내에 입력해주세요.')
+
 					} else {
 						alert('인증번호 발급에 실패했습니다. 이메일주소를 확인해주세요.')
 					}
