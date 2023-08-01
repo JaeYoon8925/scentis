@@ -25,6 +25,7 @@ nav {
 
 .wish {
 	border: 2px solid black;
+	width: 346px;
 }
 
 div.logo img {
@@ -51,6 +52,11 @@ div.menuBar>span {
 
 div.menuBar>a:hover {
 	color: #10c410;
+}
+
+a {
+	text-decoration: none;
+    color: black;
 }
 
 /* 섹션 */
