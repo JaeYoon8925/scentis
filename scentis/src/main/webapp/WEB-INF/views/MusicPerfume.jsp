@@ -85,7 +85,7 @@
 		</section>
 		<section class="search">
 			<div class="searchbox">
-				<p class="title1">Search Perfume</p>
+				<p class="title1">SEARCH MUSIC</p>
 				<div>
 					<div class="Box1">
 						<p class="title3">가수 또는 제목을 입력하세요</p>
