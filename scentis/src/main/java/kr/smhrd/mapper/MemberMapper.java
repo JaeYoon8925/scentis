@@ -92,7 +92,7 @@ public interface MemberMapper {
    @Select("SELECT * FROM T_LIKE WHERE ID=#{ID} AND P_MODEL=#{P_MODEL}")
    public Like likeYN(Like l);
    // 찜기능
-   @Insert("INSERT INTO T_LIKE VALUES(#{ID}, #{P_MODEL}, 1)")
+   @Insert("INSERT INTO T_LIKE VALUES(#{ID}, #{P_MODEL})")
    public int like(Like l);
    // 찜삭제기능
    @Delete("DELETE FROM T_LIKE WHERE ID=#{ID} AND P_MODEL = #{P_MODEL}")
