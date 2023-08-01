@@ -139,7 +139,7 @@
                let src1 = "resources/img/"+brand+"/"+model+".jpg";
 	               perfumeHTML+=`
 	                      	<div class="box">
-	       		            <img class="perfumeimg" src="\${src1}" height="100px" width="100px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')"/>
+	       		            <img class="perfumeimg" src="\${src1}" height="200px" width="200px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')"/>
 	       		         	<span class="heart" onclick="heartclick('\${model}', event)">🤍</span>
 	       		            <p class="perfume"> \${brand} </p>
 	       		            <p class="perfumename">\${model}</p>

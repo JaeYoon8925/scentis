@@ -39,6 +39,7 @@
 		<section class="search">
 			<div class="searchbox">
 				<p class="title1">Scent to Perfume</p>
+				<p class="title4">${user.NICKNAME}님이 입력하신 TOP, MIDDLE, BASE NOTE로 향수를 찾아드립니다!</p>
 				<div>
 					<div class="Box1">
 						<p class="title3">TOP NOTE</p>

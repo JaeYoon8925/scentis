@@ -88,7 +88,8 @@
 				<p class="title1">SEARCH MUSIC</p>
 				<div>
 					<div class="Box1">
-						<p class="title3">가수 또는 제목을 입력하세요</p>
+						<p class="title4">${user.NICKNAME}님이 가장 좋아하는 가수 및 제목을 입력해주세요!</p>
+						<p class="title4">입력하신 노래를 분석하여 향수를 추천해드립니다.</p>
 						<input class="inputbox" type="text" id="m_TITLE" name="m_TITLE">
 						<button id="selectbtn" class="btn">검색하기</button>
 					</div>
