@@ -66,7 +66,7 @@
 						</select>
 						<!--  <input class="inputbox" type="text" id="m_TITLE" name="m_TITLE">-->
 					</div>
-						<button id="selectbtn" class="btn">검색하기</button>
+						<button id="selectbtn" class="btn">조합하기</button>
 				</div>
 			</div>
 
