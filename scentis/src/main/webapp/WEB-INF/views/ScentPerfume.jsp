@@ -32,7 +32,7 @@
                 <div class="idnick">
                     <p>${user.ID}</p>
                     <p>${user.NICKNAME}</p>
-                    <a href="likep" class="wish">WISH LIST</a>
+                    <a href="likep"><p class="wish">WISH LIST</p></a>
                 </div>
             </div>
         </section>
