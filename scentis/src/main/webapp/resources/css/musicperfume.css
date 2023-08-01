@@ -7,13 +7,16 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Stylish&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Lobster&family=Stylish&display=swap');
+
 /* 로고 이미지 */
 .logo {
 	color: #913636;
 	padding: 28px 17px;
-	font-size: 40px;
+	font-size: 50px;
 	font-weight: 500;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	/*font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;*/
+	font-family: 'Lobster', cursive;
 }
 
 nav {
@@ -46,10 +49,10 @@ div.menuBar {
 }
 
 div.menuBar>a {
+	font-family: 'Lobster', cursive;
 	text-decoration: none;
 	color: #913636;
-	font-size: 18px;
-	font-weight: 700;
+	font-size: 23px;
 	padding: 28px 17px 28px 17px;
 }
 
@@ -177,12 +180,14 @@ footer {
 }
 
 .sub-title {
+	font-family: 'Lobster', cursive;
 	color: #913636;
 	font-weight: 900;
 	margin: 20px 0px;
 }
 
 div.column>a {
+	font-family: 'Lobster', cursive;
 	text-decoration: none;
 	color: #913636;
 	padding-bottom: 15px;
