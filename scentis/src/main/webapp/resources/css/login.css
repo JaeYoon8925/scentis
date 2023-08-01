@@ -5,7 +5,7 @@
 @import
 	url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800")
 	;
-
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Lobster&family=Stylish&display=swap');
 html {
 	display: flex;
 	justify-content: center;
@@ -46,6 +46,10 @@ body {
 	top: 37px;
 }
 
+a {
+	font-family: 'Lobster', cursive;
+}
+
 button {
 	width: 450px;
 	height: 50px;
@@ -77,7 +81,7 @@ button {
 
 #title h1 {
 	border-radius: 6px;
-	font-family: 'Oleo Script', serif;
+	font-family: 'Lobster', cursive;
 	font-weight: 400;
 	padding: 0.25em 0.2em 0.25em 0.2em;
 	font-size: 3.25em;
@@ -90,7 +94,7 @@ button {
 
 a {
 	text-decoration: underline;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-family: 'Lobster', cursive;
 }
 
 a:hover {
@@ -99,8 +103,7 @@ a:hover {
 
 a:-webkit-any-link {
 	-webkit-text-stroke-width: 2px;
-	-webkit-text-stroke-color: #ffca00;
-	color: #fff67ce8;
+	color: #913636;
 	text-decoration: none;
 	cursor: pointer;
 }

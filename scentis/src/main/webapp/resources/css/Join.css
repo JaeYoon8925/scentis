@@ -7,6 +7,7 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap')
 	;
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Lobster&family=Stylish&display=swap');
 
 * {
 	box-sizing: border-box; /*전체에 박스사이징*/
@@ -165,18 +166,21 @@ form {
 
 a:-webkit-any-link {
 	-webkit-text-stroke-width: 2px;
-	-webkit-text-stroke-color: #ffca00;
-	color: #fff67ce8;
+	color: #913636;
 	text-decoration: none;
 	cursor: pointer;
 }
 
 #title h1 {
-	font-family: 'Oleo Script', serif;
+	font-family: 'Lobster', cursive;
 	font-weight: 400;
 	font-size: 5em;
 	letter-spacing: 0.05em;
 	text-align: center;
+}
+
+a {
+	font-family: 'Lobster', cursive;
 }
 
 #title {
