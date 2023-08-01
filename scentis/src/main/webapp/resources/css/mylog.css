@@ -33,6 +33,10 @@ nav {
 	width: 346px;
 }
 
+.heart:hover {
+	cursor: pointer;
+}
+
 div.logo img {
 	width: 150px;
 	color: white;
