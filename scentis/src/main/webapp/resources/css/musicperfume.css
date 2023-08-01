@@ -289,6 +289,7 @@ div.column>a:hover {
 }
 
 .inputbox {
+	margin-top: 30px;
 	padding: 10px 0px 10px 0px;
 	text-align: center;
 	font-size: 20px;

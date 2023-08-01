@@ -119,6 +119,7 @@ div.menuBar>a:hover {
 }
 
 .title4 {
+	margin: 40px;
 	text-align: center;
     font-weight: 600;
 }
