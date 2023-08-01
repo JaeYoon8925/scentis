@@ -27,6 +27,7 @@
 
 	<section>
 		<div class ="perfumebox">
+			<div class="title1">WISH LIST</div>
 	            <table>
 	               <tr>
 	                  <c:forEach var="p" items="${p}" varStatus="status">
@@ -34,9 +35,9 @@
 	               </tr>
 	               <tr>
 	                  </c:if>
-	                  <td class="a" onclick="heartclick('\${p.p_MODEL}', event)">
-	                     <img src="resources/img/${p.p_BRAND}/${p.p_MODEL}.jpg" height="200px" width="200px">
-	                     <span class="heart" onclick="heartclick('\${p.p_MODEL}', event)">🧡</span>
+	                  <td>
+	                     <img src="resources/img/${p.p_BRAND}/${p.p_MODEL}.jpg" height="250px" width="200px">
+	                     <span class="heart" onclick="heartclick('${p.p_MODEL}', event)">🧡</span>
 	                     <p class="title2">${p.p_BRAND} <br> ${p.p_MODEL}
 	                     </p>
 	                  </td>
@@ -49,30 +50,6 @@
 
 
 
-	<footer>
-		<div class="container">
-			<div class="footer-menu">
-				<div class="first-box">
-					<div class="column">
-						<div class="sub-title">COMPANY</div>
-						<a href="">About</a>
-					</div>
-					<div class="column">
-						<div class="sub-title">COMMUNITIES</div>
-						<a href="">Instagram</a> <a href="">Twitter</a> <a href="">Youtube</a>
-					</div>
-
-				</div>
-
-			</div>
-			<div class="KOREA">KOREA</div>
-
-		</div>
-	</footer>
-
-
-
-
 
 
 
@@ -81,6 +58,7 @@
 	
     // 찜하기
     function heartclick(model, event) {
+    	console.log(model)
   		  $.ajax({
   			  url : "like",
   			  type : "post",
@@ -92,7 +70,9 @@
   				} else if(res == -1) {
   					alert('찜 취소 완료');
   					event.target.textContent = '🤍';
-  				}else alert('오류');
+  				}else {
+  					alert('오류');
+  				}
   			},
   			error : function (e) {
   				alert('에러');

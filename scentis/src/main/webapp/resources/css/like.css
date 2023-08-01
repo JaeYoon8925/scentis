@@ -42,18 +42,23 @@ div.menuBar>span {
 	color: white;
 }
 
+span:hover {
+	cursor: pointer;
+}
+
+
 div.menuBar>a:hover {
 	color: #10c410;
 }
 
 /* 섹션 */
-.section {
+section {
 	height: auto;
 	display: flex;
 	justify-content: center;
 	text-align: center;
 	align-items: flex-start;
-	margin-top: 100px;
+	margin-top: 50px;
 	margin-bottom: 100px;
 }
 
@@ -66,7 +71,8 @@ div.menuBar>a:hover {
 }
 
 .perfumebox {
-   display: flex;
+   height: auto;
+   /*display: flex;*/
    width: 1700px;
    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
    font-weight: 600;
@@ -101,41 +107,7 @@ div.menuBar>a:hover {
    font-weight: 600;
 }
 
-/* footer */
-footer {
-	/*height: 530px;*/
-	background-color: black;
-	display: flex;
-	justify-content: center;
-}
 
-/* footer box 내용 전체 */
-.container {
-	max-width: 1170px;
-	width: 100%;
-	padding-top: 80px;
-	padding-bottom: 50px;
-}
-
-.footer-menu {
-	display: flex;
-	justify-content: space-between;
-	/*height: 346px;*/
-}
-
-/* footer menu box */
-.first-box {
-	width: 60%;
-	/* border: 1px solid red; */
-	display: flex;
-	justify-content: space-between;
-}
-
-/* footer img 사이즈 */
-.first-box img {
-	padding-top: 10px;
-	width: 132px;
-}
 
 .column {
 	/* border: 1px solid blue; */
@@ -215,12 +187,26 @@ div.column>a:hover {
 	color: #10c410;
 }
 
+.title1 {
+	font-size: 40px;
+	font-weight: 600;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	margin-bottom: 50px;
+}
+
 .title2 {
-	font-size: 20px;
-	font-weight: 500;
+	font-size: 18px;
+	font-weight: 600;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 table {
 	text-align: center;
+}
+
+td {
+	width: 300px;
+	height: 300px;
+	padding: 20px;
+    border: 1px solid #ffe000;
 }
