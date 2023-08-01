@@ -25,6 +25,11 @@ nav {
 	align-items: center;
 }
 
+.wish:hover {
+	cursor: pointer;
+	color: white
+}
+
 div.logo img {
 	width: 150px;
 	color: white;
@@ -88,10 +93,10 @@ div.menuBar>a:hover {
 	color: black;
 }
 
-.title:hover {
+/*.title:hover {
 	cursor: pointer;
 	color: white;
-}
+}*/
 
 .title1 {
 	font-size: 30px;

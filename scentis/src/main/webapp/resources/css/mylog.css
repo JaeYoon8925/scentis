@@ -18,6 +18,11 @@ nav {
 	align-items: center;
 }
 
+.wish:hover {
+	cursor: pointer;
+	color: white
+}
+
 div.logo img {
 	width: 150px;
 	color: white;

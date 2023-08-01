@@ -79,7 +79,7 @@
 				<div class="idnick">
 					<p>${user.ID}</p>
 					<p>${user.NICKNAME}</p>
-					<a href="likep">WISH LIST</a>
+					<a href="likep" class="wish">WISH LIST</a>
 				</div>
 			</div>
 		</section>
