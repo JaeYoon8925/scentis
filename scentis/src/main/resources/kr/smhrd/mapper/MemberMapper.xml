@@ -5,8 +5,8 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <!--회원가입-->
 <insert id="Join" parameterType="kr.smhrd.entity.Member">
-INSERT INTO T_MEMBER (ID, PW, NAME, NICKNAME, BIRTHDATE, GENDER) 
-VALUES (#{ID}, #{PW}, #{NAME}, #{NICKNAME}, #{BIRTHDATE}, #{GENDER});
+INSERT INTO T_MEMBER (ID, PW, NAME, NICKNAME, BIRTHDATE, GENDER, EMAIL) 
+VALUES (#{ID}, #{PW}, #{NAME}, #{NICKNAME}, #{BIRTHDATE}, #{GENDER}, #{EMAIL});
 </insert>
 
 <!-- 좋아요 향수 가져오기 -->
@@ -23,11 +23,18 @@ INSERT INTO T_MAIL (email, email_key, issueDate, expiredDate)
             VALUES (#{email}, #{email_key}, #{issueDate}, #{expiredDate});
 </insert>
 
-<!-- 메일 인증 여부 확인 -->
+<!-- 메일 유효시간 확인 -->
 <select id="checkExp" resultType="kr.smhrd.entity.Mail">
 SELECT * 
   FROM T_MAIL  
  WHERE email=#{email}
+</select>
+
+<!-- id와 email 유효 확인 -->
+<select id="searchId" resultType="int">
+SELECT COUNT(*)
+  FROM T_MEMBER  
+ WHERE id=#{id} and email=#{email}
 </select>
 
 <!-- 메일 인증 여부 확인 -->
@@ -43,6 +50,13 @@ DELETE
   FROM T_MAIL
  WHERE email=#{email}
 </delete>
+
+<!-- PW 변경 -->
+<update id="changePw" parameterType="kr.smhrd.entity.Member">
+UPDATE T_MEMBER
+   SET PW=#{PW}
+ WHERE ID=#{ID}
+</update>
 
 <!-- 로그정보 가져가기 / 사용 안하는 중 -->
 <select id="LogCheck" parameterType="kr.smhrd.entity.Member" resultType="kr.smhrd.entity.MyLog">

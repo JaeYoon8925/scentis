@@ -158,6 +158,23 @@ public class MemberController {
 		return nextView;
 	}
 
+	// ID 찾기
+		@RequestMapping("/findId")
+		public String FindId(HttpSession session) {
+			return "FindId";
+		}
+		
+		// 비밀번호 변경
+		@RequestMapping("/ChangePw")
+		public String ChangePw(Member member) throws Exception {
+			System.out.println("비밀번호 변경 시도");
+		    System.out.println("입력받은 정보 : " + member);
+		    
+		    mapper.changePw(member);
+			
+			return "LoginPage";
+		}
+	
 	// 로그아웃
 	@RequestMapping("/logout")
 	public String Logout(HttpSession session) {

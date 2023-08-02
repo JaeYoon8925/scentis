@@ -35,7 +35,7 @@
 			<button type="submit" id="btn">로그인</button>
 		</div>
 	</form>
-
+	<a href="findId" class="ignore-style">비밀번호 찾기</a>
 
 
 

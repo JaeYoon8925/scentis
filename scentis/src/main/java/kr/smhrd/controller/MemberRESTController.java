@@ -68,81 +68,93 @@ public class MemberRESTController {
       }
    }
    
-   // 이메일 인증키 생성 및 전송
-   @GetMapping("/createMailKey")
-   @ResponseBody
-   public String createMailKey(String email) throws Exception {
-      System.out.println("이메일 인증 요청이 들어옴!");
-      System.out.println("이메일 인증 이메일 : " + email);
+// 이메일 인증키 생성 및 전송
+	@GetMapping(value = "/createMailKey", produces = "text/plain; charset=UTF-8")
+	@ResponseBody
+	public String createMailKey(String email, String id) throws Exception {
+		System.out.println("이메일 인증 요청이 들어옴!");
+		System.out.println("이메일 인증 이메일 : " + email);
+		System.out.println("비밀번호찾기 아이디 : " + id);
 
-      // 이전에 같은 메일에 생성된 키 삭제
-      mapper.deleteEmailKey(email);
-      System.out.println("코드삭제");
+		// 이전에 같은 메일에 생성된 키 삭제
+		mapper.deleteEmailKey(email);
 
-      Calendar cal1 = Calendar.getInstance();
-      cal1.add(Calendar.MINUTE, 3); // 분 연산
-      Date calDate = new Date(cal1.getTimeInMillis());
-      Date date = new Date();
+		if (id != null) {
+			// id와 email이 모두 일치하는 항목이 있는가 조회하기
+			if (id != "") {
+				System.out.println("여기로 진입");
+				int search = mapper.searchId(id, email);
+				if (search != 1) {
+					return "확인요망";
+				}
+			}
+		}
 
-      // 랜덤 문자열을 생성해서 email_key 컬럼에 넣어주기
-      String email_key = service.getKey();
-      System.out.println("생성된 인증키 : " + email_key);
+		Calendar cal1 = Calendar.getInstance();
+		cal1.add(Calendar.MINUTE, 3); // 분 연산
+		Date calDate = new Date(cal1.getTimeInMillis());
+		Date date = new Date();
 
-      Mail emailKeyBind = new Mail();
-      emailKeyBind.setEmail(email);
-      emailKeyBind.setEmail_key(email_key);
-      emailKeyBind.setIssueDate(date); // 인증키 발급시간
-      emailKeyBind.setExpiredDate(calDate); // 인증키 유효시간
+		// 랜덤 문자열을 생성해서 email_key 컬럼에 넣어주기
+		String email_key = service.getKey();
+		System.out.println("생성된 인증키 : " + email_key);
 
-      // 인증코드 생성
-      mapper.createEmailKey(emailKeyBind);
-      System.out.println("인증키 생성");
+		Mail emailKeyBind = new Mail();
+		emailKeyBind.setEmail(email);
+		emailKeyBind.setEmail_key(email_key);
+		emailKeyBind.setIssueDate(date); // 인증키 발급시간
+		emailKeyBind.setExpiredDate(calDate); // 인증키 유효시간
 
-      // 메일전송
-      String result = service.sendMail(email, email_key);
-      System.out.println("result : " + result);
+		// 인증코드 생성
+		mapper.createEmailKey(emailKeyBind);
+		System.out.println("인증키 생성");
 
-      return result;
-   }
+		// 메일전송
+		String result = service.sendMail(email, email_key);
+		System.out.println("result : " + result);
 
-   // 이메일 인증키 체크
-   @GetMapping("/checkMailKey")
-   @ResponseBody
-   public String checkMailKey(String email, String email_key) throws Exception {
-      System.out.println("인증키 확인 시도");
-      System.out.println("입력받은 인증키 : " + email_key);
-      System.out.println("입력받은 이메일 : " + email);
+		return result;
+	}
 
-      Mail emailKeyBind = new Mail();
-      emailKeyBind.setEmail(email);
-      emailKeyBind.setEmail_key(email_key);
+	// 이메일 인증키 체크
+		@GetMapping("/checkMailKey")
+		@ResponseBody
+		public String checkMailKey(String email, String email_key) throws Exception {
+			System.out.println("인증키 확인 시도");
+			System.out.println("입력받은 인증키 : " + email_key);
+			System.out.println("입력받은 이메일 : " + email);
 
-      Mail checkExp = mapper.checkExp(emailKeyBind);
+			Mail emailKeyBind = new Mail();
+			emailKeyBind.setEmail_key(email_key);
+			emailKeyBind.setEmail(email);
 
-      // 시간 비교 ( 0 이하 = exp 타임이 지난 후 / 0 초과 = exp 타임이 지나기 전)
-      Date date = new Date();
-      Date expDate = checkExp.getExpiredDate();
-      int expResult = expDate.compareTo(date);
+			Mail checkExp = mapper.checkExp(emailKeyBind);
 
-      System.out.println(checkExp);
-      System.out.println(expDate);
-      System.out.println(expResult);
-      System.out.println(emailKeyBind);
+			// 시간 비교 ( 0 이하 = exp 타임이 지난 후 / 0 초과 = exp 타임이 지나기 전)
+			Date date = new Date();
+			Date expDate = checkExp.getExpiredDate();
+			int expResult = expDate.compareTo(date);
 
-      if (0 < expResult) {
-         int checkResult = mapper.checkEmailKey(emailKeyBind);
-         System.out.println(checkResult);
+			System.out.println(checkExp);
+			System.out.println(expDate);
+			System.out.println(expResult);
+			System.out.println(emailKeyBind);
 
-         if (checkResult == 1) {
-            mapper.deleteEmailKey(email);
-            System.out.println("코드삭제");
-            return "true"; // 성공
-         } else {
-            return "false1"; // 인증키 오류
-         }
-      }
-      return "flase2"; // 타임아웃
-   }
+			if (0 < expResult) {
+				int checkResult = mapper.checkEmailKey(emailKeyBind);
+				System.out.println(checkResult);
+
+				if (checkResult == 1) {
+					mapper.deleteEmailKey(email);
+					System.out.println("코드삭제");
+					return "true"; // 성공
+				} else {
+					return "false1"; // 인증키 오류
+				}
+			}
+			return "true"; // 타임아웃
+//	      return "false2"; // 타임아웃
+		}
 
    // 브랜드별 perfumeList 비동기로 보내주기
    @RequestMapping("/BrandP")

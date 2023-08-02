@@ -43,19 +43,12 @@
 				<div class="form-group email-form">
 					<label for="email" style="margin-right: 10px;">이메일</label>
 					<div class="input-group" style="display: flex;">
-						<input type="text" class="form-control" name="userEmail1"
-							id="userEmail1" placeholder="이메일"> <select
-							class="form-control" name="userEmail2" id="userEmail2">
-							<option>@naver.com</option>
-							<option>@daum.net</option>
-							<option>@gmail.com</option>
-							<option>@hanmail.com</option>
-							<option>@yahoo.co.kr</option>
-						</select>
+						<input type="email" class="form-control" name="EMAIL" id="EMAIL"
+							placeholder="example@gmail.com">
 					</div>
 					<div class="input-group-addon">
 						<button type="button" class="btn btn-primary" id="mail-Check-Btn"
-							style="margin-top: 0px; margin-bottom: 5px;">본인인증</button>
+							style="margin-top: 0px; margin-bottom: 5px;">인증키 발급</button>
 					</div>
 				</div>
 				<div class="modal">
@@ -187,8 +180,44 @@
 	</script>
 	<!-- 이메일 인증 -->
 	<script>
+		document.getElementById("EMAIL").addEventListener("input", function() {
+			const emailInput = document.getElementById("EMAIL").value;
+			const checkBtn = document.getElementById("mail-Check-Btn");
+	
+			// '@' 문자가 포함되지 않은 경우 버튼 비활성화
+			if (emailInput.indexOf("@") === -1) {
+				checkBtn.disabled = true;
+			} else {
+				checkBtn.disabled = false;
+			}
+		});
+		
+		const checkBtn = document.getElementById("mail-Check-Btn");
+	
+		checkBtn.addEventListener("mouseover", function() {
+		    if (!this.disabled) {
+		        // 버튼이 활성화된 상태에서만 툴팁이 나타납니다.
+		        const tooltipText = this.getAttribute("title");
+		        if (tooltipText) {
+		            const tooltip = document.createElement("div");
+		            tooltip.textContent = tooltipText;
+		            tooltip.classList.add("tooltip");
+		            document.body.appendChild(tooltip);
+		            const buttonRect = this.getBoundingClientRect();
+		            const tooltipRect = tooltip.getBoundingClientRect();
+		            tooltip.style.top = buttonRect.top - tooltipRect.height - 5 + "px";
+		            tooltip.style.left = buttonRect.left + buttonRect.width / 2 - tooltipRect.width / 2 + "px";
+	
+		            this.addEventListener("mouseout", function() {
+		                // 버튼에서 마우스가 벗어나면 툴팁이 사라집니다.
+		                tooltip.remove();
+		            });
+		        }
+		    }
+		});
+		
 		$('#mail-Check-Btn').click(function() {
-			const email = $('#userEmail1').val() + $('#userEmail2').val(); // 이메일 주소값 
+			const email = $('#EMAIL').val() // 이메일 주소값 
 			console.log('완성된 이메일 : ' + email); // 완성된 이메일 확인
 			const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
 
@@ -200,13 +229,16 @@
 				},
 				success : function(data) {
 					console.log("data : " + data);
-					checkInput.attr('disabled', false);
 					if (data == "전송성공") {
 						alert('인증번호가 전송되었습니다. 3분 이내에 입력해주세요.')
-
-					} else {
-						alert('인증번호 발급에 실패했습니다. 이메일주소를 확인해주세요.')
-					}
+						checkInput.attr('disabled', false);
+					} else if (data == "확인요망") {
+						alert("일치하는 ID와 Email이 없습니다.");
+					} else if (email === "") {
+							alert("이메일 형식이 올바르지 않습니다. example@gmail.com");
+						} else {
+							alert('인증번호 발급에 실패했습니다. 이메일주소를 확인해주세요.')
+						}
 
 				},
 				error : function(error) {
@@ -215,9 +247,9 @@
 				},
 			}); // end ajax
 		}); // end send eamil
-
+		
 		$('#emailKeyCheck-Btn').click(function() {
-			const email = $('#userEmail1').val() + $('#userEmail2').val();
+			const email = $('#EMAIL').val() // 이메일 주소값 
 			const email_key = $('#email_KeyCheck').val();
 			console.log('입력한 인증키 : ' + email_key);
 			const join = $('#join')

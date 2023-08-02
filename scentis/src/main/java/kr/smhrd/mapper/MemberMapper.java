@@ -26,22 +26,28 @@ public interface MemberMapper {
    // 회원가입
    public int Join(Member dto);
    
-//////////////////////////////////////////////////////////////////////////////////////////////////   
-   
-   // 회원가입시 인증코드 생성
-   public int createEmailKey(Mail emailKeyBind) throws Exception;
-   
-   // 인증 시 유효기간 체크
-   public Mail checkExp(Mail emailKeyBind) throws Exception;
-   
-   // 인증 여부 확인 >> 1=인증, 0=미인증
-   public int checkEmailKey(Mail emailKeyBind) throws Exception;
-   
-   // 인증 완료후 DB에서 삭제
-   public int deleteEmailKey(@Param("email") String email) throws Exception;
-   
 //////////////////////////////////////////////////////////////////////////////////////////////////
    
+// 회원가입시 인증코드 생성
+public int createEmailKey(Mail emailKeyBind) throws Exception;
+
+// 인증 시 유효기간 체크
+public Mail checkExp(Mail emailKeyBind) throws Exception;
+
+// ID, Email 유효 확인
+public int searchId(@Param("id") String id, @Param("email") String email) throws Exception;
+
+//비밀번호 변경
+public int changePw(Member member) throws Exception;
+
+// 인증 여부 확인 >> 1=인증, 0=미인증
+public int checkEmailKey(Mail emailKeyBind) throws Exception;
+
+// 인증 완료후 DB에서 삭제
+public int deleteEmailKey(@Param("email") String email) throws Exception;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
    // 아이디 중복 체크
    @Select("SELECT * FROM T_MEMBER WHERE ID=#{ID}")
    public Member idCheck(String id);

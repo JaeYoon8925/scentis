@@ -20,6 +20,7 @@ public class Member {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date BIRTHDATE;
 	private String GENDER;
+	private String EMAIL;
 	// 자바의 date 타입은 mysql에서 db 생성시에는 DATETIME 타입으로 선언 필요.
 
 }
