@@ -153,6 +153,7 @@ a {
 
 .menu1 {
    padding: 10px;
+   font-family: 'Gowun Dodum', sans-serif;
 }
 
 span:hover {
@@ -163,8 +164,9 @@ span:hover {
 .perfumebox {
    display: flex;
    width: 1700px;
-   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-family: 'Gowun Dodum', sans-serif;
    font-weight: 600;
+   font-size: 18px;
 }
 
 .perfumeimg {

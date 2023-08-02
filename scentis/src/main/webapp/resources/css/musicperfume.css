@@ -158,14 +158,12 @@ footer {
 }
 
 .sub-title {
-	/*font-family: 'Lobster', cursive;*/
 	color: black;
 	font-weight: 900;
 	margin: 20px 0px;
 }
 
 div.column>a {
-	/*font-family: 'Lobster', cursive;*/
 	text-decoration: none;
 	color: black;
 	padding-bottom: 15px;
