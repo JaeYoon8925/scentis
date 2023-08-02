@@ -19,13 +19,8 @@ import kr.smhrd.mapper.MemberMapper;
 @Service
 public class MemberService {
 
-	@Autowired // (required = false)
+	@Autowired
 	private MemberMapper mapper;
-
-//	public Perfume RecP() {
-//		Perfume RecP = mapper.RecP();
-//		return RecP;
-//	}
 
 	// 로그인 여부 확인. 로그인된 경우 1 아닌경우 0 리턴.
 	public int loginCheck(HttpSession session) {
@@ -57,8 +52,8 @@ public class MemberService {
 			JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 			mailSender.setHost("smtp.gmail.com");
 			mailSender.setPort(587);
-			mailSender.setUsername("4yuiko07@gmail.com"); // Gmail 계정을 입력하세요.
-			mailSender.setPassword("abedrslxjbckvhla"); // Gmail 앱 비밀번호를 입력하세요.
+			mailSender.setUsername("4yuiko07@gmail.com"); // Gmail 계정
+			mailSender.setPassword("abedrslxjbckvhla");   // Gmail 앱 비밀번호
 
 			Properties props = mailSender.getJavaMailProperties();
 			props.put("mail.transport.protocol", "smtp");

@@ -68,7 +68,7 @@ public class MemberRESTController {
       }
    }
    
-// 이메일 인증키 생성 및 전송
+    // 이메일 인증키 생성 및 전송
 	@GetMapping(value = "/createMailKey", produces = "text/plain; charset=UTF-8")
 	@ResponseBody
 	public String createMailKey(String email, String id) throws Exception {
@@ -82,7 +82,6 @@ public class MemberRESTController {
 		if (id != null) {
 			// id와 email이 모두 일치하는 항목이 있는가 조회하기
 			if (id != "") {
-				System.out.println("여기로 진입");
 				int search = mapper.searchId(id, email);
 				if (search != 1) {
 					return "확인요망";
@@ -152,8 +151,7 @@ public class MemberRESTController {
 					return "false1"; // 인증키 오류
 				}
 			}
-			return "true"; // 타임아웃
-//	      return "false2"; // 타임아웃
+			return "true"; // 타임아웃 false2 인데 일단 true로
 		}
 
    // 브랜드별 perfumeList 비동기로 보내주기
@@ -173,26 +171,17 @@ public class MemberRESTController {
 // 플라스크 통신1 곡명 보내기
    @RequestMapping(value = "/sendDataToFlask", method = RequestMethod.POST)
    public MyLog sendDataToFlask(@RequestBody MyLog title) {
-      System.out.println("sendDataToFlask 시작");
-//       System.out.println(title);
 
-//        Music 객체를 JSON으로 변환하여 Flask 서버에 전송
+      // Music 객체를 JSON으로 변환하여 Flask 서버에 전송
       RestTemplate restTemplate = new RestTemplate();
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_JSON);
 
       HttpEntity<MyLog> request = new HttpEntity<>(title, headers);
 
-//       System.out.println(request);
+      ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask", request, String.class);
 
-      ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask",
-            request, String.class);
-
-//       System.out.println(response.getBody().getClass()); // String 타입
-
-      // JSON 문자열
       String jsonString = response.getBody();
-//       System.out.println(jsonString);
 
       // Jackson ObjectMapper 객체 생성
       ObjectMapper objectMapper = new ObjectMapper();
@@ -201,20 +190,11 @@ public class MemberRESTController {
          // JSON 문자열을 객체로 파싱
          Data = objectMapper.readValue(jsonString, MyLog.class);
 
-//          System.out.println(Data);
-
          // 파싱된 데이터 꺼내기 + 확인
          List<String> TITLELIST = Data.getTitle_list();
          List<String> ARTISTLIST = Data.getArtist_list();
          List<String> IMGLIST = Data.getAlbum_img_list();
          List<String> TRACK_IDLIST = Data.getTrack_id_list();
-
-//           System.out.println("곡 1의 정보");
-//           System.out.println("TITLELIST 0  : " + TITLELIST.get(0));
-//           System.out.println("ARTISTLIST 0 : " + ARTISTLIST.get(0));
-//           System.out.println("IMGLIST 0 : " + IMGLIST.get(0));
-//           System.out.println("TRACK_IDLIST 0 : " + TRACK_IDLIST.get(0));
-
       } catch (Exception e) {
          e.printStackTrace();
       }
@@ -224,7 +204,6 @@ public class MemberRESTController {
    // 플라스크 통신2 모델링에 사용할 곡 결정을 위해 spotify 곡id 보내기
    @RequestMapping(value = "/sendDataToFlask2", method = RequestMethod.POST)
    public List<Perfume> sendDataToFlask2(@RequestBody MyLog M_ID, HttpSession session) {
-      System.out.println("sendDataToFlask2 시작");
       MyLog Data = null;
       List<Perfume> Plist = null;
       Log log = new Log();
@@ -235,10 +214,8 @@ public class MemberRESTController {
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_JSON);
       HttpEntity<MyLog> request = new HttpEntity<>(M_ID, headers);
-      ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2",
-            request, String.class);
-//       System.out.println("리스폰스 받음.");
-      // python에서 나온 결과값(P_TYPE)으로 DB매칭
+      ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask2", request, String.class);
+      
       String jsonString = response.getBody();
       ObjectMapper objectMapper = new ObjectMapper();
 
@@ -264,7 +241,7 @@ public class MemberRESTController {
       return Plist;
    }
 
-// 플라스크 통신3 탑, 미들, 베이스 노트를 입력받아 나온 타입으로 랜덤한 향수 3개 추천.
+   // 플라스크 통신3 탑, 미들, 베이스 노트를 입력받아 나온 타입으로 랜덤한 향수 3개 추천.
    @RequestMapping(value = "/sendDataToFlask3", method = RequestMethod.POST)
    public List<Perfume> sendDataToFlask3(@RequestBody Perfume p_note, HttpSession session) {
       MyLog Data = null;
@@ -274,8 +251,7 @@ public class MemberRESTController {
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_JSON);
       HttpEntity<Perfume> request = new HttpEntity<>(p_note, headers);
-      ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask3",
-            request, String.class);
+      ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask3", request, String.class);
       System.out.println("리스폰스 받음.");
       String jsonString = response.getBody();
       ObjectMapper objectMapper = new ObjectMapper();
@@ -285,8 +261,6 @@ public class MemberRESTController {
          Data = objectMapper.readValue(jsonString, MyLog.class);
          // 파싱된 데이터 꺼내기 + 확인
          Plist = mapper.MatchP(Data.getP_TYPE()); // 분위기로 향수 매칭
-//         System.out.println(Plist.get(0));
-//         Plist.get(2).getP_NUM());
       } catch (Exception e) {
          e.printStackTrace();
       }
@@ -296,15 +270,13 @@ public class MemberRESTController {
    // 플라스크 통신4 track id받아서 특징 불러오기
    @RequestMapping(value = "/sendDataToFlask4", method = RequestMethod.POST)
    public Music sendDataToFlask3(@RequestBody Log M_ID) {
-      System.out.println("sendDataToFlask4 시작");
       Music Data = null;
       RestTemplate restTemplate = new RestTemplate();
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_JSON);
       HttpEntity<Log> request = new HttpEntity<>(M_ID, headers);
-      ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask4",
-            request, String.class);
-      System.out.println("4 리스폰스 받음.");
+      ResponseEntity<String> response = restTemplate.postForEntity("http://121.147.185.76:9000/sendDataToFlask4", request, String.class);
+
       String jsonString = response.getBody();
       ObjectMapper objectMapper = new ObjectMapper();
       try {

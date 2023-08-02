@@ -82,49 +82,19 @@ public class MemberController {
 		}
 		Member loginUser = (Member) session.getAttribute("user");
 		String ID = loginUser.getID();
-
+		
 		Page page = new Page(PageNo, 4, mapper.count(ID));
 		int startNo = page.getStartNo() - 1;
-//			int endNo = page.getEndNo();
 		int totalCount = page.getTotalCount();
 		int totalPage = page.getTotalPage();
 		model.addAttribute("totalPage", totalPage);
-
-//			System.out.println("토탈카운트 : " + totalCount);
-//			System.out.println("토탈페이지 : " + totalPage);
-
-//			Map<String,Integer> Map = new HashMap<>();
-//			Map.put("startNo", page.getStartNo());
-//			Map.put("endNo", page.getEndNo());
+		
 		ArrayList<MyLog> log = mapper.getLogList(ID, startNo);
 		model.addAttribute("log", log);
 
 		return "LogPage";
 
 	}
-
-//      int i=0;
-//      ArrayList<ArrayList<Perfume>> logListPerfume = new ArrayList<ArrayList<Perfume>>();
-//      for (MyLog logList : log) {
-//         i++;
-//         System.out.println(logList);
-//         int num1 = logList.getP_NUM1();
-//         int num2 = logList.getP_NUM2();
-//         int num3 = logList.getP_NUM3();
-//
-//         ArrayList<Perfume> logPerfume = mapper.LogLoadPInfo(num1, num2, num3);
-////         System.out.println(logPerfume);
-////         System.out.println(logPerfume.get(0));
-
-//         
-//         logListPerfume.add(logPerfume);
-//         
-//         if (log.size() == i) {
-//            session.setAttribute("logListPerfume", logListPerfume);
-//            System.out.println(logListPerfume);
-//         }      
-//      MyLog b = log.get(0);
-//      int P_num1 = b.getP_NUM1();
 
 	// 향선택 향수 찾기 페이지 이동
 	@RequestMapping("/ScentP")

@@ -63,7 +63,7 @@
 			<form action="ChangePw" method="POST">
 				<input type="hidden" id="ID" name="ID" value="">
 				<div class="field">
-					<b>비밀번호</b> <input id="userpw" class="userpw" type="password"
+					<b>변경할 비밀번호</b> <input id="userpw" class="userpw" type="password"
 						name="PW">
 				</div>
 				<div class="field">
@@ -151,7 +151,7 @@
 					    $('#ID').val(id);
 					    
 						$('.modal').fadeIn();
-						$('.searchbox').hide();
+						$('.e4_332').hide();
 
 						alert('인증되었습니다.')
 					}
