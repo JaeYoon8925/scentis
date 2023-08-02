@@ -31,7 +31,7 @@
 	            <table>
 	               <tr>
 	                  <c:forEach var="p" items="${p}" varStatus="status">
-	                     <c:if test="${status.index%6==0}">
+	                     <c:if test="${status.index%5==0}">
 	               </tr>
 	               <tr>
 	                  </c:if>

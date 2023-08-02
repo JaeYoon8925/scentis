@@ -6,15 +6,14 @@
 	padding: 28px 17px;
 	font-size: 50px;
 	font-weight: 500;
-	/*font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;*/
 	font-family: 'Lobster', cursive;
 }
 
 nav {
-	border-bottom: 1px solid #F8BD6E;
+	border-bottom: 1px solid black;
     width: 100%;
     height: 80px;
-    background-color: #F1E2BC;
+    background-color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -31,16 +30,12 @@ div.menuBar {
 }
 
 div.menuBar>a {
-	font-family: 'Lobster', cursive;
 	text-decoration: none;
-	color: #913636;
-	font-size: 23px;
+	font-size: 21px;
 	padding: 28px 17px 28px 17px;
+	color: black;
 }
 
-div.menuBar>span {
-    color: #913636;
-}
 
 div.menuBar>a:hover {
     color:  #c2a2ff;
@@ -69,8 +64,8 @@ section {
 /* footer */
 footer {
     /*height: 530px;*/
-    border-top: 1px solid #F8BD6E;
-    background-color: #F1E2BC;
+    border-top: 1px solid black;
+    background-color: white;
     display: flex;
     justify-content: center;
 }
@@ -112,16 +107,12 @@ footer {
 }
 
 .sub-title {
-	font-family: 'Lobster', cursive;
-	color: #913636;
 	font-weight: 900;
 	margin: 20px 0px;
 }
 
 div.column>a {
-	font-family: 'Lobster', cursive;
 	text-decoration: none;
-	color: #913636;
 	padding-bottom: 15px;
 	padding-top: 3px;
 	font-size: 16px;
@@ -164,7 +155,6 @@ div.column>a:hover {
     display: flex;
     justify-content: flex-end;
     font-size: 12px;
-    color: #913636;
 
 }
 

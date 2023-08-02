@@ -24,10 +24,10 @@
 }
 
 nav {
-	border-bottom: 1px solid #F8BD6E;
+	border-bottom: 1px solid black;
 	width: 100%;
 	height: 80px;
-	background-color: #F1E2BC;
+	background-color: white;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -44,15 +44,10 @@ div.menuBar {
 }
 
 div.menuBar>a {
-	font-family: 'Lobster', cursive;
 	text-decoration: none;
-	color: #913636;
-	font-size: 23px;
+	font-size: 21px;
 	padding: 28px 17px 28px 17px;
-}
-
-div.menuBar>span {
-	color: #913636;
+	color: black;
 }
 
 div.menuBar>a:hover {
@@ -62,13 +57,9 @@ div.menuBar>a:hover {
 /* 섹션 */
 .section1 {
 	height: 800px;
-	/* background-size: 100%; */
-	/* background-size: cover; */
 	background-repeat: no-repeat;
 	display: flex;
-	/* justify-content: center; */
 	justify-content: space-between;
-	/* align-items: center; */
 	text-align: center;
 }
 
@@ -81,42 +72,23 @@ div.menuBar>a:hover {
 }
 
 .section3 {
-	/*height: 800px;*/
-	/*width: 400px;*/
 	align-items: center;
 	text-align: center;
-	/*background-color: #fff87c;*/
 }
 
 .title {
 	font-size: 30px;
-	font-weight: 500;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 	text-decoration: none;
 	color: black;
 }
 
-/*.title:hover {
-	cursor: pointer;
-	color: white;
-}*/
-
 .title1 {
 	font-size: 30px;
-	font-weight: 500;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-/* .title2 {
-            font-size: 20px;
-            font-weight: 500;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        } */
 .title3 {
 	margin: 15px;
 	font-size: 20px;
-    font-weight: 500;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .title4 {
@@ -135,9 +107,8 @@ div.menuBar>a:hover {
 
 /* footer */
 footer {
-	/*height: 530px;*/
-	border-top: 1px solid #F8BD6E;
-	background-color: #F1E2BC;
+	border-top: 1px solid black;
+	background-color: white;
 	display: flex;
 	justify-content: center;
 }
@@ -153,13 +124,11 @@ footer {
 .footer-menu {
 	display: flex;
 	justify-content: space-between;
-	/*height: 346px;*/
 }
 
 /* footer menu box */
 .first-box {
 	width: 60%;
-	/* border: 1px solid red; */
 	display: flex;
 	justify-content: space-between;
 }
@@ -171,23 +140,18 @@ footer {
 }
 
 .column {
-	/* border: 1px solid blue; */
 	display: flex;
 	flex-direction: column;
 	padding: 0 15px;
 }
 
 .sub-title {
-	font-family: 'Lobster', cursive;
-	color: #913636;
 	font-weight: 900;
 	margin: 20px 0px;
 }
 
 div.column>a {
-	font-family: 'Lobster', cursive;
 	text-decoration: none;
-	color: #913636;
 	padding-bottom: 15px;
 	padding-top: 3px;
 	font-size: 16px;
@@ -229,7 +193,6 @@ div.column>a:hover {
 	display: flex;
 	justify-content: flex-end;
 	font-size: 12px;
-	color: #913636;
 }
 
 /* last line */
@@ -301,11 +264,9 @@ div.column>a:hover {
 
 .searchbox {
 	margin-top: 180px;
-	/* display: none; */
 }
 
 .search {
-	/*display: flex;*/
 	flex-direction: column;
 	align-items: center;
 }
@@ -320,8 +281,6 @@ a:hover {
 }
 
 .modal {
-	/*width: 100%;
-	height: 100%;*/
 	top: 0;
 	left: 0;
 	display: none;
@@ -337,7 +296,6 @@ a:hover {
    text-align: center;
    font-size: 17px;
    font-weight: 600;
-   /*font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;*/
    font-family: 'Gowun Dodum', sans-serif;
 }
 
@@ -414,7 +372,6 @@ a:hover {
 .idnick {
 	font-size: 20px;
 	font-weight: 500;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 	margin-top: 40px;
 }
 
@@ -424,12 +381,9 @@ p {
 }
 
 .p1{
-    /*border: 1px solid #C4C4C4;*/
     box-sizing: border-box;
     border-radius: 10px;
     padding: 12px 10px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    /*font-style: normal;*/
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
