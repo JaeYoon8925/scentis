@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Scentit 당신의 향기에 즐거움을 선사하세요</title>
 <link rel="stylesheet" href="resources/css/allperfume.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>

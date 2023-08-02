@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>Scentit 당신의 향기에 즐거움을 선사하세요</title>
 <link rel="stylesheet" href="resources/css/login.css">
 </head>
 

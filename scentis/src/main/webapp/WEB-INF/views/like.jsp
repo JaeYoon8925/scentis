@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Scentit 당신의 향기에 즐거움을 선사하세요</title>
 <link rel="stylesheet" href="resources/css/like.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
