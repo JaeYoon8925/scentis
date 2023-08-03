@@ -42,9 +42,8 @@
 
 	<section>
 		<video autoplay loop muted>
-			<source src="resources/img/제목을-입력해주세요_.mp4"
+			<source src="resources/img/메인.mp4"
 				type="video/mp4">
-
 		</video>
 	</section>
 
