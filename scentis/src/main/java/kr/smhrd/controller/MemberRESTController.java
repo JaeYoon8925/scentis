@@ -12,6 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -207,6 +208,8 @@ public class MemberRESTController {
       MyLog Data = null;
       List<Perfume> Plist = null;
       Log log = new Log();
+      
+      
 
       Member user = (Member) session.getAttribute("user");
       String id = user.getID();
@@ -243,10 +246,15 @@ public class MemberRESTController {
 
    // 플라스크 통신3 탑, 미들, 베이스 노트를 입력받아 나온 타입으로 랜덤한 향수 3개 추천.
    @RequestMapping(value = "/sendDataToFlask3", method = RequestMethod.POST)
-   public List<Perfume> sendDataToFlask3(@RequestBody Perfume p_note, HttpSession session) {
+   public ArrayList<Perfume> sendDataToFlask3(@RequestBody Perfume p_note) {
       MyLog Data = null;
-      List<Perfume> Plist = null;
-
+      ArrayList<Perfume> Plist = mapper.selectP(p_note);
+      System.out.println(Plist);
+      if (Plist.size()!=0) { // 빈리스트가 아닐때 3개 출력
+    	  return Plist;
+      }
+      else { //빈리스트일때 플라스크전송
+    	  System.out.println("플라스크넘어옴");
       RestTemplate restTemplate = new RestTemplate();
       HttpHeaders headers = new HttpHeaders();
       headers.setContentType(MediaType.APPLICATION_JSON);
@@ -261,10 +269,12 @@ public class MemberRESTController {
          Data = objectMapper.readValue(jsonString, MyLog.class);
          // 파싱된 데이터 꺼내기 + 확인
          Plist = mapper.MatchP(Data.getP_TYPE()); // 분위기로 향수 매칭
+         System.out.println(Plist);
       } catch (Exception e) {
          e.printStackTrace();
       }
       return Plist;
+      }
    }
 
    // 플라스크 통신4 track id받아서 특징 불러오기
