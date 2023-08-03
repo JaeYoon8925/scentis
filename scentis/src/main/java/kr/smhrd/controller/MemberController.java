@@ -121,7 +121,7 @@ public class MemberController {
 		String nextView = null;
 
 		if (user != null) {
-			nextView = "MainPage";
+			nextView = "redirect:/";
 		} else {
 			nextView = "loginFail";
 		}

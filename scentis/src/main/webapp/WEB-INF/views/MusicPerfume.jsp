@@ -37,11 +37,11 @@
 	<nav>
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
-			<a href="ScentP">Scent to Perfume</a>
-			<a href="AllP">All Perfume</a>
+			<a href="ScentP">SCENT TO PERFUME</a>
+			<a href="AllP">ALL PERFUME</a>
 			<span>|</span>
-			<a href="goLogPage">My Log</a>
-			<a href="logout" class="logoutButton">Logout</a>
+			<a href="goLogPage">MY LOG</a>
+			<a href="logout" class="logoutButton">LOGOUT</a>
 		</div>
 	</nav>
 

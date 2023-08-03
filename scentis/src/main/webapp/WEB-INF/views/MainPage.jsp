@@ -19,12 +19,12 @@
 	<c:when test="${user eq null}">
 		<a href="${cpath}/" class="logo">Scentit</a>
 		<div class="menuBar">
-			<a href="Login">Music to Perfume</a>
-			<a href="Login">Scent to Perfume</a>
-			<a href="Login">All Perfume</a>
+			<a href="Login">MUSIC TO PERFUME</a>
+			<a href="Login">SCENT TO PERFUME</a>
+			<a href="Login">ALL PERFUME</a>
 			<span>|</span>
-			<a href="Join">Sign up</a>
-			<a href="Login">Login</a>
+			<a href="Join">SIGN UP</a>
+			<a href="Login">LOGIN</a>
 	</c:when>
 	<c:otherwise>
 		<a href="${cpath}/" class="logo">Scentit</a>
