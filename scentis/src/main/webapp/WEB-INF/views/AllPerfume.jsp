@@ -175,10 +175,10 @@
     			  data : { 'P_MODEL' : model},
     			  success : function (res) {
     				  if (res == 1) {
-    					  alert('찜 저장 완료');
+    					  //alert('찜 저장 완료');
     					  event.target.textContent = '🧡';
     				} else if(res == -1) {
-    					alert('찜 취소 완료');
+    					//alert('찜 취소 완료');
     					event.target.textContent = '🤍';
     				}else alert('오류');
     			},
