@@ -163,7 +163,7 @@
 	                	  </div>`
 	                	  
 	                  } else {
-	                	  for (let i=0; i<3; i++){
+	                	  for (let i=0; i<res.length; i++){
 			                  let brand = res[i].p_BRAND
 			                  let model = res[i].p_MODEL
 			                	  

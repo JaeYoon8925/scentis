@@ -80,12 +80,12 @@
 	         		</div>
 	         	
 	         		<div class="info2">
-		         		<p>acusticness : 어쿠스틱 장르인 정도</p>
-		         		<p>danceability : 춤 추기에 어울리는 정도</p>
-		         		<p>energy : 빠르거나 시끄러운 음악인 정도</p>
-		         		<p>valence : 곡이 긍정적인 감정인지의 정도</p>
-		         		<p>tempo : 곡의 빠르기</p>
-		         		<p>time signature : 박자</p>
+		         		<p class="text">acousticness : 어쿠스틱 장르인 정도</p>
+		         		<p class="text">danceability : 춤 추기에 어울리는 정도</p>
+		         		<p class="text">energy : 빠르거나 시끄러운 음악인 정도</p>
+		         		<p class="text">valence : 곡이 긍정적인 감정인지의 정도</p>
+		         		<p class="text">tempo : 곡의 빠르기</p>
+		         		<p class="text">time signature : 박자</p>
 	         		</div>
          		</div>
          		

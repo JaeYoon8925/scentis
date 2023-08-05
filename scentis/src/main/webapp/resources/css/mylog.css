@@ -66,6 +66,9 @@ p {
 	text-align: center;
     font-weight: 600;
 }
+.text{
+	text-align: left;
+}
 
 /* 섹션 */
 .section1 {
@@ -85,6 +88,7 @@ p {
 }
 
 .section3 {
+	background : black;
 	align-items: center;
 	text-align: center;
 	display: flex;
@@ -320,8 +324,8 @@ td {
 }
 
 .chart {
-	width: 350px;
-	height: 350px;
+	width: 450px;
+	height: 450px;
 	/*display: none;*/
 	margin-top: 100px;
 }
@@ -335,14 +339,15 @@ td {
 .info1 {
 	display: flex;
 	align-items: center;
-	width: 800px;
-	justify-content: space-between;
+	width: 1000px;
+	justify-content: space-around;
 }
 
 .info2 {
-	font-size: 15px;
+	font-size: 20px;
     font-family: 'Gowun Dodum', sans-serif;
     margin-top: 100px;
+    margin-left: 100px;
 }
 
 /* 페이징 버튼 */
