@@ -116,10 +116,20 @@
 
    <script type="text/javascript">
    let Llist = '${Llist}';
+   let previousTarget = null;
+   
    Llist = Llist.replaceAll("[","").replaceAll("]","").split(",");
 	//	console.log('${Llist}');
 	//	console.log('${Llist[0]}');
       $('.name').on('click', function (e) {
+    	 // 모든 css를 초기화 
+    	 if (previousTarget !== null) {
+         previousTarget.css("color", "black");
+   		 }
+    	 let target = $(e.target);
+         previousTarget = target;
+         target.css("color", "#c2a2ff")
+    	  
          //console.log($(e.target).text())
          let name = $(e.target).text()
          //console.log(name)
@@ -144,7 +154,7 @@
 	                      	<div class="box">
 	       		            <img class="perfumeimg" src="\${src1}" height="200px" width="200px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')"/>
 	       		         	<span class="heart" onclick="heartclick('\${model}', event)">🤍</span>
-	       		            <p class="perfume"> \${brand} </p>
+	       		            <BR>
 	       		            <p class="perfumename">\${model}</p>
 	       		            </div>`
             	}
@@ -196,7 +206,8 @@
          <div class="modal_content">
          <div class="Perfumeimg">
             <img src='\${url}'; height="300px" width="250px">
-            <p id="perfume">\${B} </p>
+         </div>
+         <div class="Perfumeimg">
             <p id="perfume">\${M} </p>
             <p id="perfume">\${I} </p>
          </div>
