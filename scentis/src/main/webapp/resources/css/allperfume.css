@@ -197,3 +197,8 @@ span:hover {
 	font-family: 'Gowun Dodum', sans-serif;
     font-weight: 600;
 }
+
+#perfume a:hover {
+	cursor: pointer;
+	color: #c2a2ff;
+}

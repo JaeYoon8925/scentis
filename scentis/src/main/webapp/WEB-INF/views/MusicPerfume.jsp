@@ -231,6 +231,7 @@
 			})
                
                $('.backbtn').on('click', function() {
+            	   $('#m_TITLE').val("");
 	               $('.modal').hide();
 	               $('.searchbox').show();
 	               $('.share').show();

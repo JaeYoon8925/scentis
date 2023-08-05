@@ -152,7 +152,7 @@
                let src1 = "resources/img/"+brand+"/"+model+".jpg";
 	               perfumeHTML+=`
 	                      	<div class="box">
-	       		            <img class="perfumeimg" src="\${src1}" height="200px" width="200px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}')"/>
+	       		            <img class="perfumeimg" src="\${src1}" height="200px" width="200px" onclick="selectperfume('\${res[i].p_BRAND}','\${res[i].p_MODEL}','\${(res[i].p_INFO).replaceAll("\n"," ")}','\${res[i].p_PATH}')"/>
 	       		         	<span class="heart" onclick="heartclick('\${model}', event)">🤍</span>
 	       		            <BR>
 	       		            <p class="perfumename">\${model}</p>
@@ -199,7 +199,7 @@
    }
       
       // selectperfume 클릭 시 관련된 정보 보여주는 함수
-      function selectperfume(B,M,I){
+      function selectperfume(B,M,I,P){
          let perfumeInfo ="";
          url = "resources/img/"+B+"/"+M+".jpg";
          perfumeInfo+=`
@@ -210,6 +210,7 @@
          <div class="Perfumeimg">
             <p id="perfume">\${M} </p>
             <p id="perfume">\${I} </p>
+	       	<p id="perfume"><a href="\${P}" target="_blank">상품 보러 가기 </a></p>
          </div>
          </div>`
        $('.modal').html(perfumeInfo);
