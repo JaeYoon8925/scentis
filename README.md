@@ -6,7 +6,8 @@
 https://blog.naver.com/4yuiko/223176967832
 메일 인증 관련 코드
 https://blog.naver.com/4yuiko/223186279268
-
+로그 페이지 페이징
+https://blog.naver.com/4yuiko/223186286150
 
 
 ## 🤼 참여자 
