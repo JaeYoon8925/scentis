@@ -1,6 +1,14 @@
 # 🖊️ scentit
 ![logo](https://github.com/2021-SMHRD-KDT-BigData-18/scentis/assets/130745390/c5ccd891-e97a-4a83-a68b-5d779ff992c8)
 
+## 본인의 역할
+플라스크 서버 구축
+https://blog.naver.com/4yuiko/223176967832
+메일 인증 관련 코드
+https://blog.naver.com/4yuiko/223186279268
+
+
+
 ## 🤼 참여자 
 팀장 : 이수하 
 
